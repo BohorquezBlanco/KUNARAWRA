@@ -8,10 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="description" content="">
     <meta name="author" content="Jose Ramires">
     <meta name="generator" content="Hugo 0.88.1">
-	<title> Sistema Web</title>
+	<title> Inicio</title>
 	<link rel="stylesheet" type="text/css" href= "<?php echo base_url();?>micssjs/css/bootstrap.min.css"> 
-    <link rel="stylesheet" type="text/css" href= "<?php echo base_url();?>micssjs/css/checkout.css"> 
-    <link rel="stylesheet" type="text/css" href= "<?php echo base_url();?>micssjs/css/form-validation.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>micssjs/css/MiCss.css"> 
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>micssjs/css/micss.css"> 
 </head>
-<body class="bg-light">
+<body >
