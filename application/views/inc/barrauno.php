@@ -1,8 +1,8 @@
 <!--CREACION DEL HEADER-->
 <header class="container">
         <!--CREACION DE BARRA DE NAVEGACION-->
-        <nav class=" navbar navbar-expand-lg navbar-light bg-light ">
-          <div class="container-fluid ">
+        <nav class=" navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
           
               <a class="navbar-brand" href="#">
                 <img src="<?php echo base_url();?>img/logo.png" alt="" width="50px" height="50px" class="d-inline-block align-text-top">
@@ -13,30 +13,27 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Peliculas</a>
+                  <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Series</a>
+                  <a class="nav-link" href="#">Inscribirse</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Generos
+                    QUIERO...
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Peliculas</a></li>
-                    <li><a class="dropdown-item" href="#">Peliculas de Animación</a></li>
-                    <li><a class="dropdown-item" href="#">Peliculas Familiares</a></li>
-                    <li><a class="dropdown-item" href="#">Documentales</a></li>
+                    <li><a class="dropdown-item" href="#">Prepararme para el examen de ingreso</a></li>
+                    <li><a class="dropdown-item" href="#">Prepararme para examen psicotecnico</a></li>
+                    <li><a class="dropdown-item" href="#">Fortalecer mis conocimientos</a></li>
                   </ul>
                 </li>
                
               </ul>
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-dark" type="submit">Buscar</button>
-              </form>
+              <img src="<?php echo base_url();?>img/llama2.png" alt="" width="450px" height="50px" class="d-inline-block align-text-top ">
+             
             </div>
           </div>
         </nav>
