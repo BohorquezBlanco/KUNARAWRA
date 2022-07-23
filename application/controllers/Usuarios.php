@@ -8,6 +8,7 @@ class Usuarios extends CI_Controller {
 		$this->load->view('inc/header');
 		$this->load->view('inc/barrauno');
 		$this->load->view('login');
+		$this->load->view('inc/pie');
 		$this->load->view('inc/footer');
 	}
 	//probar la conexion 

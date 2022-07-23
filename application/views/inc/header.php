@@ -10,6 +10,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="generator" content="Hugo 0.88.1">
 	<title> Inicio</title>
 	<link rel="stylesheet" type="text/css" href= "<?php echo base_url();?>micssjs/css/bootstrap.min.css"> 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>micssjs/css/micss.css"> 
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>micssjs/css/My.css"> 
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>micssjs/css/bootstrap-grid.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"> <!--Logos de facebook,etc-->
 </head>
 <body >

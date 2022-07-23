@@ -5,11 +5,5 @@ body {
   .navbar {
     margin-bottom: 20px;
   }
-  
-  li a:hover
-  {
 
-background: #fff;
-color:#000;
-border-radius: 30px;
-  }
+
