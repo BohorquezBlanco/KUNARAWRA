@@ -126,17 +126,11 @@
       <td>
      <?php echo form_open_multipart('usuarios/modificar'); ?>
      <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario; ?>"> <!--Nombre de la tabla-->
-     <input type="submit" name="buttony" value="Modificar "class="btn btn-success btn-xs">
+     <input type="submit" name="buttony" value="Modificar" class="btn btn-success btn-xs">
      <?php echo form_close(); ?>
      </td> 
-     <!--Eliminacion logica-->   
-    <td>
-    <?php echo form_open_multipart('usuarios/deshabilitarbd'); ?>
-    <input type="hidden" name="idestudiante" value="<?php echo $row->idUsuario; ?>"> <!--Nombre de la tabla-->
-    <input type="submit" name="buttonz" value="deshabilitar "class="btn btn-warning btn-xs">
-    <?php echo form_close(); ?>
-    </td>
-     </tr>
+     
+     </tr> 
    
       
   <?php

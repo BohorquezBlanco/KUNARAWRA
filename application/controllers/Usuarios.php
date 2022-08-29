@@ -40,14 +40,24 @@ class Usuarios extends CI_Controller {
 	}
 
 	//UPDATE
-	public function modificar ()
+	public function modificar()
 {
-	$IdUsuario=$_POST['idUsuario'];
-	$data['infoestudiante']=$this -> estudiante_model ->recuperarestudiante($IdUsuario);//en inforestudiante se almacena todo el resultado de la consulta
+	$idusuario=$_POST['idusuario'];
+	$data['infoestudiante']=$this -> estudiante_model ->recuperarestudiante($idusuario);//en inforestudiante se almacena todo el resultado de la consulta
 	$this->load->view('PerfilUsuario/EdicionPerfilAdm',$data);//envio resultado de consulta 
-	
-}
 
+}
+public function modificarbd()
+{
+	$idusuario=$_POST['idusuario'];
+	$data['nombre']=$_POST['nombre'];
+	$data['primerApellido']=$_POST['primerapellido'];
+	$data['segundoApellido']=$_POST['segundoapellido'];
+	$data['password']=$_POST['password'];
+
+	$this -> estudiante_model ->modificarestudiante($idusuario,$data);
+	redirect('usuarios/UsuariosNo','refresh');
+}
 
 	//------AREA ADMINISTRACION------- 
 	public function AreaAdm()

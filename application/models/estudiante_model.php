@@ -20,17 +20,17 @@ class Estudiante_model extends CI_Model {
 		 
 	}
 	//aqui se realiza el update
-	public function recuperarestudiante($IdUsuario)
+	public function recuperarestudiante($idusuario)
 	{
 		$this->db->select('*'); //select * from 
 		$this->db->from('usuario'); //tabla
-		$this->db->where('idUsuario',$IdUsuario);
+		$this->db->where('idUsuario',$idusuario);
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
-	public function modificarestudiante($IdUsuario,$data)
+	public function modificarestudiante($idusuario,$data)
 	{
 		
-		$this->db->where('idUsuario',$IdUsuario);
+		$this->db->where('idUsuario',$idusuario);
 		$this->db-> update('usuario',$data);//nombre de la tabla
 	}
 	//aqui se realiza el softdelete

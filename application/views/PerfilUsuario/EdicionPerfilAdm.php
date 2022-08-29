@@ -99,28 +99,34 @@
                   
                 </div>
                 <h5 class="mb-2">Materias Cursadas:</h5> <h5>8</h5> <br> <br>
-                <div class="row g-3">
+                <?php
+            foreach ($infoestudiante->result() as $row)
+            {
+               echo form_open_multipart('usuarios/modificarbd');  //apertura de formulario llegando al metodo agregarbase de datos
+               ?>
+            <input type="hidden" name="idusuario"  value="<?php echo $row->idUsuario; ?>">
+               <div class="row g-3">
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            <input type="text" name="nombre" class="form-control" id="name" placeholder="Your Name" value="<?php echo $row->nombre; ?>">
                             <label for="name">Tu nombre es: </label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                            <input type="text" name="primerapellido" class="form-control"  placeholder="Your Email" value="<?php echo $row->primerApellido; ?>">
                             <label for="email">Tu primer apellido es:</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                            <input type="text"  name="segundoapellido" class="form-control"  placeholder="Your Email" value="<?php echo $row->segundoApellido; ?>" >
                             <label for="email">Tu segundo apellido es:</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                            <input type="text"  name="password" class="form-control"  placeholder="Your Email" value="<?php echo $row->password; ?>" >
                             <label for="email">Tu contraseña es:</label>
                         </div>
                     </div>
@@ -130,11 +136,14 @@
                         <button class="btn btn-primary w-100 py-3" type="submit">EDITAR PERFIL</button>
                     </div>
 
-                    <div class="col-6">
-                        <button class="btn btn-primary w-100 py-3" type="submit">Eliminar Cuenta</button>
-                    </div>
+                   
                 </div>
-            
+                <?php 
+                 form_close(); 
+                 }
+                 ?> 
+
+                
         </div>
     </div>
     <!-- Testimonial End -->
