@@ -20,15 +20,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="../lib/animate/animate.min.css" rel="stylesheet">
-    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<!-- LIBRERIA PARA EL ESTILO-->
+<link href="<?php echo base_url(); ?>micssjs/lib/animate/animate.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>micssjs/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+<!-- BOOTSTAP.MIN CUSTOMIZADO POR EL TEMPLATE -->
+<link href="<?php echo base_url(); ?>micssjs/css/bootstrapmin.css" rel="stylesheet">  
 
-    <!-- Template Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
+<!-- TEMPLATE STYLE -->
+<link href="<?php echo base_url(); ?>micssjs/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -71,7 +71,7 @@
                 <a href="#" class="nav-link " >Alexander Samuel</a>
                 <div class="dropdown-menu fade-down m-0">
                     <a href="team.html" class="dropdown-item">Mi Perfil</a>
-                    <a href="testimonial.html" class="dropdown-item">Editar Usuario</a>
+                    <a href="<?php echo base_url(); ?>index.php/usuarios/PerfilUsuario" class="dropdown-item">Editar Usuario</a>
    
                 </div>
             </div>
@@ -93,7 +93,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="../img/about.jpg" alt="" style="object-fit: cover;">
+                        <img class="img-fluid position-absolute w-100 h-100" src="<?php echo base_url(); ?>img/about.jpg" alt="" style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -150,7 +150,7 @@
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="../img/cat-2.jpg" alt="">
+                                <img class="img-fluid" src="<?php echo base_url(); ?> img/cat-2.jpg" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                     <h5 class="m-0">Graphic Design</h5>
                                     <small class="text-primary">49 Courses</small>
@@ -159,7 +159,7 @@
                         </div>
                         <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
                             <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="../img/cat-3.jpg" alt="">
+                                <img class="img-fluid" src="<?php echo base_url(); ?> img/cat-3.jpg" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                     <h5 class="m-0">Video Editing</h5>
                                     <small class="text-primary">49 Courses</small>
@@ -170,7 +170,7 @@
                 </div>
                 <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
                     <a class="position-relative d-block h-100 overflow-hidden" href="">
-                        <img class="img-fluid position-absolute w-100 h-100" src="../img/cat-4.jpg" alt="" style="object-fit: cover;">
+                        <img class="img-fluid position-absolute w-100 h-100" src="<?php echo base_url(); ?> img/cat-4.jpg" alt="" style="object-fit: cover;">
                         <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
                             <h5 class="m-0">Online Marketing</h5>
                             <small class="text-primary">49 Courses</small>
@@ -196,13 +196,13 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/wow/wow.min.js"></script>
-    <script src="../lib/easing/easing.min.js"></script>
-    <script src="../lib/waypoints/waypoints.min.js"></script>
-    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/wow/wow.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/easing/easing.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/waypoints/waypoints.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/owlcarousel/carouselmin.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
+    <script  src="<?php echo base_url(); ?>micssjs/js/main.js"  ></script> 
 </body>
 
 </html>

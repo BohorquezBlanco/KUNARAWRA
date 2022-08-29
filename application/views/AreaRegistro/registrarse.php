@@ -20,15 +20,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="../lib/animate/animate.min.css" rel="stylesheet">
-    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<!-- LIBRERIA PARA EL ESTILO-->
+<link href="<?php echo base_url(); ?>micssjs/lib/animate/animate.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>micssjs/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+<!-- BOOTSTAP.MIN CUSTOMIZADO POR EL TEMPLATE -->
+<link href="<?php echo base_url(); ?>micssjs/css/bootstrapmin.css" rel="stylesheet">  
 
-    <!-- Template Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
+<!-- TEMPLATE STYLE -->
+<link href="<?php echo base_url(); ?>micssjs/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -81,50 +81,46 @@
                     <h6 class="section-title bg-white text-center text-primary px-3">Crear Cuenta</h6>
                     <h1 class="mb-5">Crearse una cuenta es gratis :v</h1>
                 </div>
-                <form >
+                <?php echo form_open_multipart('usuarios/agregarbd'); //apertura de formulario llegando al metodo agregarbase de datos?>
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                <label for="name">Escribe tu nombre</label>
+                                <input type="text" name="Nombre" class="form-control" id="name" placeholder="Your Name">
+                                <label for="name" >Escribe tu nombre</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <input type="text" name="PrimerApellido" class="form-control" id="email" placeholder="Your Email">
                                 <label for="email">Escribe tu primer apellido</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <input type="text" name="SegundoApellido" class="form-control" id="email" placeholder="Your Email">
                                 <label for="email">Escribe tu segundo apellido</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <input type="email" name="Correo" class="form-control" id="email" placeholder="Your Email">
                                 <label for="email">Escriba su correo</label>
                             </div>
                         </div>
+                      
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                <label for="subject">Usuario</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                <input type="text" name="Password" class="form-control" id="subject" placeholder="Subject">
                                 <label for="subject">Contraseña</label>
                             </div>
                         </div>
                        
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                            <button class="btn btn-primary w-100 py-3" type="submit">CREAR UNA CUENTA</button>
                         </div>
                     </div>
-                </form>
+                  
+                    <?php form_close() ;?>
             </div>
         </div>
     </div>
@@ -220,13 +216,13 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/wow/wow.min.js"></script>
-    <script src="../lib/easing/easing.min.js"></script>
-    <script src="../lib/waypoints/waypoints.min.js"></script>
-    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/wow/wow.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/easing/easing.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/waypoints/waypoints.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/owlcarousel/carouselmin.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
+    <script  src="<?php echo base_url(); ?>micssjs/js/main.js"  ></script> 
 </body>
 
 </html>

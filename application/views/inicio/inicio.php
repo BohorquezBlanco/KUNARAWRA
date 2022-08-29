@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <a href="contact.html" class="nav-item nav-link">Contactanos :D</a>
-                    <a href="./AreaRegistro/ingresar.html" class="btn btn-primary py-4 px-lg-5 fs-5 ">INGRESAR</a>
+                    <a href="<?php echo base_url(); ?>index.php/usuarios/ingresar" class="btn btn-primary py-4 px-lg-5 fs-5 ">INGRESAR</a>
             </div>
         
         </div>

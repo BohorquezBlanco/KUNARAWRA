@@ -8,28 +8,27 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <!-- Favicon -->
-    <link href="../
-    img/favicon.ico" rel="icon">
+  <!-- Favicon para los iconos -->
+  <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<!-- Google API Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<!-- FUENTES PARA LOS ICONOS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="../lib/animate/animate.min.css" rel="stylesheet">
-    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<!-- LIBRERIA PARA EL ESTILO-->
+<link href="<?php echo base_url(); ?>micssjs/lib/animate/animate.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>micssjs/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+<!-- BOOTSTAP.MIN CUSTOMIZADO POR EL TEMPLATE -->
+<link href="<?php echo base_url(); ?>micssjs/css/bootstrapmin.css" rel="stylesheet">  
 
-    <!-- Template Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
+<!-- TEMPLATE STYLE -->
+<link href="<?php echo base_url(); ?>micssjs/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -100,15 +99,13 @@
                                 <button class="btn btn-primary w-100 py-3" type="submit">Ingresar</button>
                             </div>
                             <div class="col-6">
-                                <a href="./registrarse.html">
-                                    <button  class="btn btn-primary w-100 " type="submit">
-                                       Crearse una cuenta
-                                    </button> aaa
-                                </a>
+                                
+                            <a href="<?php echo base_url(); ?>index.php/usuarios/inscribirse" class="btn btn-primary  ">Registrarse</a><p>crearse una cuenta es gratis:D</p>
+        
                                      
                             </div>
-                            <a href="../AreaCursos/AreaUsuario.html">ingreso de estudiante</a>
-                            <a href="../AreaAdmEdu/areaAdministrador.html">ingreso de administrador</a>
+                            <a href="<?php echo base_url(); ?>index.php/usuarios/InicioUsuario">ingreso de estudiante</a>
+                            <a href="<?php echo base_url(); ?>index.php/usuarios/AreaAdm">ingreso de administrador</a>
                             <a href="">ingreso de educador</a>
                         </div>
                    
@@ -136,13 +133,13 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/wow/wow.min.js"></script>
-    <script src="../lib/easing/easing.min.js"></script>
-    <script src="../lib/waypoints/waypoints.min.js"></script>
-    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/wow/wow.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/easing/easing.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/waypoints/waypoints.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/owlcarousel/carouselmin.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
+    <script  src="<?php echo base_url(); ?>micssjs/js/main.js"  ></script> 
 </body>
 
 </html>

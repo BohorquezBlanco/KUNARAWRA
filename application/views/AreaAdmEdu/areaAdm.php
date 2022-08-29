@@ -20,15 +20,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+ <!-- LIBRERIA PARA EL ESTILO-->
+<link href="<?php echo base_url(); ?>micssjs/lib/animate/animate.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>micssjs/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+<!-- BOOTSTAP.MIN CUSTOMIZADO POR EL TEMPLATE -->
+<link href="<?php echo base_url(); ?>micssjs/css/bootstrapmin.css" rel="stylesheet">  
 
-    <!-- Template Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
+<!-- TEMPLATE STYLE -->
+<link href="<?php echo base_url(); ?>micssjs/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -95,7 +95,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a href="">
+                    <a href="<?php echo base_url(); ?>index.php/usuarios/UsuariosPanel">
                        <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
@@ -180,13 +180,13 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/wow/wow.min.js"></script>
-    <script src="../lib/easing/easing.min.js"></script>
-    <script src="../lib/waypoints/waypoints.min.js"></script>
-    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/wow/wow.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/easing/easing.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/waypoints/waypoints.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/lib/owlcarousel/carouselmin.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
+    <script  src="<?php echo base_url(); ?>micssjs/js/main.js"  ></script> 
 </body>
 
 </html>

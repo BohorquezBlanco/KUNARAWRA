@@ -3,26 +3,91 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuarios extends CI_Controller {
 
+	//------INICIO------- 
 	public function index()
 	{
-		
-		$this->load->view('inicio/inicio');
-	
+
+		$this->load->view('inicio/inicio');	
+
 	}
+
+	//------INGRESAR------- 
 	public function ingresar()
 	{
-		$this->load->view('inc/headerIngreso');
-		$this->load->view('inc/barrauno');
-		$this->load->view('inicio/ingreso');
-		$this->load->view('inc/footer');
+		$this->load->view('AreaRegistro/ingresar');
 	}
+
+	//------CREACION DE CUENTA------- 
 	public function inscribirse()
 	{
-		$this->load->view('inc/headerInscribirse');
-		$this->load->view('inc/barrauno');
-		$this->load->view('inicio/inscripcion');
-		$this->load->view('inc/footer');
+		
+		$this->load->view('AreaRegistro/registrarse');
+	
 	}
+		//INSERT metodo para agregar a base de datos 
+	public function agregarbd()
+	{
+		//nombre de la columna de la base dedatos y el otro como esta en formulario
+	$data['nombre']=$_POST['Nombre'];
+	$data['primerApellido']=$_POST['PrimerApellido'];
+	$data['segundoApellido']=$_POST['SegundoApellido'];
+	$data['correo']=$_POST['Correo'];
+	$data['password']=$_POST['Password'];
+
+	$lista=$this->estudiante_model->agregarestudiante($data);//se almacena la consulta 
+		
+	redirect('usuarios/InicioUsuario','refresh');
+	}
+
+	//UPDATE
+	public function modificar ()
+{
+	$IdUsuario=$_POST['idUsuario'];
+	$data['infoestudiante']=$this -> estudiante_model ->recuperarestudiante($IdUsuario);//en inforestudiante se almacena todo el resultado de la consulta
+	$this->load->view('PerfilUsuario/EdicionPerfilAdm',$data);//envio resultado de consulta 
+	
+}
+
+
+	//------AREA ADMINISTRACION------- 
+	public function AreaAdm()
+	{
+		
+		$this->load->view('AreaAdmEdu/areaAdm');
+	
+	}
+
+	public function UsuariosPanel()
+	{
+		
+		$this->load->view('AreaAdmEdu/UsuariosPan');
+	
+	}
+	public function UsuariosNo()
+	{
+		$lista=$this->estudiante_model->listaestudiantes();//se almacena la consulta 
+		$data['usuario']=$lista;//desarrollando un array relacional 
+		//en aqui se acumula informacion 
+		$this->load->view('AreaAdmEdu/UsuariosNoIns',$data);//Envia el resultado de la consulta
+	
+	}
+
+
+	public function InicioUsuario()
+	{
+		
+		$this->load->view('AreaCursos/AreaUsuario');
+	
+	}
+
+	public function PerfilUsuario()
+	{
+		
+		$this->load->view('PerfilUsuario/EdicionPerfil');
+	
+	}
+
+
 	//InicioEstudiante
 	public function incioEstudiante()
 	{
