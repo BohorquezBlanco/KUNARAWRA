@@ -60,6 +60,17 @@ public function modificarbd()
 }
 
 	//------AREA ADMINISTRACION------- 
+		
+	public function deshabilitarbd ()
+	{
+		$idusuario=$_POST['idusuario'];
+		$data['estado']='0';
+		$data['fechaActualizacion']=date('Y-m-d h:m:s');
+
+		$this -> estudiante_model ->modificarestudiante($idusuario,$data);//reutilizamos el modelo 
+		redirect('usuarios/UsuariosNo','refresh');
+	}
+
 	public function AreaAdm()
 	{
 		

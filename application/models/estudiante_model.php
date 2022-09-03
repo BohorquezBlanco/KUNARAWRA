@@ -30,15 +30,11 @@ class Estudiante_model extends CI_Model {
 	public function modificarestudiante($idusuario,$data)
 	{
 		
+		
+	
 		$this->db->where('idUsuario',$idusuario);
 		$this->db-> update('usuario',$data);//nombre de la tabla
 	}
-	//aqui se realiza el softdelete
-	public function listaestudiantesdeshabilitados()
-	{
-		$this->db->select('*'); //select * from 
-		$this->db->from('usuario'); //tabla
-		$this->db->where('estado','0');//devuelve la lista solo lso que tienen 1 
-		return $this->db->get(); //devolucion del resultado de la consulta 
-	}
+
+
 }
