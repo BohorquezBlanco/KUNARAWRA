@@ -38,7 +38,7 @@ class Materia extends CI_Controller {
 	$lista=$this->materia_model->agregarmateria($data);//se almacena la consulta 
 		
 
-	redirect('administrador/index','refresh');
+	redirect('Carrera/index','refresh');
 	
 	}
 	//UPDATE

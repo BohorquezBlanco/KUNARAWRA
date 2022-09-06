@@ -81,7 +81,7 @@
                     <h6 class="section-title bg-white text-center text-primary px-3">Crear Cuenta</h6>
                     <h1 class="mb-5">Crearse una cuenta es gratis :v</h1>
                 </div>
-                <?php echo form_open_multipart('administrador/agregarbd'); //apertura de formulario llegando al metodo agregarbase de datos?>
+                <?php echo form_open_multipart('carrera/agregarbd'); //apertura de formulario llegando al metodo agregarbase de datos?>
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">

@@ -51,7 +51,7 @@
                 </div>
                   <!--AREA ADMINISTRATIVA DE CARRERAS Y MATERIAS -->
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a href="<?php echo base_url(); ?>index.php/administrador/index">
+                    <a href="<?php echo base_url(); ?>index.php/Carrera/index">
                        <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-book  text-primary mb-4"></i>

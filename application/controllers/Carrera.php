@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Administrador extends CI_Controller {
+class Carrera extends CI_Controller {
 
 	//------SELECT------- 
 	public function index()
 	{
-		$lista=$this->administrador_model->listacarreras();//se almacena la consulta 
+		$lista=$this->carrera_model->listacarreras();//se almacena la consulta 
 		$data['carrera']=$lista;//desarrollando un array relacional 
 		//en aqui se acumula informacion 
-		$this->load->view('AreaAdmEdu/carreras',$data);	
+		$this->load->view('Carreras/carreras',$data);	
 	}
 
 public function formcarrera()
@@ -27,16 +27,16 @@ public function formcarrera()
 	$data['descripcion']=$_POST['descripcioncarrera'];
 
 
-	$lista=$this->administrador_model->agregarcarrera($data);//se almacena la consulta 
+	$lista=$this->carrera_model->agregarcarrera($data);//se almacena la consulta 
 		
-	redirect('administrador/index','refresh');
+	redirect('carrera/index','refresh');
 	}
 	//UPDATE
 	public function modificar()
 {
 	$idcarrera=$_POST['idcarrera'];
-	$data['infocarrera']=$this -> administrador_model ->recuperarcarrera($idcarrera);//en inforestudiante se almacena todo el resultado de la consulta
-	$this->load->view('PerfilUsuario/EdicionCarrera',$data);//envio resultado de consulta 
+	$data['infocarrera']=$this -> carrera_model ->recuperarcarrera($idcarrera);//en inforestudiante se almacena todo el resultado de la consulta
+	$this->load->view('Carreras/EdicionCarrera',$data);//envio resultado de consulta 
 
 }
 
@@ -47,8 +47,8 @@ public function modificarbd()
 	$data['descripcion']=$_POST['descripcion'];
 
 
-	$this -> administrador_model ->modificarcarrera($idcarrera,$data);
-	redirect('administrador/index','refresh');
+	$this -> carrera_model ->modificarcarrera($idcarrera,$data);
+	redirect('carrera/index','refresh');
 }
  
 	//ELIMINACION LOGICA
@@ -57,8 +57,8 @@ public function deshabilitarbd ()
 	$idcarrera=$_POST['idcarrera'];
 	$data['estado']='0';
 
-	$this -> administrador_model ->modificarcarrera($idcarrera,$data);//reutilizamos el modelo 
-	redirect('administrador/index','refresh');
+	$this -> carrera_model ->modificarcarrera($idcarrera,$data);//reutilizamos el modelo 
+	redirect('carrera/index','refresh');
 }
 
 	

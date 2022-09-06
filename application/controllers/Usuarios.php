@@ -100,8 +100,8 @@ class Usuarios extends CI_Controller {
 		$this->load->view('inc/cabeza/cabeza1');
 		$this->load->view('inc/navbar/navbar1');
 		$this->load->view('inc/spinner/spinner');
-		$this->load->view('PerfilUsuario/EdicionPerfilAdm',$data);//envio resultado de consulta 
 		$this->load->view('inc/pie/pie1');	
+		$this->load->view('Usuarios/EdicionPerfilAdm',$data);//envio resultado de consulta 
 	}
 	
 	public function modificarbd()
