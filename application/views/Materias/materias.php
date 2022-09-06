@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Administrador</title>
+    <title>Materias</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -14,7 +14,8 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -34,7 +35,7 @@
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only">Cargando...</span>
         </div>
     </div>
     <!-- Spinner End -->
@@ -70,17 +71,14 @@
 
 
     <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container-fluid bg-primary py-2 mb-2 page-header">
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Usuarios Registrados</h1>
-                    <p class="text-white">Muestra todos los usuarios registrados en la plataforma</p>
+                    <h1 class="display-3 text-white animated slideInDown">Materias</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Inicio</a></li>
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Noticias</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Jose Luis</li>
+   
                         </ol>
                     </nav>
                 </div>
@@ -88,73 +86,62 @@
         </div>
     </div>
     <!-- Header End -->
+    
+    <div class="container-xxl py-5">
+<div class="container">
+<div class="row g-4 justify-content-center">
 
-  <!-- Muestra de SELECT TABLA "TODOS LOS USUARIOS INSCRITOS"-->
-  <div class="container">
-<div class="col-row-12">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">nombre</th>
-      <th scope="col">Primer Apellido</th>
-      <th scope="col">Segundo Apellido</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">Correo</th>
-      <th scope="col">Contraseña</th>
-      <th scope="col">Modificar</th>
-      <th scope="col">Eliminacion Logica</th>
-    </tr>
-  </thead>
-  <tbody>
+<a href="<?php echo base_url(); ?>index.php/Materia/formmateria" class="btn btn-primary py-4 px-lg-5 fs-5 ">AGREGAR MATERIAS</a>
 
-  <?php 
-  $indice=1;
-    foreach($usuario -> result() as $row)
-      {
-  ?>
-    <tr>
-      <th scope="row"><?php echo $indice; ?></th>
-      <td><?php echo $row->nombre; ?></td>
-      <td><?php echo $row->primerApellido; ?></td>
-      <td><?php echo $row->segundoApellido; ?></td>
-      <td><?php echo $row->tipo; ?></td>
-      <td><?php echo $row->correo; ?></td>
-      <td><?php echo $row->password; ?></td>
-      <!--MODIFICAR-->
-      <td>
-     <?php echo form_open_multipart('usuarios/modificar'); ?>
-     <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario; ?>"> <!--Nombre de la tabla-->
-     <input type="submit" name="buttony" value="Modificar" class="btn btn-success btn-xs">
+
+
+
+
+    <?php 
+    $indice=1;
+        foreach($materia -> result() as $row)
+        {
+    ?>
+<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="course-item bg-light">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="<?php echo base_url(); ?>img/course-1.jpg" alt="">
+                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                           <!-- Modificar -->
+     
+                            <?php echo form_open_multipart('materia/modificar'); ?>
+     <input type="hidden" name="idmateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
+     <input type="submit" name="buttony" value="MODIFICAR" class="btn btn-success btn-xs" >
      <?php echo form_close(); ?>
-     </td> 
-     <!--Eliminacion logica-->   
-    <td>
-    <?php echo form_open_multipart('usuarios/deshabilitarbd'); ?>
-    <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario; ?>"> <!--Nombre de la tabla-->
-    <input type="submit" name="buttonz" value="deshabilitar "class="btn btn-warning btn-xs">
+<!-- Eliminar -->
+     <?php echo form_open_multipart('materia/deshabilitarbd'); ?>
+    <input type="hidden" name="idmateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
+    <input type="submit" name="buttonz" value="DESHABILITAR" class="btn btn-warning btn-xs">
     <?php echo form_close(); ?>
-    </td>
-     </tr> 
-   
-      
-  <?php
+
+ 
+
+                            </div>
+                        </div>
+                        <div class="text-center p-2 pb-0">
+                            <h4 class="mb-2"> <?php echo $row->nombreMateria; ?></h4>
+                            <p><?php echo $row->descripcion; ?></p>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
+                        </div>
+                    </div>
+                </div>
+<?php
     $indice++;
       }
   ?>
-
-
-  
-    
-  </tbody>
-</table>
+   </div>
+   </div>
 </div>
-</div>
-
-
-
-
-
+   
 
 
     <!-- Back to Top -->

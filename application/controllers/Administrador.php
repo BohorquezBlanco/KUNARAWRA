@@ -14,7 +14,7 @@ class Administrador extends CI_Controller {
 
 public function formcarrera()
 {
-	$this->load->view('AreaRegistro/agregarCarrera');	
+	$this->load->view('Carreras/agregarCarrera');	
 }
 
 
@@ -50,7 +50,7 @@ public function modificarbd()
 	$this -> administrador_model ->modificarcarrera($idcarrera,$data);
 	redirect('administrador/index','refresh');
 }
-
+ 
 	//ELIMINACION LOGICA
 public function deshabilitarbd ()
 {

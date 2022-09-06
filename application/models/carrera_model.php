@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Administrador_model extends CI_Model {
+class Carrera_model extends CI_Model {
 
 	//este metodo es invocado por un controlador 
 	//aqui se realiza el select 
@@ -29,7 +29,6 @@ class Administrador_model extends CI_Model {
 		$this->db->where('idCarrera',$idcarrera);
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
-	
 	public function modificarcarrera($idcarrera,$data)
 	{
 		

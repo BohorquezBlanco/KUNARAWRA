@@ -33,14 +33,7 @@
 
 <body>
     <!-- redondito de carga  -->
-    <!-- Spinner Start  -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Cargando...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
-
+ 
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
@@ -87,54 +80,46 @@
         <div class="container">
             <div class="text-center">
                 <h6 class="section-title bg-white text-center text-primary px-3">Perfil</h6>
-                <h1 class="mb-2">Puedes editar sus datos :D</h1>
+                <h1 class="mb-2">Puedes editar la carrera</h1>
             </div>
    
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-1 mx-auto mb-4" src="<?php echo base_url(); ?>img/testimonial-1.jpg" style="width: 150px; height: 150px;">
-                     <p>juanita@gmail.com</p>
-                    <a href="">
-                         <h5 class="mb-0">Editar Foto</h5><br>
-                    </a>
-                  
-                </div>
-                <h5 class="mb-2">Materias Cursadas:</h5> <h5>8</h5> <br> <br>
-                <div class="row g-3">
+                
+                <h5 class="mb-2">Total Carreras</h5> <h5>8</h5> <br> <br>
+                <?php
+            foreach ($infomateria->result() as $row)
+            {
+            echo form_open_multipart('Materia/modificarbd');  //apertura de formulario llegando al metodo agregarbase de datos
+            ?>
+             
+            <input type="hidden" name="idmateria"  value="<?php echo $row->idMateria; ?>">
+               <div class="row g-3">
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name">
-                            <label for="name">Tu nombre es: </label>
+                            <input type="text" name="nombremateria" class="form-control" id="name" placeholder="Your Name" value="<?php echo $row->nombreMateria; ?>">
+                            <label for="name">El nombre de la materia es: </label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                            <label for="email">Tu primer apellido es:</label>
+                            <input type="text" name="descripcion" class="form-control"  placeholder="Your Email" value="<?php echo $row->descripcion; ?>">
+                            <label for="name">La descripcion de la materia es:</label>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-floating">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                            <label for="email">Tu segundo apellido es:</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-floating">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                            <label for="email">Tu contraseña es:</label>
-                        </div>
-                    </div>
+                   
                     
                    
                     <div class="col-12">
-                        <button class="btn btn-primary w-100 py-3" type="submit">EDITAR PERFIL</button>
+                        <button class="btn btn-primary w-100 py-3" type="submit">EDITAR MATERIA</button>
                     </div>
 
-                    <div class="col-6">
-                        <button class="btn btn-primary w-100 py-3" type="submit">Eliminar Cuenta</button>
-                    </div>
+                   
                 </div>
-            
+                <?php 
+                 form_close(); 
+                 }
+                 ?> 
+
+                
         </div>
     </div>
     <!-- Testimonial End -->

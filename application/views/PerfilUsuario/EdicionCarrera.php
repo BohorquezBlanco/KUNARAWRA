@@ -95,8 +95,8 @@
                 <?php
             foreach ($infocarrera->result() as $row)
             {
-               echo form_open_multipart('Administrador/modificarbd');  //apertura de formulario llegando al metodo agregarbase de datos
-               ?>
+            echo form_open_multipart('Administrador/modificarbd');  //apertura de formulario llegando al metodo agregarbase de datos
+            ?>
              
             <input type="hidden" name="idcarrera"  value="<?php echo $row->idCarrera; ?>">
                <div class="row g-3">
