@@ -89,7 +89,8 @@
                     <h1 class="mb-5">Crea una materia</h1>
                 </div>
                 <?php echo form_open_multipart('materia/agregarbd'); //apertura de formulario llegando al metodo agregarbase de datos?>
-                    <div class="row g-3">
+                      
+                <div class="row g-3">
                         
                         <div class="col-md-6">
                             <div class="form-floating">

@@ -37,8 +37,12 @@ class Materia extends CI_Controller {
 	$data['idCarrera']=$_POST['idCarrera'];
 	$lista=$this->materia_model->agregarmateria($data);//se almacena la consulta 
 		
+	$idcarrera=$_POST['idCarrera'];	
+	$lista2=$this->materia_model->listamaterias($idcarrera);//se almacena la consulta 
+	$data2['materia']=$lista2;//desarrollando un array relacional 
+	//en aqui se acumula informacion 
+	$this->load->view('Materias/materias',$data2);
 
-	redirect('Carrera/index','refresh');
 	
 	}
 	//UPDATE
@@ -55,10 +59,13 @@ public function modificarbd()
 	$idmateria=$_POST['idmateria'];
 	$data['nombreMateria']=$_POST['nombremateria'];
 	$data['descripcion']=$_POST['descripcion'];
+$this -> materia_model ->modificarmateria($idmateria,$data);
 
-
-	$this -> materia_model ->modificarmateria($idmateria,$data);
-	redirect('materia/index');
+	$idcarrera=$_POST['idCarrera'];	
+	$lista2=$this->materia_model->listamaterias($idcarrera);//se almacena la consulta 
+	$data2['materia']=$lista2;//desarrollando un array relacional 
+	//en aqui se acumula informacion 
+	$this->load->view('Materias/materias',$data2);
 }
 
 	//ELIMINACION LOGICA
@@ -68,7 +75,12 @@ public function deshabilitarbd ()
 	$data['estado']='0';
 
 	$this -> materia_model ->modificarmateria($idmateria,$data);//reutilizamos el modelo 
-	redirect('materia/index','refresh');
+	
+	$idcarrera=$_POST['idCarrera'];	
+	$lista2=$this->materia_model->listamaterias($idcarrera);//se almacena la consulta 
+	$data2['materia']=$lista2;//desarrollando un array relacional 
+	//en aqui se acumula informacion 
+	$this->load->view('Materias/materias',$data2);
 }
 
 	

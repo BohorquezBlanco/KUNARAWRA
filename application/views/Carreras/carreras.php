@@ -92,7 +92,10 @@
 <div class="container">
 <div class="row g-4 justify-content-center">
 <a href="<?php echo base_url(); ?>index.php/Carrera/formcarrera" class="btn btn-primary py-4 px-lg-5 fs-5 ">AGREGAR CARRERA</a>
-    <?php 
+
+   
+   
+   <?php 
     $indice=1;
         foreach($carrera -> result() as $row)
         {
@@ -103,7 +106,7 @@
                             <img class="img-fluid" src="<?php echo base_url(); ?>img/course-1.jpg" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                            
-                            <?php echo form_open_multipart('Carrera/modificar'); ?>
+    <?php echo form_open_multipart('Carrera/modificar'); ?>
      <input type="hidden" name="idcarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
      <input type="submit" name="buttony" value="MODIFICAR" class="btn btn-success btn-xs" >
      <?php echo form_close(); ?>

@@ -33,7 +33,14 @@
 
 <body>
     <!-- redondito de carga  -->
- 
+    <!-- Spinner Start  -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Cargando...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
@@ -82,35 +89,40 @@
                 <h6 class="section-title bg-white text-center text-primary px-3">Perfil</h6>
                 <h1 class="mb-2">Puedes editar la carrera</h1>
             </div>
-  
+   
+                
                 <h5 class="mb-2">Total Carreras</h5> <h5>8</h5> <br> <br>
+                
                 <?php
-            foreach ($infomateria->result() as $row)
+            foreach ($infoleccion->result() as $row)
             {
-            echo form_open_multipart('Materia/modificarbd');  //apertura de formulario llegando al metodo agregarbase de datos
+            echo form_open_multipart('Leccion/modificarbd');  //apertura de formulario llegando al metodo agregarbase de datos
             ?>
-
-<input type="hidden" name="idCarrera"  value="<?php echo $row->idCarrera; ?>">
              
-            <input type="hidden" name="idmateria"  value="<?php echo $row->idMateria; ?>">
+            <input type="hidden" name="idleccion"  value="<?php echo $row->idLeccion; ?>">
                <div class="row g-3">
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" name="nombremateria" class="form-control" id="name" placeholder="Your Name" value="<?php echo $row->nombreMateria; ?>">
-                            <label for="name">El nombre de la materia es: </label>
+                            <input type="text" name="nombreleccion" class="form-control" id="name" placeholder="Your Name" value="<?php echo $row->nombreLeccion; ?>">
+                            <label for="name">El nombre de la carrera es: </label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input type="text" name="descripcion" class="form-control"  placeholder="Your Email" value="<?php echo $row->descripcion; ?>">
-                            <label for="name">La descripcion de la materia es:</label>
+                            <label for="name">La descripcion de la carrera es:</label>
                         </div>
                     </div>
-                   
-                    
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" name="urlVideo" class="form-control"  placeholder="Your Email" value="<?php echo $row->urlVideo; ?>">
+                            <label for="name">La url del video explicativo es:</label>
+                        </div>
+                    </div>
+                    <input type="hidden" name="idmateria" class="form-control"  placeholder="Your Email" value="<?php echo $row->idMateria; ?>">
                    
                     <div class="col-12">
-                        <button class="btn btn-primary w-100 py-3" type="submit">EDITAR MATERIA</button>
+                        <button class="btn btn-primary w-100 py-3" type="submit">EDITAR CARRERA</button>
                     </div>
 
                    

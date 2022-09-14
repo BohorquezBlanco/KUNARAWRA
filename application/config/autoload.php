@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('estudiante_model','materia_model','carrera_model'); //eso le dice al framework que ese modelo estara disponible para todo el framework 
+$autoload['model'] = array('estudiante_model','materia_model','carrera_model','leccion_model'); //eso le dice al framework que ese modelo estara disponible para todo el framework 

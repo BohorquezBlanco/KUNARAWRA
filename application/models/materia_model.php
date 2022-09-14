@@ -18,6 +18,15 @@ class Materia_model extends CI_Model {
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
 
+	public function listamaterias2()
+	{
+		$this->db->select('*'); //select * from 
+		$this->db->from('materia'); //tabla
+		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+
+		return $this->db->get(); //devolucion del resultado de la consulta 
+	}
+
 //aqui se realiza el insert 
 public function agregarmateria($data)
 {

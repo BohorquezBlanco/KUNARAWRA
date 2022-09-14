@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Materias</title>
+    <title>CarrerasVista</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -32,13 +32,6 @@
 </head>
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Cargando...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
 
 
     <!-- Navbar Start -->
@@ -71,14 +64,16 @@
 
 
     <!-- Header Start -->
-    <div class="container-fluid bg-primary py-2 mb-2 page-header">
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Materias</h1>
+                    <h1 class="display-3 text-white animated slideInDown">CARRERAS</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
-   
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Inicio</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Noticias</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Jose Luis</li>
                         </ol>
                     </nav>
                 </div>
@@ -86,64 +81,59 @@
         </div>
     </div>
     <!-- Header End -->
-    
-    <div class="container-xxl py-5">
+<div class="container-xxl py-5">
 <div class="container">
 <div class="row g-4 justify-content-center">
 
-<a href="<?php echo base_url(); ?>index.php/Materia/formmateria" class="btn btn-primary py-4 px-lg-5 fs-5 ">AGREGAR MATERIAS</a>
 
+<?php echo form_open_multipart('leccion/crearLeccion'); //apertura de formulario llegando al metodo modificar?>
+      <button class="btn btn-primary" type="submit">Inscribir Estudiantes</button>
+      <?php echo form_close(); ?>
 
-
-
-
-
-    <?php 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre de Leccion</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">UrlVideo</th>
+      <th scope="col">Modificar</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+   <?php 
+    $i=0;
     $indice=1;
-        foreach($materia -> result() as $row)
-        {
+    foreach($leccion -> result() as $row)
+    {
     ?>
-<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item bg-light">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="<?php echo base_url(); ?>img/course-1.jpg" alt="">
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                           <!-- Modificar -->
-     
-    <?php echo form_open_multipart('materia/modificar'); ?>
-    <input type="hidden" name="idCarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
-     <input type="hidden" name="idmateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
-     <input type="submit" name="buttony" value="MODIFICAR" class="btn btn-success btn-xs" >
+      <tr>
+      <th scope="row"><?php echo $indice; ?></th>
+      <td><?php echo $row->nombreLeccion; ?></td>
+      <td><?php echo $row->descripcion; ?></td>
+      <td><?php echo $row->urlVideo; ?></td>
+    
+      <!--MODIFICAR-->
+      <td>
+     <?php echo form_open_multipart('leccion/modificar'); ?>
+     <input type="hidden" name="idleccion" value="<?php echo $row->idLeccion; ?>"> <!--Nombre de la tabla-->
+     <input type="submit" name="buttony" value="Modificar" class="btn btn-success btn-xs">
      <?php echo form_close(); ?>
-<!-- Eliminar -->
-     <?php echo form_open_multipart('materia/deshabilitarbd'); ?>
-     <input type="hidden" name="idCarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
-    <input type="hidden" name="idmateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
-    <input type="submit" name="buttonz" value="DESHABILITAR" class="btn btn-warning btn-xs">
-    <?php echo form_close(); ?>
- <!-- VER LECCIONES -->   
-    <?php echo form_open_multipart('leccion/index'); ?>
-    <input type="hidden" name="idCarrera" value="<?php echo $row->idCarrera; ?>">
-    <input type="hidden" name="idMateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
-    <input type="submit" name="buttonz" value="VER LECCIONES" class="btn btn-primary btn-xs">
-    <?php echo form_close(); ?>
+     </td> 
+     <!--Eliminacion logica-->   
+    <td>
+    <?php echo form_open_multipart('leccion/deshabilitarbd'); ?>
+    <input type="hidden" name="idleccion" value="<?php echo $row->idLeccion; ?>"> <!--Nombre de la tabla-->
+      <input type="hidden" name="idmateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
+    <input type="submit" name="buttonz" value="deshabilitar "class="btn btn-warning btn-xs">
 
- 
+    <?php echo form_close(); ?>
+    </td>
+     </tr> 
 
-                            </div>
-                        </div>
-                        <div class="text-center p-2 pb-0">
-                            <h4 class="mb-2"> <?php echo $row->nombreMateria; ?></h4>
-                            <p><?php echo $row->descripcion; ?></p>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
-                        </div>
-                    </div>
-                </div>
+
 <?php
+    $i++;
     $indice++;
       }
   ?>
@@ -151,6 +141,10 @@
    </div>
 </div>
    
+
+
+     
+
 
 
     <!-- Back to Top -->

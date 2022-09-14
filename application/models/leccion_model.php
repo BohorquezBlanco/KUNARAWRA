@@ -1,38 +1,39 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Carrera_model extends CI_Model {
+class Leccion_model extends CI_Model {
 
 	//este metodo es invocado por un controlador 
 	//aqui se realiza el select 
 //este metodo es invocado por un controlador 
 	//aqui se realiza el select 
-	public function listacarreras()
+	public function listaLeccion($idMateria)
 	{
 		$this->db->select('*'); //select * from 
-		$this->db->from('carrera'); //tabla//si hay un rigth o un left , 'left rigth' ','carrera.id=materia.carreraid''
+		$this->db->from('leccion'); //tabla
 		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+		$this->db->where('idMateria',$idMateria);
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
-	//aqui se realiza el insert 
-	public function agregarcarrera($data)
+
+	public function agregarleccion($data)
 	{
-		$this->db->insert('carrera',$data); 
+		$this->db->insert('leccion',$data); 
 		 
 	}
 
 	//aqui se realiza el update
-	public function recuperarcarrera($idcarrera)
+	public function recuperarleccion($idleccion)
 	{
 		$this->db->select('*'); //select * from 
-		$this->db->from('carrera'); //tabla
-		$this->db->where('idCarrera',$idcarrera);
+		$this->db->from('leccion'); //tabla
+		$this->db->where('idLeccion',$idleccion);
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
-	public function modificarcarrera($idcarrera,$data)
+	public function modificarleccion($idleccion,$data)
 	{
-		$this->db->where('idCarrera',$idcarrera);
-		$this->db-> update('carrera',$data);//nombre de la tabla
+		$this->db->where('idLeccion',$idleccion);
+		$this->db-> update('leccion',$data);//nombre de la tabla
 	}
 
 		

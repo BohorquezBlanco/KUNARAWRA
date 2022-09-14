@@ -92,6 +92,7 @@
    
                 
                 <h5 class="mb-2">Total Carreras</h5> <h5>8</h5> <br> <br>
+                
                 <?php
             foreach ($infocarrera->result() as $row)
             {
