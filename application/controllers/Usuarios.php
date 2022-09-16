@@ -84,7 +84,7 @@ class Usuarios extends CI_Controller {
 		$data['primerApellido']=$_POST['PrimerApellido'];
 		$data['segundoApellido']=$_POST['SegundoApellido'];
 		$data['correo']=$_POST['Correo'];
-		$data['password']=$_POST['Password'];
+		$data['password']=md5($_POST['Password']);
 
 		$lista=$this->estudiante_model->agregarestudiante($data);//se almacena la consulta 
 
@@ -125,6 +125,34 @@ class Usuarios extends CI_Controller {
 
 		$this -> estudiante_model ->modificarestudiante($idusuario,$data);//reutilizamos el modelo 
 		redirect('usuarios/UsuariosNo','refresh');
+	}
+//*****************PARA VALIDAR LOGIN**************** */
+	public function validar ()
+	{
+		//para validar
+		$login=$_POST['login'];
+		$password=md5($_POST['password']);
+
+		$consulta=$this->usuario_model->validar($login,$password);
+
+		if($consulta->num_rows()>0)
+		{
+			//si a encontrado una validacion
+			//creamos variables de session 
+			foreach ($consulta->result() as $row)
+			{
+				$this->session->set_userdata('idusuarios',$row->idUsuarios);// 
+				$this->session->set_userdata('login',$row->correo);// 
+				$this->session->set_userdata('tipo',$row->tipo);// 
+				redirect('usuarios/InicioUsuario','refresh');
+			}
+		
+		}
+		else
+		{
+			//no hay validacion efectiva y redirigimos a login
+			redirect('usuarios/index/2','refresh'); //redireccionamos pero con el codigo 2
+		}
 	}
 
 

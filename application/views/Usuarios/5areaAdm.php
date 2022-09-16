@@ -74,8 +74,10 @@
                     </a>
                    
                 </div>
+
+                <!---INGRESAR A LA CREACION DE PREGUNTAS--->
                 <div class="col-lg-3 col-sm-6 wow fadeInUp " data-wow-delay="0.7s">
-                    <a href="">
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index">
                         <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-clipboard text-primary mb-4"></i>

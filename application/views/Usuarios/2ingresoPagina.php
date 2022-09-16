@@ -11,22 +11,27 @@
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-lg-4  col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <form >
+             
+                
+                <?php 
+                    echo form_open_multipart('usuarios/validar',array('id'=>'form1','class'=>'form-control'))
+                ?>
+
                         <div class="row g-3">
                             <div class="col-12">
                                 <div class="form-floating">
-                                   <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                   <input type="text" name="login" class="form-control" id="subject" placeholder="Subject">
                                     <label for="subject">login o nombre de usuario</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="text" name="password" class="form-control" id="subject" placeholder="Subject">
                                     <label for="subject">Contraseña</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Ingresar</button>
+                                <button type="submit" class="btn btn-primary w-100 py-3" type="submit">Ingresar</button>
                             </div>
                             <div class="col-6">
                                 
@@ -37,7 +42,11 @@
                             <a href="<?php echo base_url(); ?>index.php/usuarios/InicioUsuario">ingreso de estudiante</a>
                             <a href="<?php echo base_url(); ?>index.php/usuarios/AreaAdm">ingreso de administrador</a>
                             <a href="">ingreso de educador</a>
-                        </div>
+                        </div>  
+                <?php 
+                    echo form_close();
+                ?>
+
                    
                 </div>
                 <div class="col-lg-3 wow fadeInUp ">
