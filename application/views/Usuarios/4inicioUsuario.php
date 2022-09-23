@@ -1,4 +1,4 @@
-
+<h1 >Login: <?php echo $this->session->userdata('login'); ?></h1>
 
     
 

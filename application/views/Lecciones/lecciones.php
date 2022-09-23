@@ -85,10 +85,11 @@
 <div class="container">
 <div class="row g-4 justify-content-center">
 
-
 <?php echo form_open_multipart('leccion/crearLeccion'); //apertura de formulario llegando al metodo modificar?>
       <button class="btn btn-primary" type="submit">Inscribir Estudiantes</button>
-      <?php echo form_close(); ?>
+<?php echo form_close(); ?>
+
+
 
 <table class="table">
   <thead>
@@ -117,6 +118,7 @@
       <td>
      <?php echo form_open_multipart('leccion/modificar'); ?>
      <input type="hidden" name="idleccion" value="<?php echo $row->idLeccion; ?>"> <!--Nombre de la tabla-->
+     
      <input type="submit" name="buttony" value="Modificar" class="btn btn-success btn-xs">
      <?php echo form_close(); ?>
      </td> 

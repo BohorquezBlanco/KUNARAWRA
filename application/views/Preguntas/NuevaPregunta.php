@@ -60,6 +60,7 @@
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>PreguntasS</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="nav-item nav-link active" ><i class="fa fa-th me-2"></i>Nueva Pregunta</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/ListadoPregunta" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Lista Preguntas</a>
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
                                <!--TE LLEVARA ATRAS DONDE ESTA ADMI CONTROL-->
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Atras" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Atras</a>
                   
@@ -96,9 +97,111 @@
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-6 text-center">
-                        <h3>Aqui entra el listado</h3>
-                    </div>
+                    
+    <div class="container">
+        <div class="row">
+          <h1 class="text-center">CREA TUS PREGUNTAS</h1> <br>
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200"><br>
+
+          <?php echo form_open_multipart('pregunta/crearPregunta'); //apertura de formulario llegando al metodo agregarbase de datos?>
+
+              <div class="row">    
+              <div class="col-4 mb-3">
+                <label for="">Materia</label>
+                  <div class="input-group">
+                  <select id="idMateria" name="idMateria" class="form-control form-select form-select-lg" required>
+                    <option value="" disabled selected>Materia:  </option> 
+                    <?php
+                      foreach($infomaterias->result() as $row)
+                      {
+                    ?>
+                    <option value="<?php echo $row->idMateria;?>"><?php echo $row->nombreMateria;?></option>
+                    <?php
+                      }
+                    ?>
+                  </select>
+                    <input type="submit" value="+" class="btn btn-primary">
+                  </div>
+                </div>
+             <!-- MATERIA EN BASE AL ANTERIOR SELECT -->  
+  
+                <div class="col-4 mb-3">
+                  <label for="">Leccion:</label>
+                    <div class="input-group">
+                      <select id="idLec" name="idLec" class="form-control form-select form-select-lg">
+                      <option value="0">Leccion</option>
+                      </select>  
+                     <input type="submit" value="+" class="btn btn-primary">
+                  </div>
+                </div>
+                 <!-------------2da Fila----------------->
+                 <div class="col-12 mb-3"> 
+                  <label for="exampleFormControlTextarea1" class="form-label">Pregunta:</label>
+                  <textarea name="pregunta" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                </div>
+                <!-------------3era Fila----------------->
+                <div class="col-7 mb-3">
+                <label for="">Inciso "A"</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Inciso 'A'"
+                      name="A"
+                    />
+                </div>
+
+                <div class="col-7 mb-3">
+                <label for="">Inciso "B"</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Inciso 'A'"
+                      name="B"
+                    />
+                </div>
+
+                <div class="col-7 mb-3">
+                <label for="">Inciso "C"</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Inciso 'A'"
+                      name="C"
+                    />
+                </div>
+
+                <div class="col-7 mb-3">
+                <label for="">Inciso "D"</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Inciso 'A'"
+                      name="D"
+                    />
+                </div>
+
+                <div class="col-7 mb-3">
+                <label for="">LA CORRECTA ES :</label>
+                    <select name="correcta" id="correcta" class="form-select form-select-md">
+                      <option selected>La correcta es:</option>
+                      <option name="correcta" value="A">Inciso A</option>
+                      <option name="correcta" value="B">Inciso B</option>
+                      <option name="correcta" value="C">Inciso C</option>
+                      <option name="correcta" value="D">Inciso D</option>
+                    </select>
+                </div>
+                <div class="row col-12">
+                  <button type="submit" value="Send Message" class="btn btn-primary">
+                  Crear Pregunta
+                  </button>
+                </div>    
+              </div>
+              
+              <?php form_close() ;?>
+
+          </div>
+        </div>
+      </div>
                 </div>
             </div>
             <!-- Blank End -->
@@ -139,3 +242,18 @@
 </body>
 
 </html>
+<script type="text/javascript">   
+            $(document).ready(function() {                       
+                $("#idMateria").change(function() {
+                    $("#idMateria option:selected").each(function() {
+                        idMateria = $('#idMateria').val();
+                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectLec", {
+                            idMateria : idMateria
+                        }, function(data) {
+                            $("#idLec").html(data);
+                        });
+                    });
+                });
+            });
+            
+</script>

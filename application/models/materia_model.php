@@ -6,7 +6,9 @@ class Materia_model extends CI_Model {
 	//este metodo es invocado por un controlador 
 	//aqui se realiza el select 
 //este metodo es invocado por un controlador 
-	//aqui se realiza el select 
+	//aqui se realiza el select
+
+
 
 	public function listamaterias($idcarrera)
 	{
@@ -26,6 +28,7 @@ class Materia_model extends CI_Model {
 
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
+	
 
 //aqui se realiza el insert 
 public function agregarmateria($data)

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Preguntas de cada leccion</title>
+    <title>Creacion De Examen</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -31,7 +31,13 @@
     <link href="<?php echo base_url(); ?>micssjs/preguntas/css/stilo.css" rel="stylesheet">
     
 <!-- TEMPLATE STYLE -->
+<style>
 
+    .caja2
+    {
+        height: 380px;
+    }
+</style>
 </head>
 
 <body>
@@ -59,9 +65,8 @@
                 <div class="navbar-nav w-100">
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>PreguntasS</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="nav-item nav-link" ><i class="fa fa-th me-2"></i>Nueva Pregunta</a>
-                    <a href="<?php echo base_url(); ?>index.php/Pregunta/ListadoPregunta" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Lista Preguntas</a>
-                    <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
-
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/ListadoPregunta" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Lista Preguntas</a>
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
                                <!--TE LLEVARA ATRAS DONDE ESTA ADMI CONTROL-->
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Atras" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Atras</a>
                   
@@ -75,7 +80,7 @@
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+            <nav class="navbar navbar-expand bg-light navbar-light  px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
@@ -98,66 +103,152 @@
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-     <!-- Buscador -->  
+   
   
      <div class="container row">
-       <h1 class="text-center">EDICION Y ELIMINACION DE PREGUNTAS</h1>
+
        <br>
        <div class="container">
         <div class="row">
-        
+          <h1 class="text-center">CREACION DE EXAMENES</h1> <br>
           <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200"><br>
             <form action="#">
               <div class="row">
-
-                
-                <div class="col-4 mb-3">
-                <label for="">Carrera</label>
-                  <div class="input-group">
-                  <select id="idCarrera" name="idCarrera" class="form-control form-select form-select-lg" required>
-                    <option value="" disabled selected>Seleccione una...  </option> 
-                    <?php
-                      foreach($infocarreras->result() as $row)
-                      {
-                    ?>
-                    <option value="<?php echo $row->idCarrera;?>"><?php echo $row->nombreCarrera;?></option>
-                    <?php
-                      }
-                    ?>
-                  </select>
-                    <input type="submit" value="+" class="btn btn-primary">
-                  </div>
-                </div>
-             <!-- MATERIA EN BASE AL ANTERIOR SELECT -->  
-  
-                <div class="col-4 mb-3">
-                <label for="">Materia</label>
-                  <div class="input-group">
-                    <select id="idMateria" name="idMateria" class="form-control form-select form-select-lg">
-                    <option value="0">Materias</option>
-                    </select>  
-                     <input type="submit" value="+" class="btn btn-primary">
-                  </div>
-                </div>
-
-
-
-
-                <div class="col-3">
-                </div>
-                <div class="row col-6 ">
-                  <button type="submit" value="Send Message" class="btn btn-primary">
-                  Buscar Preguntas
-                  </button>
-                </div> 
-                 <!-------------Aqui se mostrara el Select de preguntas creadas----------------->
-                 <div class="container m-3">
-                    <div class="col-12">
-                        preguntas creadas
-                    </div>
-                 </div>
                
-              </div>
+              <div class="col-4 mb-3">
+                <label for="">Titulo del Examen</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Escribe un titulo"
+                    />
+                </div>
+                <div class="col-7 mb-3">
+                <label for="">Descripcion</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Escribe una descripcion breve"
+                    />
+                </div>
+                
+     <!-- PREGUNTAS PARA INCLUIR EN EL EXAMEN--> 
+
+  
+      <div class="col-6 ">
+        <div class="input-group">
+          <svg xmlns="" width="50" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+            <form>
+              <input class="form-control" type="text" name="txtBuscarPregunta" id="txtBuscarPregunta" placeholder="Buscar" aria-label="Search">
+            </form>
+        </div>
+      </div>
+<table class="table table-hover" id="tblListPregunta">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>pregunta</th>
+      <th>leccion</th>
+      <th>Agregar</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+
+
+
+
+
+
+<div class="col-6">
+</div>
+
+<div class="col-6 m-3 ">
+  <div class="table-responsive bg-white overflow-auto caja2">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Pregunta</th>
+      <th scope="col">Leccion</th>
+      <th scope="col">Agregar</th>
+      <th scope="col">Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <?php 
+  $indice=1;
+    foreach($pregunta->result() as $row)
+      {
+  ?>
+    <tr>
+      <th scope="row"><?php echo $indice; ?></th>
+      <td><?php echo $row->pregunta; ?></td>
+      <td><?php echo $row->nombreLeccion; ?></td>
+    
+    
+     </tr> 
+   
+      
+  <?php
+    $indice++;
+      }
+  ?>
+
+
+  
+    
+  </tbody>
+</table>
+  </div>
+</div>
+     <!-- PREGUNTAS INCLUIDAS EN EL EXAMEN--> 
+<div class="col-5 m-3 ">
+  <div class="table-responsive bg-white overflow-auto caja2">
+          <table class="table">
+     <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Pregunta</th>
+      <th scope="col">Agregar</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>El mar negro es de bolivia ?</td>
+      <td>Otto</td>
+      
+    
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+ 
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+
+    </tr>
+  </tbody>
+          </table>
+        </div>
+</div>  
+    
+<div class="col-12 row">
+  <button type="submit" value="Send Message" class="btn btn-primary">
+    Crear Examen
+  </button>
+</div> 
+        
+            </div>
+
+             
             </form>            
           </div>
         </div>
@@ -173,18 +264,8 @@
             <!-- Blank End -->
 
 
-            <!-- Footer Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-light rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-            <!-- Footer End -->
+       
+  
         </div>
         <!-- Content End -->
 
@@ -193,10 +274,7 @@
     </div>
 
     <!-- JavaScript Libraries -->
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-
-   
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo base_url(); ?>micssjs/js/lib/chart/chart.min.js"></script>
     <script src="<?php echo base_url(); ?>micssjs/js/lib/easing/easing.min.js"></script>
@@ -208,26 +286,7 @@
 
     <!-- Template Javascript -->
     <script src="<?php echo base_url(); ?>micssjs/preguntas/js/main.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/js/ajax.js"></script>
 </body>
 
 </html>
-<!---SCRIPT PARA SELECCIONAR MATERIAS---->
-<script type="text/javascript">   
-            $(document).ready(function() {                       
-                $("#idCarrera").change(function() {
-                    $("#idCarrera option:selected").each(function() {
-                        idCarrera = $('#idCarrera').val();
-                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectMateria", {
-                            idCarrera : idCarrera 
-                        }, function(data) {
-                            $("#idMateria").html(data);
-                        });
-                    });
-                });
-            });
-            
-</script>
-
-<!---SCRIPT PARA 3 IMPUT BOX---->

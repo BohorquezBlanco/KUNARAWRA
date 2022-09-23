@@ -35,6 +35,7 @@ class Usuarios extends CI_Controller {
 	//------INICIO DE USUARIO REGISTRADO A LA PAGINA------- 
 	public function InicioUsuario()
 	{
+		
 		$this->load->view('inc/cabeza/cabeza1');
 		$this->load->view('inc/navbar/navbar1');
 		$this->load->view('inc/spinner/spinner');
@@ -133,7 +134,7 @@ class Usuarios extends CI_Controller {
 		$login=$_POST['login'];
 		$password=md5($_POST['password']);
 
-		$consulta=$this->usuario_model->validar($login,$password);
+		$consulta=$this->estudiante_model->validar($login,$password);
 
 		if($consulta->num_rows()>0)
 		{
@@ -141,21 +142,39 @@ class Usuarios extends CI_Controller {
 			//creamos variables de session 
 			foreach ($consulta->result() as $row)
 			{
-				$this->session->set_userdata('idusuarios',$row->idUsuarios);// 
+				$this->session->set_userdata('idusuario',$row->idUsuario);// 
 				$this->session->set_userdata('login',$row->correo);// 
 				$this->session->set_userdata('tipo',$row->tipo);// 
-				redirect('usuarios/InicioUsuario','refresh');
+				redirect('usuarios/panel','refresh');
 			}
 		
 		}
 		else
 		{
 			//no hay validacion efectiva y redirigimos a login
-			redirect('usuarios/index/2','refresh'); //redireccionamos pero con el codigo 2
+			redirect('usuarios/ingresar','refresh'); //redireccionamos pero con el codigo 2
 		}
 	}
-
-
+//aqui te llevara al panel de login o administrador
+	public function panel()
+	{
+		if($this->session->userdata('login'))//si existe una variable de sesion con el nombre login aqui vamos a asumir que el usuario se a logeado
+		{//el usuario esta logeado
+			if($this->session->userdata('tipo')=='1')
+			{
+					redirect('usuarios/InicioUsuario','refresh');	//si es tipo estudiante cargara el panel de estudiante
+			}
+			else
+			{
+				redirect('usuarios/AreaAdm','refresh');	//si no es el tipo admi cargara el panel de administrador
+			}
+	
+		}
+		else
+		{//el usuario no esta logueado
+			redirect('usuarios/ingresar','refresh');
+		}
+	}
 	
 
 	

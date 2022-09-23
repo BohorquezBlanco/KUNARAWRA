@@ -107,20 +107,18 @@
                         
                         <div class="col-md-12 text-center">
                             <div class="form-floating">
-                            
- 
- 
-  <select name="idCarrera" class="form-control form-select form-select-lg" required>
-    <option value="" disabled selected>Seleccione una...  </option> 
-   <?php
-    foreach($infocarreras->result() as $row)
-    {
-      ?>
-      <option value="<?php echo $row->idCarrera;?>"><?php echo $row->nombreCarrera;?></option>
-      <?php
-    }
-    ?>
-    </select>
+        
+                                <select name="idCarrera" class="form-control form-select form-select-lg" required>
+                                    <option value="" disabled selected>Seleccione una...  </option> 
+                                <?php
+                                    foreach($infocarreras->result() as $row)
+                                    {
+                                    ?>
+                                    <option value="<?php echo $row->idCarrera;?>"><?php echo $row->nombreCarrera;?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
 
 
  

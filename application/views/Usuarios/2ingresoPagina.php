@@ -34,14 +34,7 @@
                                 <button type="submit" class="btn btn-primary w-100 py-3" type="submit">Ingresar</button>
                             </div>
                             <div class="col-6">
-                                
-                            <a href="<?php echo base_url(); ?>index.php/usuarios/inscribirse" class="btn btn-primary  ">Registrarse</a><p>crearse una cuenta es gratis:D</p>
-        
-                                     
-                            </div>
-                            <a href="<?php echo base_url(); ?>index.php/usuarios/InicioUsuario">ingreso de estudiante</a>
-                            <a href="<?php echo base_url(); ?>index.php/usuarios/AreaAdm">ingreso de administrador</a>
-                            <a href="">ingreso de educador</a>
+                     
                         </div>  
                 <?php 
                     echo form_close();

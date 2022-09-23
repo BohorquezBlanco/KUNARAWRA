@@ -8,7 +8,6 @@ class Materia extends CI_Controller {
 	{
 		//CAPTURO EL ID DE CARRERA
 		$idcarrera=$_POST['idcarrera'];
-		
 
 		$lista=$this->materia_model->listamaterias($idcarrera);//se almacena la consulta 
 		$data['materia']=$lista;//desarrollando un array relacional 

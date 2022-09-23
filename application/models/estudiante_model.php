@@ -29,11 +29,28 @@ class Estudiante_model extends CI_Model {
 	}
 	public function modificarestudiante($idusuario,$data)
 	{
-		
-		
-	
 		$this->db->where('idUsuario',$idusuario);
 		$this->db-> update('usuario',$data);//nombre de la tabla
+	}
+
+	//validar contraseña
+	
+	//este metodo es invocado por un controlador 
+	public function validar($login,$password)
+	{
+		$this->db->select('*'); //select * from 
+		$this->db->from('usuario'); //tabla
+		$this->db->where('correo',$login);//donde login sea igual a login y 
+		$this->db->where('password',$password);//password sea igual a password
+		return $this->db->get(); //devolucion del resultado de la consulta 
+	}
+	
+	//para destruir cesiones
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		//redirect('usuarios/index','refresh');	
+		redirect('usuarios/index/1','refresh');//se agrega un codigo /1	
 	}
 
 
