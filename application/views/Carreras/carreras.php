@@ -89,18 +89,15 @@
     </div>
     <!-- Header End -->
 <div class="container-xxl py-5">
-<div class="container">
-<div class="row g-4 justify-content-center">
-<a href="<?php echo base_url(); ?>index.php/Carrera/formcarrera" class="btn btn-primary py-4 px-lg-5 fs-5 ">AGREGAR CARRERA</a>
-
-   
-   
-   <?php 
-    $indice=1;
-        foreach($carrera -> result() as $row)
-        {
-    ?>
-<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+            <a href="<?php echo base_url(); ?>index.php/Carrera/formcarrera" class="btn btn-primary py-4 px-lg-5 fs-5 ">AGREGAR CARRERA</a> 
+                <?php 
+                 $indice=1;
+                    foreach($carrera -> result() as $row)
+                    {
+                ?>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid" src="<?php echo base_url(); ?>img/course-1.jpg" alt="">

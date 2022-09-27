@@ -128,8 +128,6 @@
     <input type="submit" name="buttonz" value="VER LECCIONES" class="btn btn-primary btn-xs">
     <?php echo form_close(); ?>
 
- 
-
                             </div>
                         </div>
                         <div class="text-center p-2 pb-0">

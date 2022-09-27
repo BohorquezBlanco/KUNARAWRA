@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>PreguntasS</a>
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Preguntas</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="nav-item nav-link" ><i class="fa fa-th me-2"></i>Nueva Pregunta</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/ListadoPregunta" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Lista Preguntas</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Crear Examen</a>

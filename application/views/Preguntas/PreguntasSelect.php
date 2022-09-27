@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>PreguntasS</a>
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Preguntas</a>
                    
                     <?php echo form_open_multipart('Pregunta/NuevaPregunta');?>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="nav-item nav-link" ><i class="fa fa-th me-2"></i>Nueva Pregunta</a>
@@ -110,33 +110,79 @@
 
 
             <!-- Blank Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-6 text-center">
-                        <h3>Aqui entra el listado</h3>
+            <div class="container pt-4 px-4">
+                <div class="row  bg-light rounded align-items-center justify-content-center mx-0">
+                    <div class="col-md-12 ">  <br>
+                        <h3 class="text-center">Preguntas Creadas</h3>
+                        <div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+            <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="btn btn-primary py-4 px-lg-5 fs-5 col-5 m-2">AGREGAR PREGUNTAS</a> 
+            <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="btn btn-primary py-4 px-lg-5 fs-5 col-5 m-2">PREGUNTAS ELIMINADAS</a> 
+
+                <?php 
+           
+                    foreach($pregunta -> result() as $row)
+                    {
+                ?>
+            <div class="col-lg-10 col-md-10 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="course-item bg-light">
+                        <div class="container bg-white border"> <br>
+                        <h5><?php echo $row->pregunta; ?></h5>
+                        <h6>A) <?php echo $row->A; ?></h6>
+                        <h6>B) <?php echo $row->B; ?></h6>
+                        <h6>C) <?php echo $row->C; ?></h6>
+                        <h6>D) <?php echo $row->D; ?></h6>
+                        <h5 class="text-danger">Correcta: <?php echo $row->correcta; ?></h5> 
+                           
+                        <div class="input-group text-center justify-content-center ">
+                        <?php echo form_open_multipart('Carrera/modificar'); ?>
+                           <input type="hidden" name="idcarrera"  value="<?php echo $row->idPregunta; ?>"> <!--Nombre de la tabla-->
+                           <input type="submit" name="buttony" value="MODIFICAR" class="btn btn-success btn-xs" >
+                           <?php echo form_close(); ?>
+
+                           <?php echo form_open_multipart('Carrera/deshabilitarbd'); ?>
+                           <input type="hidden" name="idcarrera" value="<?php echo $row->idPregunta; ?>"> <!--Nombre de la tabla-->
+                           <input type="submit" name="buttonz" value="ELIMINAR" class="btn btn-warning btn-xs">
+                           <?php echo form_close(); ?>
+
+                           <?php echo form_open_multipart('materia/index');//ir a select de materias?>
+                           <input type="hidden" name="idcarrera" value="<?php echo $row->idPregunta; ?>"> <!--Nombre de la tabla-->
+                           <input type="submit" value="AGREGAR" class="btn btn-primary btn-xs">
+                           <?php echo form_close(); ?> <br> <br> 
+                        </div>
+
+
+                       
+                        </div>
+
+    
+                    </div>
+                </div>
+<?php
+
+      }
+  ?>
+   </div>
+   </div>
+</div>
+   
+
                     </div>
                 </div>
             </div>
             <!-- Blank End -->
 
 
-            <!-- Footer Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-light rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>   
-                    </div>
-                </div>
-            </div>
             <!-- Footer End -->
         </div>
         <!-- Content End -->
-
+            <!-- Footer Start -->
+     
 
        
     </div>
+
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

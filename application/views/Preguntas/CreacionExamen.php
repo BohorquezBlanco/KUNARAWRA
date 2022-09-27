@@ -35,13 +35,13 @@
 
     .caja2
     {
-        height: 380px;
+        height: 280px;
     }
 </style>
 </head>
 
-<body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
+<body class="bg-light">
+    <div class="containe-xxl position-relative bg-white d-flex p-0">
       
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
@@ -101,159 +101,128 @@
 
 
             <!-- Blank Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-   
-  
-     <div class="container row">
+        <div class="container-fluid pt-4 px-4">
+          <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
+            <div class="container row"><br>
+              <div class="container">
+                <div class="row">
+                  <h1 class="text-center">CREACION DE EXAMENES</h1> <br>
+                  <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200"><br>
+                    <form action="#">
 
-       <br>
-       <div class="container">
-        <div class="row">
-          <h1 class="text-center">CREACION DE EXAMENES</h1> <br>
-          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200"><br>
-            <form action="#">
-              <div class="row">
-               
-              <div class="col-4 mb-3">
-                <label for="">Titulo del Examen</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Escribe un titulo"
-                    />
-                </div>
-                <div class="col-7 mb-3">
-                <label for="">Descripcion</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Escribe una descripcion breve"
-                    />
-                </div>
+
                 
-     <!-- PREGUNTAS PARA INCLUIR EN EL EXAMEN--> 
+                       <!-- PREGUNTAS PARA INCLUIR EN EL EXAMEN-->
+                      <h4>AGREGUE LAS PREGUNTAS QUE TENDRA EL EXAMEN</h2> 
+                      <div class="col-6 ">
+                        <div class="input-group">
+                          <svg xmlns="" width="50" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+                          <!-- BUSCADOR DE PREGUNTAS--> 
+                            <form>
+                              <input class="form-control" type="text" name="txtBuscarPregunta" id="searchTerm" placeholder="Buscar" aria-label="Search" onkeyup="doSearch()">
+                            </form>
+                        </div>
+                      </div>
+                  <!--SELECT DE TODAS LAS PREGUNTAS QUE EXISTEN EN LA BASE DE DATOS--> 
+                      <div class="col-10 m-3 " id="lista-cursos">
+                        <div class="table-responsive bg-white overflow-auto caja2">
+                          <table class="table" id="datos">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Pregunta</th>
+                                <th scope="col">Leccion</th>
+                                <th scope="col" class="text-center">Agregar</th>
+                                <th scope="col">Editar</th>
+                              </tr>
+                            </thead>
+                            <tbody>
 
-  
-      <div class="col-6 ">
-        <div class="input-group">
-          <svg xmlns="" width="50" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-            <form>
-              <input class="form-control" type="text" name="txtBuscarPregunta" id="txtBuscarPregunta" placeholder="Buscar" aria-label="Search">
-            </form>
-        </div>
-      </div>
-<table class="table table-hover" id="tblListPregunta">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>pregunta</th>
-      <th>leccion</th>
-      <th>Agregar</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+                              <?php 
+                              $indice=1;
+                                foreach($pregunta->result() as $row)
+                                  {
+                              ?>
+                                <tr>
+                                  <th scope="row"><?php echo $indice; ?></th>
+                                  <td><?php echo $row->pregunta; ?></td>
+                                  <td class="leccion"><?php echo $row->nombreLeccion; ?></td>
 
+                                  <td class="idpregunta" hidden><?php echo $row->idPregunta; ?></td>
 
+                                  <td class="text-center">
+                                  <a href="#" class="agregar-carrito btn btn-primary col-12" >+</a>
+                                  </td>
 
+                                  <td class="text-center"><button class="btn  btn-primary ">Editar</button></td>
+                            
+                                </tr>    
+                              <?php
+                              $indice++;
+                                }
+                              ?>
+                              <tr class='noSearch hide'> <td colspan="5"></td> </tr> 
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    <!--"FIN" SELECT DE TODAS LAS PREGUNTAS QUE EXISTEN EN LA BASE DE DATOS--> 
 
+<!------------------------ Creacion De Examen----------------------------------------> 
+      <div class="container">
+        <div class="row">
+          <div class="col-10 m-3 ">
+            <h5>Preguntas que tendra el examen</h5>
+            <div class="table-responsive bg-white  caja2" id="carrito">
+              <table class="table" id="lista-carrito">
+              <thead>
+                <tr>
+              <th scope="col">#</th>
+              <th scope="col">Pregunta</th>
+              <th scope="col">Leccio</th>
+              <th scope="col">idPregunta</th>
+              <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- AQUI ENTRA EL CLON-->
 
-
-
-<div class="col-6">
-</div>
-
-<div class="col-6 m-3 ">
-  <div class="table-responsive bg-white overflow-auto caja2">
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Pregunta</th>
-      <th scope="col">Leccion</th>
-      <th scope="col">Agregar</th>
-      <th scope="col">Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-
-  <?php 
-  $indice=1;
-    foreach($pregunta->result() as $row)
-      {
-  ?>
-    <tr>
-      <th scope="row"><?php echo $indice; ?></th>
-      <td><?php echo $row->pregunta; ?></td>
-      <td><?php echo $row->nombreLeccion; ?></td>
-    
-    
-     </tr> 
-   
-      
-  <?php
-    $indice++;
-      }
-  ?>
-
-
-  
-    
-  </tbody>
-</table>
-  </div>
-</div>
-     <!-- PREGUNTAS INCLUIDAS EN EL EXAMEN--> 
-<div class="col-5 m-3 ">
-  <div class="table-responsive bg-white overflow-auto caja2">
-          <table class="table">
-     <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Pregunta</th>
-      <th scope="col">Agregar</th>
-    
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>El mar negro es de bolivia ?</td>
-      <td>Otto</td>
-      
-    
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
- 
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-
-    </tr>
-  </tbody>
-          </table>
-        </div>
-</div>  
-    
-<div class="col-12 row">
-  <button type="submit" value="Send Message" class="btn btn-primary">
-    Crear Examen
-  </button>
-</div> 
-        
+              </tbody>
+            </table>
+            <a href="#" id="vaciar-carrito" class="btn btn-primary">Vaciar Preguntas</a>
             </div>
+          </div>  
+          <div class="col-4 mb-3">
+            <label for="">Titulo del Examen</label>
+            <input type="text" class="form-control" placeholder="Escribe un titulo"/>
+          </div>
+
+          <div class="col-7 mb-3">
+            <label for="">Descripcion</label>
+            <input type="text" class="form-control" placeholder="Escribe una descripcion breve"/>
+          </div>
+
+        </div>
+        <div class="col-12">
+          <button type="submit" value="Send Message" class="btn btn-primary col-11">
+            Crear Examen
+          </button>
+        </div> 
+      <br> <br>
+      </div>
+               
+
+     <!-- PREGUNTAS INCLUIDAS EN EL EXAMEN--> 
+
+  
+
 
              
             </form>            
           </div>
         </div>
       </div>
-    <!-- Buscador -->  
+
 
 
      </div>
@@ -287,6 +256,8 @@
     <!-- Template Javascript -->
     <script src="<?php echo base_url(); ?>micssjs/preguntas/js/main.js"></script>
     <script src="<?php echo base_url(); ?>micssjs/js/ajax.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/js/carritoPreguntas.js"></script>
+
 </body>
 
 </html>

@@ -8,7 +8,9 @@ class Pregunta extends CI_Controller {
 	public function index()
 	{
 	//se va a mostrar la cantidad de preguntas que existen por lecciones//
-		$this->load->view('Preguntas/PreguntasSelect');	
+	$lista=$this->pregunta_model->listapreguntas1();//se almacena la consulta 
+		$data['pregunta']=$lista;//desarrollando un array relacional 
+		$this->load->view('Preguntas/PreguntasSelect',$data);	
 	}
 	public function NuevaPregunta()
 	{

@@ -42,8 +42,9 @@
 
                    
                 </div>
-                <div class="col-lg-3 wow fadeInUp ">
-                    <img src="../img/LogoLibro.jpg" alt="" height="100%" width="100%">
+                <div class="col-lg-12 wow fadeInUp ">
+                    <br>
+                    <img src="<?php echo base_url(); ?>img/llama2.png" alt="" height="100%" width="100%">
                 </div>
             </div>
             
@@ -57,9 +58,6 @@
 
 
     
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->

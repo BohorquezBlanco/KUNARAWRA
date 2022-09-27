@@ -31,14 +31,11 @@ class pregunta_model extends CI_Model {
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
 
-	public function listapreguntasdos($palabra_buscar)
+	public function listapreguntas1()
 	{
 		$this->db->select('*'); //select * from 
-		$this->db->from('leccion'); //tabla
-		$this->db->join('pregunta','leccion.idLeccion=pregunta.idLeccion');//devuelve la lista solo lso que tienen 1
-		$this->db->like('nombreLeccion',$palabra_buscar);//devuelve la lista solo lso que tien
-		$this->db->or_like('idLeccion',$palabra_buscar);//devuelve la lista solo lso que tienen 1
-
+		$this->db->from('pregunta'); //tabla
+		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
 
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}

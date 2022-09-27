@@ -19,7 +19,7 @@ class Usuarios extends CI_Controller {
 		$this->load->view('inc/navbar/navbar1');
 		$this->load->view('inc/spinner/spinner');
 		$this->load->view('Usuarios/2ingresoPagina');
-		$this->load->view('inc/pie/pie1');		
+		
 	}
 
 	//------REGRISTRARSE A LA PAGINA------- 
