@@ -109,10 +109,37 @@ public function buscar()
 	}
 
 	/********************VER PREGUNTAS**************************/
+	public function selectdeshabilitados() 
+	{
+		$data['infocarreras']=$this->carrera_model->listacarreras(); //almaceno todas las carreras de base de datos
+		//se va a mostrar la cantidad de preguntas que existen por lecciones//
+		$this->load->view('Preguntas/ListadoPreguntas',$data);		 
+	}
 
 
-	/********************EDITAR PREGUNTAS**************************/
 
 	/********************ELIMINAR PREGUNTAS**************************/
+	public function eliminar() 
+	{
+		$data['infocarreras']=$this->carrera_model->listacarreras(); //almaceno todas las carreras de base de datos
+		//se va a mostrar la cantidad de preguntas que existen por lecciones//
+		$this->load->view('Preguntas/ListadoPreguntas',$data);		 
+	}
+	public function deshabilitar() 
+	{
+		$data['infocarreras']=$this->carrera_model->listacarreras(); //almaceno todas las carreras de base de datos
+		//se va a mostrar la cantidad de preguntas que existen por lecciones//
+		$this->load->view('Preguntas/ListadoPreguntas',$data);		 
+	}
+
+
+	
+	/********************EDITAR PREGUNTAS**************************/
+	public function modificar() 
+	{
+		$data['infocarreras']=$this->carrera_model->listacarreras(); //almaceno todas las carreras de base de datos
+		//se va a mostrar la cantidad de preguntas que existen por lecciones//
+		$this->load->view('Preguntas/ListadoPreguntas',$data);		 
+	}
 	
 }

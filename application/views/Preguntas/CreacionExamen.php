@@ -29,7 +29,9 @@
 
     <!-- Template Stylesheet -->
     <link href="<?php echo base_url(); ?>micssjs/preguntas/css/stilo.css" rel="stylesheet">
-    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
 <!-- TEMPLATE STYLE -->
 <style>
 
@@ -151,7 +153,7 @@
                                   <td class="idpregunta" hidden><?php echo $row->idPregunta; ?></td>
 
                                   <td class="text-center">
-                                  <a href="#" class="agregar-carrito btn btn-primary col-12" >+</a>
+                                  <a href="#" class="agregar-carrito btn btn-primary col-12" data-id="<?php echo $row->idPregunta; ?>">+</a>
                                   </td>
 
                                   <td class="text-center"><button class="btn  btn-primary ">Editar</button></td>
@@ -194,19 +196,24 @@
           </div>  
           <div class="col-4 mb-3">
             <label for="">Titulo del Examen</label>
-            <input type="text" class="form-control" placeholder="Escribe un titulo"/>
+            <input type="text"  id="tituloEx" name="tituloEx" class="form-control" placeholder="Escribe un titulo"/>
           </div>
 
           <div class="col-7 mb-3">
             <label for="">Descripcion</label>
-            <input type="text" class="form-control" placeholder="Escribe una descripcion breve"/>
+            <input type="text"  id="DescripEx" name="DescripEx" class="form-control" placeholder="Escribe una descripcion breve"/>
           </div>
 
         </div>
+        
         <div class="col-12">
-          <button type="submit" value="Send Message" class="btn btn-primary col-11">
+
+          <button type="submit" class="btn btn-primary col-11" name="CrearExamen" id="CrearExamen" onclick="CrearExamen()">
             Crear Examen
           </button>
+   
+
+
         </div> 
       <br> <br>
       </div>
@@ -244,6 +251,8 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/js/jquery-3.6.1.min"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo base_url(); ?>micssjs/js/lib/chart/chart.min.js"></script>
     <script src="<?php echo base_url(); ?>micssjs/js/lib/easing/easing.min.js"></script>
@@ -257,6 +266,7 @@
     <script src="<?php echo base_url(); ?>micssjs/preguntas/js/main.js"></script>
     <script src="<?php echo base_url(); ?>micssjs/js/ajax.js"></script>
     <script src="<?php echo base_url(); ?>micssjs/js/carritoPreguntas.js"></script>
+
 
 </body>
 

@@ -3,7 +3,9 @@ const carrito = document.getElementById('carrito');//es el lugar donde se almace
 const cursos = document.getElementById('lista-cursos');//es el div que contiene todas las preguntas
 const listaCursos = document.querySelector('#lista-carrito tbody');
 const vaciarCarritoBtn = document.getElementById('vaciar-carrito'); 
-
+//se almacena en un array el id de la pregunta la cual sera usada luego para
+//realizar el insert
+var GuardarPregunta=["1"];
 
 // Listeners
 cargarEventListeners();
@@ -39,6 +41,10 @@ function comprarCurso(e) {
 }
 // Lee los datos del curso
 function leerDatosCurso(curso) {
+     //aqui se realiza la insersion en el arreglo del id. 
+     GuardarPregunta.push(curso.querySelector('.idpregunta').textContent);
+     alert(GuardarPregunta);
+
      const infoCurso = {
           imagen: curso.querySelector('th').textContent,
           titulo: curso.querySelector('td').textContent,
@@ -51,6 +57,7 @@ function leerDatosCurso(curso) {
 
 // Muestra el curso seleccionado en el Carrito
 function insertarCarrito(curso) {
+
      const row = document.createElement('tr');
      row.innerHTML = `
           <td>  
@@ -147,6 +154,10 @@ function leerLocalStorage() {
         `;
         listaCursos.appendChild(row);
 
+        //aqui se guarda el id del push cuando se hace una recarga en la pagina 
+        GuardarPregunta.push(curso.idP);
+
+
     });
 }
 // Elimina el curso por el ID en Local Storage
@@ -159,6 +170,11 @@ function eliminarCursoLocalStorage(curso) {
     cursosLS.forEach(function(cursoLS, index) {
         if(cursoLS.id === curso) {
             cursosLS.splice(index, 1);
+          
+            //aqui intentaremos eliminar el array
+            var a = cursoLS.id;
+            alert(a);
+
         }
     });
     // Añadimos el arreglo actual a storage
@@ -170,3 +186,35 @@ function eliminarCursoLocalStorage(curso) {
 function vaciarLocalStorage() {
     localStorage.clear();
 }
+
+
+
+
+
+//evento crear examen
+
+function CrearExamen()
+{
+     var obj={p:JSON.stringify(GuardarPregunta), //objeto para agregar el arreglo
+          t:document.querySelector('#tituloEx').value, //objeto para agregar el titulo
+          d:document.querySelector('#DescripEx').value, //objeto para agregar el descrip
+          };
+  
+
+
+     $.ajax({
+          type:'POST',
+          url:'http://localhost/proyecto/KUNARAWRA/index.php/Examen/preguntas',
+          data:obj,
+          success:function(data){
+               
+          },
+     }
+
+     )
+}
+
+
+
+
+

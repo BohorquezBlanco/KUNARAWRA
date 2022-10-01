@@ -41,7 +41,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>KUNARAWRA</h3>
  
                 </a>
         
@@ -133,23 +133,19 @@
                         <h6>B) <?php echo $row->B; ?></h6>
                         <h6>C) <?php echo $row->C; ?></h6>
                         <h6>D) <?php echo $row->D; ?></h6>
-                        <h5 class="text-danger">Correcta: <?php echo $row->correcta; ?></h5> 
+                        <h5 class="text-danger">Inciso Correcto: <?php echo $row->correcta; ?></h5> 
                            
                         <div class="input-group text-center justify-content-center ">
-                        <?php echo form_open_multipart('Carrera/modificar'); ?>
+                        <?php echo form_open_multipart('Pregunta/modificar'); ?>
                            <input type="hidden" name="idcarrera"  value="<?php echo $row->idPregunta; ?>"> <!--Nombre de la tabla-->
                            <input type="submit" name="buttony" value="MODIFICAR" class="btn btn-success btn-xs" >
                            <?php echo form_close(); ?>
 
-                           <?php echo form_open_multipart('Carrera/deshabilitarbd'); ?>
+                           <?php echo form_open_multipart('Pregunta/deshabilitarbd'); ?>
                            <input type="hidden" name="idcarrera" value="<?php echo $row->idPregunta; ?>"> <!--Nombre de la tabla-->
                            <input type="submit" name="buttonz" value="ELIMINAR" class="btn btn-warning btn-xs">
-                           <?php echo form_close(); ?>
+                           <?php echo form_close(); ?> <br><br>
 
-                           <?php echo form_open_multipart('materia/index');//ir a select de materias?>
-                           <input type="hidden" name="idcarrera" value="<?php echo $row->idPregunta; ?>"> <!--Nombre de la tabla-->
-                           <input type="submit" value="AGREGAR" class="btn btn-primary btn-xs">
-                           <?php echo form_close(); ?> <br> <br> 
                         </div>
 
 

@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" name="password" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="password" name="password" class="form-control" id="subject" placeholder="Subject">
                                     <label for="subject">Contraseña</label>
                                 </div>
                             </div>
