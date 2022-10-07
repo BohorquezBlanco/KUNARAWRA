@@ -66,6 +66,9 @@ function insertarCarrito(curso) {
           <td>${curso.titulo}</td>
           <td>${curso.precio}</td>
           <td>${curso.idP}</td>
+          
+          <input type="text" name="idP[]"  value="${curso.idP}" > <br>
+
           <td>
                <a href="#" class="borrar-curso btn btn-primary" data-id="${curso.id}">X</a>
           </td>
@@ -148,6 +151,10 @@ function leerLocalStorage() {
    <td>${curso.titulo}</td>
    <td>${curso.precio}</td>
    <td>${curso.idP}</td>
+   
+   <input type="text" name="idP[]"  value="${curso.idP}" > <br>
+
+
    <td>
 		<a href="#" class="borrar-curso btn btn-primary " data-id="${curso.id}">X</a>
    </td>

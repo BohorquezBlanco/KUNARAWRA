@@ -5,17 +5,18 @@ class Examen extends CI_Controller {
     public function preguntas()
     {
         
-       $pregunta=json_decode($_POST["p"]);
-      echo($pregunta) ;
+      // $pregunta=json_decode($_POST["p"]);
+      //$pregunta=json_decode($tempstore->get('simulation_ids'));
+      //echo($pregunta) ;
 
-       $data['idUsuario']=1;
+        $data['idUsuario']=1;
+        $data['nombreExamen']=$_POST['tituloEx'];
+        $data['descripcion']=$_POST['DescripEx'];
 
-        $data['nombreExamen']=$_POST['t'];
-        $data['descripcion']=$_POST['d'];
-        
+        $idP=$_POST['idP'];
 
 
-        // $this->examen_model->creacionExa($data);
+       $this->examen_model->creacionEx($data,$idP);
        // $this->examen_model->creacionEx($data,$pregunta);
 
     }

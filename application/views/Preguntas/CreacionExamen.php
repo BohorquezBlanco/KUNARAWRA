@@ -171,53 +171,54 @@
                     <!--"FIN" SELECT DE TODAS LAS PREGUNTAS QUE EXISTEN EN LA BASE DE DATOS--> 
 
 <!------------------------ Creacion De Examen----------------------------------------> 
-      <div class="container">
-        <div class="row">
-          <div class="col-10 m-3 ">
-            <h5>Preguntas que tendra el examen</h5>
-            <div class="table-responsive bg-white  caja2" id="carrito">
-              <table class="table" id="lista-carrito">
-              <thead>
-                <tr>
-              <th scope="col">#</th>
-              <th scope="col">Pregunta</th>
-              <th scope="col">Leccio</th>
-              <th scope="col">idPregunta</th>
-              <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- AQUI ENTRA EL CLON-->
+      <?php echo form_open_multipart('Examen/preguntas'); ?>
+        <div class="container">
+          <div class="row">
+            <div class="col-10 m-3 ">
+              <h5>Preguntas que tendra el examen</h5>
+              <div class="table-responsive bg-white  caja2" id="carrito">
+                <table class="table" id="lista-carrito">
+                <thead>
+                  <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pregunta</th>
+                <th scope="col">Leccio</th>
+                <th scope="col">idPregunta</th>
+                <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- AQUI ENTRA EL CLON-->
 
-              </tbody>
-            </table>
-            <a href="#" id="vaciar-carrito" class="btn btn-primary">Vaciar Preguntas</a>
+                </tbody>
+              </table>
+              <a href="#" id="vaciar-carrito" class="btn btn-primary">Vaciar Preguntas</a>
+              </div>
+            </div>  
+            <div class="col-4 mb-3">
+              <label for="">Titulo del Examen</label>
+              <input type="text"  id="tituloEx" name="tituloEx" class="form-control" placeholder="Escribe un titulo"/>
             </div>
-          </div>  
-          <div class="col-4 mb-3">
-            <label for="">Titulo del Examen</label>
-            <input type="text"  id="tituloEx" name="tituloEx" class="form-control" placeholder="Escribe un titulo"/>
-          </div>
 
-          <div class="col-7 mb-3">
-            <label for="">Descripcion</label>
-            <input type="text"  id="DescripEx" name="DescripEx" class="form-control" placeholder="Escribe una descripcion breve"/>
-          </div>
+            <div class="col-7 mb-3">
+              <label for="">Descripcion</label>
+              <input type="text"  id="DescripEx" name="DescripEx" class="form-control" placeholder="Escribe una descripcion breve"/>
+            </div>
 
+          </div>
+          
+          <div class="col-12">
+
+            <button type="submit" class="btn btn-primary col-11" name="CrearExamen" id="CrearExamen">
+              Crear Examen
+            </button>
+    
+
+
+          </div> 
+          <br> <br>
         </div>
-        
-        <div class="col-12">
-
-          <button type="submit" class="btn btn-primary col-11" name="CrearExamen" id="CrearExamen" onclick="CrearExamen()">
-            Crear Examen
-          </button>
-   
-
-
-        </div> 
-      <br> <br>
-      </div>
-               
+      <?php echo form_close(); ?>             
 
      <!-- PREGUNTAS INCLUIDAS EN EL EXAMEN--> 
 
