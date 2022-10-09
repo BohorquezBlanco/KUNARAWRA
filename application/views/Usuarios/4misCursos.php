@@ -39,19 +39,7 @@
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Aprende a tu ritmo :D</p>
                         </div>
                     </div>
-<!--*********************AQUI ENTRARE A VER MIS CURSOS A LOS QUE ESTOY INSCRITO******************-->
-                    <?php echo form_open_multipart('Inscripcion/misCursos'); ?>
-                    <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-                    <input type="submit" name="buttonz" value="MIS CURSOS :D" class="btn btn-primary btn-xs">a>
-                    <?php echo form_close(); ?>
-<!--*********************AQUI ENTRARE A VER MIS CURSOS A LOS QUE ESTOY INSCRITO******************-->
-
-<!--*********************AQUI ENTRARE A VER MIS CURSOS A LOS QUE ESTOY INSCRITO******************-->
-                    <?php echo form_open_multipart('Inscripcion/explorar'); ?>
-                    <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-                    <input type="submit" name="buttonz" value="EXPLORAR CURSOS :D" class="btn btn-primary btn-xs">
-<!--*********************AQUI ENTRARE A VER MIS CURSOS A LOS QUE ESTOY INSCRITO******************-->
-                    <?php echo form_close(); ?>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="./Carreras.html">VER CURSOS</a>
                 </div>
             </div>
         </div>
@@ -59,7 +47,19 @@
     <!-- About End -->
 
 
-   
+    <!-- Categories Start -->
+    <div class="container-xxl py-5 category">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Inscripción</h6>
+                <h1 class="mb-5">Mis Cursos</h1>
+            </div>
+            <div class="row g-3">
+             
+            </div>
+        </div>
+    </div>
+    <!-- Categories Start -->
 
 
 

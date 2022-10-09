@@ -9,7 +9,7 @@ class Examen extends CI_Controller {
       //$pregunta=json_decode($tempstore->get('simulation_ids'));
       //echo($pregunta) ;
 
-        $data['idUsuario']=1;
+        $data['idUsuario']=$_POST['idUsuario'];
         $data['nombreExamen']=$_POST['tituloEx'];
         $data['descripcion']=$_POST['DescripEx'];
 

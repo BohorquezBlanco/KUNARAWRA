@@ -5,7 +5,7 @@ const listaCursos = document.querySelector('#lista-carrito tbody');
 const vaciarCarritoBtn = document.getElementById('vaciar-carrito'); 
 //se almacena en un array el id de la pregunta la cual sera usada luego para
 //realizar el insert
-var GuardarPregunta=["1"];
+
 
 // Listeners
 cargarEventListeners();
@@ -42,8 +42,7 @@ function comprarCurso(e) {
 // Lee los datos del curso
 function leerDatosCurso(curso) {
      //aqui se realiza la insersion en el arreglo del id. 
-     GuardarPregunta.push(curso.querySelector('.idpregunta').textContent);
-     alert(GuardarPregunta);
+
 
      const infoCurso = {
           imagen: curso.querySelector('th').textContent,
@@ -67,7 +66,7 @@ function insertarCarrito(curso) {
           <td>${curso.precio}</td>
           <td>${curso.idP}</td>
           
-          <input type="text" name="idP[]"  value="${curso.idP}" > <br>
+          <input type="hidden" name="idP[]" value="${curso.idP}" > <br>
 
           <td>
                <a href="#" class="borrar-curso btn btn-primary" data-id="${curso.id}">X</a>
@@ -152,7 +151,7 @@ function leerLocalStorage() {
    <td>${curso.precio}</td>
    <td>${curso.idP}</td>
    
-   <input type="text" name="idP[]"  value="${curso.idP}" > <br>
+   <input type="hidden" name="idP[]"  value="${curso.idP}" > <br>
 
 
    <td>
@@ -162,7 +161,8 @@ function leerLocalStorage() {
         listaCursos.appendChild(row);
 
         //aqui se guarda el id del push cuando se hace una recarga en la pagina 
-        GuardarPregunta.push(curso.idP);
+        // jhon niche javascript
+    
 
 
     });
@@ -180,7 +180,7 @@ function eliminarCursoLocalStorage(curso) {
           
             //aqui intentaremos eliminar el array
             var a = cursoLS.id;
-            alert(a);
+        
 
         }
     });

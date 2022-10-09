@@ -35,7 +35,6 @@ class Usuarios extends CI_Controller {
 	//------INICIO DE USUARIO REGISTRADO A LA PAGINA------- 
 	public function InicioUsuario()
 	{
-		
 		$this->load->view('inc/cabeza/cabeza1');
 		$this->load->view('inc/navbar/navbar1');
 		$this->load->view('inc/spinner/spinner');
@@ -127,7 +126,7 @@ class Usuarios extends CI_Controller {
 		$this -> estudiante_model ->modificarestudiante($idusuario,$data);//reutilizamos el modelo 
 		redirect('usuarios/UsuariosNo','refresh');
 	}
-//*****************PARA VALIDAR LOGIN**************** */
+//*****************PARA VALIDAR LOGIN*****************/
 	public function validar ()
 	{
 		//para validar
@@ -142,9 +141,9 @@ class Usuarios extends CI_Controller {
 			//creamos variables de session 
 			foreach ($consulta->result() as $row)
 			{
-				$this->session->set_userdata('idusuario',$row->idUsuario);// 
-				$this->session->set_userdata('login',$row->correo);// 
-				$this->session->set_userdata('tipo',$row->tipo);// 
+				$this->session->set_userdata('idusuario',$row->idUsuario);// variables de sesion
+				$this->session->set_userdata('login',$row->correo);// variables de sesion
+				$this->session->set_userdata('tipo',$row->tipo);// variables de sesion
 				redirect('usuarios/panel','refresh');
 			}
 		

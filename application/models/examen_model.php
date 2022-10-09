@@ -6,6 +6,8 @@ class Examen_model extends CI_Model {
 public function creacionEx($data,$nombre)
 {
 
+  $this->db->trans_start();
+
     $this->db->insert('examen',$data);//crea una nueva muestra
     $idExamen=$this->db->insert_id(); //recuper id de nueva muestra creada
 
@@ -17,8 +19,11 @@ public function creacionEx($data,$nombre)
 
       $this->db->insert('preguntasexamen',$data3);
     }
-
-  
+    $this->db-> trans_complete();
+    if($this->db->trans_complete()==FALSE)
+		{
+			return false;
+		}
 
 }
 

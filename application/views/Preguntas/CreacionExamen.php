@@ -102,33 +102,51 @@
             <!-- Navbar End -->
 
 
+
+
             <!-- Blank Start -->
-        <div class="container-fluid pt-4 px-4">
-          <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-            <div class="container row"><br>
-              <div class="container">
-                <div class="row">
-                  <h1 class="text-center">CREACION DE EXAMENES</h1> <br>
-                  <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200"><br>
-                    <form action="#">
+        <div class="container pt-3 px-4">
+        <?php echo form_open_multipart('Examen/preguntas'); ?>
+          <div class="row bg-light">
+            <h1 class="text-center p-4">CREACION DE EXAMENES</h1>
 
 
-                
-                       <!-- PREGUNTAS PARA INCLUIR EN EL EXAMEN-->
-                      <h4>AGREGUE LAS PREGUNTAS QUE TENDRA EL EXAMEN</h2> 
-                      <div class="col-6 ">
-                        <div class="input-group">
-                          <svg xmlns="" width="50" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-                          <!-- BUSCADOR DE PREGUNTAS--> 
-                            <form>
-                              <input class="form-control" type="text" name="txtBuscarPregunta" id="searchTerm" placeholder="Buscar" aria-label="Search" onkeyup="doSearch()">
-                            </form>
-                        </div>
-                      </div>
-                  <!--SELECT DE TODAS LAS PREGUNTAS QUE EXISTEN EN LA BASE DE DATOS--> 
-                      <div class="col-10 m-3 " id="lista-cursos">
+
+ <!--******************* este es la variable global del id del usuario*************************** -->
+ <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+ <h1 >Login: <?php echo $this->session->userdata('idusuario'); ?></h1>
+ <!--**************** este es la variable global del id del usuario ******************************-->
+
+
+
+
+            <div class="col-6 p-3">
+
+              <label for="">Titulo del Examen</label>
+              <input type="text"  id="tituloEx" name="tituloEx" class="form-control" placeholder="Escribe un titulo"/>
+   
+            </div>
+            <div class="col-6 p-3">
+            <label for="">Descripcion</label>
+              <input type="text"  id="DescripEx" name="DescripEx" class="form-control" placeholder="Escribe una descripcion breve"/>
+            </div>
+
+            <div class="col-12 p-4">
+              <div class="input-group">
+                <svg xmlns="" width="50" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Buscar</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+                <!-- BUSCADOR DE PREGUNTAS--> 
+                <form>
+                  <input class="form-control" type="text" name="txtBuscarPregunta" id="searchTerm" placeholder="Buscar" aria-label="Search" onkeyup="doSearch()">
+                </form>
+              </div>
+            </div>
+            
+          <div class="col-6 p-2"> <!-- DIV DE PREGUNTAS SELECT--> 
+          <h5 class="text-center">Total Preguntas</h5>
+                            <!--SELECT DE TODAS LAS PREGUNTAS QUE EXISTEN EN LA BASE DE DATOS--> 
+                            <div class="col-12 border " id="lista-cursos">
                         <div class="table-responsive bg-white overflow-auto caja2">
-                          <table class="table" id="datos">
+                          <table class="table align-middle" id="datos">
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
@@ -169,14 +187,10 @@
                         </div>
                       </div>
                     <!--"FIN" SELECT DE TODAS LAS PREGUNTAS QUE EXISTEN EN LA BASE DE DATOS--> 
-
-<!------------------------ Creacion De Examen----------------------------------------> 
-      <?php echo form_open_multipart('Examen/preguntas'); ?>
-        <div class="container">
-          <div class="row">
-            <div class="col-10 m-3 ">
-              <h5>Preguntas que tendra el examen</h5>
-              <div class="table-responsive bg-white  caja2" id="carrito">
+          </div>
+          <div class="col-6 p-2">  <!-- DIV DE PREGUNTAS PARA EL EXAMEN--> 
+          <h5 class="text-center">Preguntas que tendra el examen</h5>
+          <div class="table-responsive bg-white border caja2" id="carrito">
                 <table class="table" id="lista-carrito">
                 <thead>
                   <tr>
@@ -194,39 +208,21 @@
               </table>
               <a href="#" id="vaciar-carrito" class="btn btn-primary">Vaciar Preguntas</a>
               </div>
-            </div>  
-            <div class="col-4 mb-3">
-              <label for="">Titulo del Examen</label>
-              <input type="text"  id="tituloEx" name="tituloEx" class="form-control" placeholder="Escribe un titulo"/>
-            </div>
-
-            <div class="col-7 mb-3">
-              <label for="">Descripcion</label>
-              <input type="text"  id="DescripEx" name="DescripEx" class="form-control" placeholder="Escribe una descripcion breve"/>
-            </div>
-
           </div>
-          
-          <div class="col-12">
 
-            <button type="submit" class="btn btn-primary col-11" name="CrearExamen" id="CrearExamen">
+          <div class="col-12 text-center p-4">
+          <button type="submit" class="btn btn-primary col-11" name="CrearExamen" id="CrearExamen">
               Crear Examen
             </button>
     
+          </div>
 
-
-          </div> 
-          <br> <br>
+          </div>
+          <?php echo form_close(); ?>     
         </div>
-      <?php echo form_close(); ?>             
-
-     <!-- PREGUNTAS INCLUIDAS EN EL EXAMEN--> 
-
-  
 
 
-             
-            </form>            
+       
           </div>
         </div>
       </div>
