@@ -40,6 +40,13 @@
                     echo form_close();
                 ?>
 
+                <?php 
+                    echo form_open_multipart('usuarios/inscribirse')
+                ?>
+                  <button type="submit" class="btn btn-primary w-100 py-3" type="submit">Crearse Una Cuenta</button>
+                  <?php 
+                    echo form_close();
+                ?>
                    
                 </div>
                 <div class="col-lg-12 wow fadeInUp ">

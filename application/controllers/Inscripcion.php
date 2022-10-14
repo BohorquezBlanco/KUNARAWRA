@@ -41,14 +41,29 @@ class Inscripcion extends CI_Controller {
 	}
 	public function misCursos()
 	{
-
-		$lista=$this->inscripcion_model->listacarreras();//se almacena la consulta 
+		$idUsuario=$_POST['idUsuario'];
+		$lista=$this->inscripcion_model->selectCarreras($idUsuario);//se almacena la consulta 
 		$data['carrera']=$lista;//desarrollando un array relacional 
 		//en aqui se acumula informacion ;	
 		$this->load->view('inc/cabeza/cabeza1');
 		$this->load->view('inc/navbar/navbar1');	
-		$this->load->view('Usuarios/4explorarCursos',$data);	
+		$this->load->view('Usuarios/4misCursos',$data);	
 		$this->load->view('inc/pie/pie1');	
 	}
+
+	//aqui el usuario podra ver sus materias inscritas y reforzar
+	public function misMaterias()
+	{
+	
+		$lista=$this->inscripcion_model->selectMaterias();//se almacena la consulta 
+		$data['materiaI']=$lista;//desarrollando un array relacional 
+		//en aqui se acumula informacion ;	
+		$this->load->view('inc/cabeza/cabeza1');
+		$this->load->view('inc/navbar/navbar1');	
+		$this->load->view('Avance/MateriasInscritas',$data);	
+		$this->load->view('inc/pie/pie1');	
+	}
+
+
 
 }

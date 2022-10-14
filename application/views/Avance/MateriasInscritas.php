@@ -7,8 +7,8 @@
     <div class="container-xxl py-5 category">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Inscripción</h6>
-                <h1 class="mb-5">Mis Cursos</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">VAMOS A REFORZAR :D</h6>
+                <h1 class="mb-5">Mis Materias</h1>
             </div>
             <div class="row g-3">
             <div class="container-xxl py-5">
@@ -17,7 +17,7 @@
          
                 <?php 
                  $indice=1;
-                    foreach($carrera -> result() as $row)
+                    foreach($materiaI -> result() as $row)
                     {
                 ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -28,16 +28,16 @@
 
             <!-- VER MATERIAS (aqui iremos a ver las materias al que se puede inscribir)-->               
                 <?php echo form_open_multipart('inscripcion/misMaterias');?>
-                <input type="text" name="idCarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
-                <input type="text" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-                <input type="submit" value="MATERIAS INSCRITAS" class="btn btn-primary btn-xs">            
+                <input type="hidden" name="idcarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
+                <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                <input type="submit" value="VAMOS A REFORZAR" class="btn btn-primary btn-xs">            
                 <?php echo form_close(); ?>
             <!-- VER MATERIAS "FIN" -->  
 
                             </div>
                         </div>
                         <div class="text-center p-2 pb-0">
-                            <h4 class="mb-2"> <?php echo $row->nombreCarrera; ?></h4>
+                            <h4 class="mb-2"> <?php echo $row->nombreMateria; ?></h4>
                             <p><?php echo $row->descripcion; ?></p>
                         </div>
                         <div class="d-flex border-top">

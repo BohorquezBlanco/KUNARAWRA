@@ -9,18 +9,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Inicio</a>
-                <a href="about.html" class="nav-item nav-link">Horarios</a>
+                <a href="<?php echo base_url(); ?>index.php/usuarios/index" class="nav-item nav-link active">Inicio</a>
                 <a href="courses.html" class="nav-item nav-link">Cursos</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quiero...</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">Prepararme al examen de ingreso</a>
-                        <a href="testimonial.html" class="dropdown-item">Reforzar mis Conocimientos</a>
-                        <a href="404.html" class="dropdown-item">Conocer otros cursos</a>
+                        <a href="#" class="dropdown-item">Prepararme al examen de ingreso</a>
+                        <a href="#" class="dropdown-item">Reforzar mis Conocimientos</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contactanos :D</a>
+                <a href="https://api.whatsapp.com/send?phone=+59175999620&text=Quiero%20este%20curso%20:D" target="_blank" class="nav-item nav-link">Contactanos :D</a>
                     <a href="<?php echo base_url(); ?>index.php/usuarios/ingresar" class="btn btn-primary py-4 px-lg-5 fs-5 ">INGRESAR</a>
             </div>
         

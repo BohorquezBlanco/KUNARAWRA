@@ -7,7 +7,9 @@ class Usuarios extends CI_Controller {
 	////////////////------PANEL USUARIO------//////////////////// 
 	public function index()
 	{
-		$this->load->view('inc/cabeza/cabeza1');	
+		$this->load->view('inc/cabeza/cabeza1');
+		$this->load->view('inc/spinner/spinner');	
+		$this->load->view('inc/navbar/navbar1');
 		$this->load->view('Usuarios/1inicioDePagina');	
 		$this->load->view('inc/pie/pie1');	
 	}
@@ -88,7 +90,7 @@ class Usuarios extends CI_Controller {
 
 		$lista=$this->estudiante_model->agregarestudiante($data);//se almacena la consulta 
 
-		redirect('usuarios/InicioUsuario','refresh');
+		redirect('usuarios/ingresar','refresh');
 	}
 	
 	//UPDATE "Modificamos el usuario"
