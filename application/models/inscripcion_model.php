@@ -67,8 +67,35 @@ public function selectMaterias()
 	$this->db->where('carrera.estado',1);//devuelve la lista solo lso que tienen 1 
 
 	return $this->db->get(); //devolucion del resultado de la consulta 
-	
+}
 
+public function selectExamen()
+{
+	$sql="SELECT E.nombreExamen ,PE.idPregunta,P.pregunta,P.A,
+	P.B,P.C,P.D,P.correcta
+	FROM examen E
+	JOIN preguntasexamen PE ON PE.idExamen=E.idExamen
+	JOIN pregunta P ON P.idPregunta=PE.idPregunta
+	WHERE E.idExamen=79;";
+	return $this->db->query($sql);
+}
+
+//aqui se califica el examen
+public function examen($data)
+{
+	$this->db->insert('calificacionexamen',$data);  
+}
+
+
+public function selectCalEx($idUsuario)
+{
+	$idExamen=79;
+	$sql="SELECT E.calificacion, E.aprorepro,U.nombre,U.primerApellido,EE.dificultad
+	FROM calificacionexamen E
+	JOIN usuario U ON U.idUsuario=E.idUsuario
+	JOIN examen EE ON E.idExamen=EE.idExamen
+	WHERE E.estado=1 and E.idExamen=$idExamen and E.idUsuario=$idUsuario;";
+	return $this->db->query($sql);
 }
 
 

@@ -12,6 +12,9 @@ class Examen extends CI_Controller {
         $data['idUsuario']=$_POST['idUsuario'];
         $data['nombreExamen']=$_POST['tituloEx'];
         $data['descripcion']=$_POST['DescripEx'];
+        $data['idLeccion']=$_POST['idLec'];
+
+        $data['dificultad']=$_POST['dificultad'];
 
         $idP=$_POST['idP'];
 

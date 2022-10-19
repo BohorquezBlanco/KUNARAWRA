@@ -38,7 +38,7 @@ class Usuarios extends CI_Controller {
 	public function InicioUsuario()
 	{
 		$this->load->view('inc/cabeza/cabeza1');
-		$this->load->view('inc/navbar/navbar1');
+		$this->load->view('inc/navbar/navbar2');
 		$this->load->view('inc/spinner/spinner');
 		$this->load->view('Usuarios/4inicioUsuario');
 		$this->load->view('inc/pie/pie1');	
@@ -178,7 +178,12 @@ class Usuarios extends CI_Controller {
 	}
 	
 
-	
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		//redirect('usuarios/index','refresh');	
+		redirect('usuarios/index','refresh');//se agrega un codigo /1	
+	}
 
 
 

@@ -131,6 +131,15 @@
               <input type="text"  id="DescripEx" name="DescripEx" class="form-control" placeholder="Escribe una descripcion breve"/>
             </div>
 
+<div class="col-4">
+<select id="dificultad" name="dificultad" class="form-control form-select form-select-lg" required>
+                    <option value="FASIL"  selected>FASIL</option> 
+                    <option value="REGULAR" selected>REGULAR</option> 
+                    <option value="DIFICIL" selected>DIFICIL</option> 
+                  </select>
+</div>
+
+
             <div class="col-12 p-4">
               <div class="input-group">
                 <svg xmlns="" width="50" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Buscar</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
@@ -141,6 +150,38 @@
               </div>
             </div>
             
+
+
+            <div class="row">    
+              <div class="col-4 mb-3">
+                <label for="">Materia</label>
+                  <div class="input-group">
+                  <select id="idMateria" name="idMateria" class="form-control form-select form-select-lg" required>
+                    <option value="" disable selected>MATERIA</option> 
+                    <?php
+                      foreach($infomaterias->result() as $row)
+                      {
+                    ?>
+                    <option value="<?php echo $row->idMateria;?>"><?php echo $row->nombreMateria;?></option>
+                    <?php
+                      }
+                    ?>
+                  </select>
+                    <input type="submit" value="+" class="btn btn-primary">
+                  </div>
+                </div>
+             <!-- MATERIA EN BASE AL ANTERIOR SELECT -->  
+  
+                <div class="col-4 mb-3">
+                  <label for="">Leccion:</label>
+                    <div class="input-group">
+                      <select id="idLec" name="idLec" class="form-control form-select form-select-lg">
+                      <option value="0" selected>EXAMEN GLOBAL</option>
+                      </select>  
+                     <input type="submit" value="+" class="btn btn-primary">
+                  </div>
+                </div>
+
           <div class="col-6 p-2"> <!-- DIV DE PREGUNTAS SELECT--> 
           <h5 class="text-center">Total Preguntas</h5>
                             <!--SELECT DE TODAS LAS PREGUNTAS QUE EXISTEN EN LA BASE DE DATOS--> 
@@ -268,3 +309,19 @@
 </body>
 
 </html>
+
+<script type="text/javascript">   
+            $(document).ready(function() {                       
+                $("#idMateria").change(function() {
+                    $("#idMateria option:selected").each(function() {
+                        idMateria = $('#idMateria').val();
+                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectLec", {
+                            idMateria : idMateria
+                        }, function(data) {
+                            $("#idLec").html(data);
+                        });
+                    });
+                });
+            });
+            
+</script>

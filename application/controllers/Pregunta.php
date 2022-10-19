@@ -50,7 +50,7 @@ class Pregunta extends CI_Controller {
         if($idMateria){
             $this->load->model('pregunta_model');
             $lecciones = $this->pregunta_model->leccionM($idMateria);
-            echo '<option value="0">Leccion</option>';
+            echo '<option value="0">EXAMEN GLOBAL</option>';
             foreach($lecciones as $fila){
                 echo '<option value="'. $fila->idLeccion.'">'. $fila->nombreLeccion .'</option>';
             }
@@ -66,6 +66,7 @@ class Pregunta extends CI_Controller {
 	public function Examen()
 	{
 	$this->load->model('pregunta_model');
+	$data['infomaterias']=$this->materia_model->listamaterias2(); 
 	$data['pregunta' ] = $this->pregunta_model->listapreguntas();
 		//en aqui se acumula informacion 
 	$this->load->view('Preguntas/CreacionExamen',$data);	

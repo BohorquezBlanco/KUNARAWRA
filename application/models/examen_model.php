@@ -33,4 +33,18 @@ public function creacionExa($data)
     $this->db->insert('examen',$data);//crea una nueva muestra
    
 }
+
+//aqui se hace el select de lecciones por materia 
+public function selexalec()
+{
+  $sql="SELECT distinct L.nombreLeccion
+  FROM leccion L
+  JOIN materia M  ON M.idMateria=L.idMateria
+  JOIN pregunta P  ON P.idLeccion=L.idLeccion
+  WHERE M.idMateria = 2";
+	return $this->db->query($sql);
+
+}
+
+
 }

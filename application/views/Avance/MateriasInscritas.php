@@ -27,9 +27,9 @@
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
 
             <!-- VER MATERIAS (aqui iremos a ver las materias al que se puede inscribir)-->               
-                <?php echo form_open_multipart('inscripcion/misMaterias');?>
-                <input type="hidden" name="idcarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
-                <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                <?php echo form_open_multipart('inscripcion/avanceVideos');?>
+                <input type="text" name="idMateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
+                <input type="text" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
                 <input type="submit" value="VAMOS A REFORZAR" class="btn btn-primary btn-xs">            
                 <?php echo form_close(); ?>
             <!-- VER MATERIAS "FIN" -->  

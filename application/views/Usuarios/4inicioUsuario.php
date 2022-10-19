@@ -39,23 +39,39 @@
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Aprende a tu ritmo :D</p>
                         </div>
                     </div>
+
+                    <div class="input-group ">
 <!--*********************AQUI ENTRARE A VER MIS CURSOS A LOS QUE ESTOY INSCRITO******************-->
-                    <?php echo form_open_multipart('Inscripcion/misCursos'); ?>
-                    <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-                    <input type="submit" name="buttonz" value="MIS CURSOS :D" class="btn btn-primary btn-xs">a>
-                    <?php echo form_close(); ?>
-<!--*********************AQUI ENTRARE A VER MIS CURSOS A LOS QUE ESTOY INSCRITO******************-->
+                    <div class="p-2">
+                        <?php echo form_open_multipart('Inscripcion/misCursos'); ?>
+                        <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                        <input type="submit" name="buttonz" value="MIS CURSOS :D" class="btn btn-primary btn-xs">
+                        <?php echo form_close(); ?>    
+                    </div>
+                <div class="p-2">
+                 <!--*********************AQUI ENTRARE A VER MIS CURSOS A LOS QUE ESTOY INSCRITO******************-->
 
 <!--*********************AQUI ENTRARE A VER MIS CURSOS A LOS QUE ESTOY INSCRITO******************-->
-                    <?php echo form_open_multipart('Inscripcion/explorar'); ?>
-                    <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-                    <input type="submit" name="buttonz" value="EXPLORAR CURSOS :D" class="btn btn-primary btn-xs">
+                        <?php echo form_open_multipart('Inscripcion/explorar'); ?>
+                        <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                        <input type="submit" name="buttonz" value="EXPLORAR CURSOS :D" class="btn btn-primary btn-xs">
 <!--*********************AQUI ENTRARE A VER MIS CURSOS A LOS QUE ESTOY INSCRITO******************-->
-                    <?php echo form_close(); ?>
+                        <?php echo form_close(); ?>   
+                </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
     <!-- About End -->
 
 
