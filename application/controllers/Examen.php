@@ -13,7 +13,8 @@ class Examen extends CI_Controller {
         $data['nombreExamen']=$_POST['tituloEx'];
         $data['descripcion']=$_POST['DescripEx'];
         $data['idLeccion']=$_POST['idLec'];
-
+        $data['idMateria']=$_POST['idMateria'];
+      
         $data['dificultad']=$_POST['dificultad'];
 
         $idP=$_POST['idP'];
@@ -21,6 +22,9 @@ class Examen extends CI_Controller {
 
        $this->examen_model->creacionEx($data,$idP);
        // $this->examen_model->creacionEx($data,$pregunta);
+       $lista=$this->pregunta_model->listapreguntas1();//se almacena la consulta 
+       $data['pregunta']=$lista;//desarrollando un array relacional 
+       $this->load->view('Preguntas/PreguntasSelect',$data);	
 
     }
 	

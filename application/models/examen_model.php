@@ -5,7 +5,6 @@ class Examen_model extends CI_Model {
 
 public function creacionEx($data,$nombre)
 {
-
   $this->db->trans_start();
 
     $this->db->insert('examen',$data);//crea una nueva muestra
@@ -34,14 +33,14 @@ public function creacionExa($data)
    
 }
 
-//aqui se hace el select de lecciones por materia 
-public function selexalec()
+//aqui se hace hace select de leccion por materia 
+public function selectexalec($idMateria)
 {
-  $sql="SELECT distinct L.nombreLeccion
+  $sql="SELECT distinct L.nombreLeccion,L.descripcion,L.idLeccion
   FROM leccion L
   JOIN materia M  ON M.idMateria=L.idMateria
   JOIN pregunta P  ON P.idLeccion=L.idLeccion
-  WHERE M.idMateria = 2";
+  WHERE M.idMateria = $idMateria";
 	return $this->db->query($sql);
 
 }

@@ -21,11 +21,14 @@ class Inscripcion_model extends CI_Model {
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
 
+
 	//aqui se realiza el insert 
 	public function inscripcionMateria($data)
 	{
-		$this->db->insert('inscritos',$data);  
+		$this->db->insert('inscritos',$data);
 	}
+
+
 //aqui se realizara el select de materias a las que el usuario
 //esta inscrito
 public function selectCarreras($idUsuario)
@@ -69,16 +72,31 @@ public function selectMaterias()
 	return $this->db->get(); //devolucion del resultado de la consulta 
 }
 
-public function selectExamen()
-{
-	$sql="SELECT E.nombreExamen ,PE.idPregunta,P.pregunta,P.A,
-	P.B,P.C,P.D,P.correcta
-	FROM examen E
-	JOIN preguntasexamen PE ON PE.idExamen=E.idExamen
-	JOIN pregunta P ON P.idPregunta=PE.idPregunta
-	WHERE E.idExamen=79;";
-	return $this->db->query($sql);
-}
+//INICIO 2 metodos son usados para ver examenes aleatorios por leccion 
+	public function selectExamen($idLeccion)
+	{
+		$sql="SELECT distinct E.nombreExamen,E.idExamen,E.idLeccion 
+		FROM examen E
+		JOIN preguntasexamen PE ON PE.idExamen=E.idExamen
+		JOIN pregunta P ON P.idPregunta=PE.idPregunta
+		WHERE E.idLeccion=$idLeccion";
+		return $this->db->query($sql);
+	}
+
+	public function selectExamen2($idLeccion,$idExamen)
+		{
+		$sql="SELECT  E.nombreExamen,E.idExamen,E.idLeccion,P.correcta,P.pregunta,P.A,P.B,P.C,P.D
+		FROM examen E
+		JOIN preguntasexamen PE ON PE.idExamen=E.idExamen
+		JOIN pregunta P ON P.idPregunta=PE.idPregunta
+		WHERE E.idLeccion=$idLeccion AND E.idExamen=$idExamen";
+
+		return $this->db->query($sql);
+		}
+//FIN estos 2 metodos son usados para ver examenes aleatorios por leccion 
+
+
+
 
 //aqui se califica el examen
 public function examen($data)
@@ -87,14 +105,14 @@ public function examen($data)
 }
 
 
-public function selectCalEx($idUsuario)
+public function selectExGlo($idMateria)
 {
-	$idExamen=79;
-	$sql="SELECT E.calificacion, E.aprorepro,U.nombre,U.primerApellido,EE.dificultad
-	FROM calificacionexamen E
-	JOIN usuario U ON U.idUsuario=E.idUsuario
-	JOIN examen EE ON E.idExamen=EE.idExamen
-	WHERE E.estado=1 and E.idExamen=$idExamen and E.idUsuario=$idUsuario;";
+	
+	$sql="SELECT distinct E.nombreExamen,E.idExamen,E.idLeccion,E.idMateria,E.nombreExamen,E.descripcion
+	FROM examen E
+	JOIN preguntasexamen PE ON PE.idExamen=E.idExamen
+	JOIN pregunta P ON P.idPregunta=PE.idPregunta
+    WHERE E.idLeccion=0 AND E.idMateria=$idMateria";
 	return $this->db->query($sql);
 }
 

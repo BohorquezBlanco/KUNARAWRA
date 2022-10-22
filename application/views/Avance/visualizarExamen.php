@@ -55,16 +55,18 @@
                     <img src="<?php echo base_url(); ?>img/resultado.jpg" class="card-img " alt="..." height="450px">
                         <div class="card-img-overlay p-4">
                             <h5 class="card-title text-center">EXAMEN DE LA LECCION 1</h5>
-                            <p class="card-text">REALIZADO POR: <?php echo $row->nombre; ?> <?php echo $row->primerApellido; ?></p>
-                            <p class="card-text">CALIFICACIÓN: <?php echo $row->calificacion; ?></p>
-                            <p class="card-text">ESTADO:<?php echo $row->aprorepro; ?></p>
-                            <p class="card-text">DIFICULTAD: <?php echo $row->dificultad; ?></p>
+                            <p class="card-text">REALIZADO POR: <?php echo $row->nombreExamen; ?> 
+                            <p class="card-text">CALIFICACIÓN: <?php echo $row->idExamen; ?></p>
+                            <p class="card-text">CALIFICACIÓN: <?php echo $row->idLeccion; ?></p>                            
+                            <p class="card-text">ESTADO:<?php echo $row->idMateria; ?></p>
+                            <p class="card-text">NOMBRE DE EXAMEN: <?php echo $row->nombreExamen; ?></p>
+                            <p class="card-text">DESCRIPCION: <?php echo $row->descripcion ?></p>
                             <br>
 
                             <?php echo form_open_multipart('Inscripcion/verExamen'); ?>
                             <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
                             <input type="submit" name="buttonz" value="RESOLVERLO OTRA VEZ :D" class="btn btn-warning btn-xs">
-                            <?php echo form_close(); ?>
+                            <?php echo form_close(); ?> <br>
                         </div>
                     </div>
                 </div>

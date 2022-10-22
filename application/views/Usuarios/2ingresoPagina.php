@@ -7,7 +7,8 @@
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title bg-white text-center text-primary px-3">ingreso al sistema</h6>
-                <h1 class="mb-5">BIENVENIDO :D </h1>
+                <h1 class="mb-5">BIENVENIDO</h1>
+                <p>Ingrese su cuenta y contraseña o créase una cuenta, es gratis!!</p>
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-lg-4  col-md-12 wow fadeInUp" data-wow-delay="0.5s">
