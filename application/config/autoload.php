@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session');
+$autoload['libraries'] = array('database','session','pdf');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('estudiante_model','materia_model','carrera_model','leccion_model','pregunta_model','examen_model','inscripcion_model'); //eso le dice al framework que ese modelo estara disponible para todo el framework 
+$autoload['model'] = array('estudiante_model','materia_model','carrera_model','leccion_model','pregunta_model','examen_model','inscripcion_model','reportes_model'); //eso le dice al framework que ese modelo estara disponible para todo el framework 

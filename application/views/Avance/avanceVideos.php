@@ -591,18 +591,20 @@
                            
 
 
-     <?php echo form_open_multipart('Carrera/deshabilitarbd'); ?>
-    <input type="hidden" name="idcarrera" value=""> <!--Nombre de la tabla-->
-    <input type="submit" name="buttonz" value="AVANCE DEL TEMAS" class="btn btn-warning btn-xs">
-    <?php echo form_close(); ?>
+                            <!--***********************ir a examenes GLOBALES :D************************-->
+                            <?php echo form_open_multipart('reportes/avance'); ?>
+                                <input type="text" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
+                                <input type="submit" name="buttonz" value="EXAMENES REALIZADOS" class="btn btn-warning btn-xs">
+                                <?php echo form_close(); ?>
+                            <!--***********************FIN DE EXAMENES GLOBALES :C************************-->
 
 
 
                             </div>
                         </div>
                         <div class="text-center p-2 pb-0">
-                            <h4 class="mb-2">Avance del tema</h4>
-                            <p class="h6">Aqui podra visualizar su avance realizado</p>
+                            <h4 class="mb-2">Bibliografia y Avance</h4>
+                            <p class="h6">Aqui podra ver su bibliografia y avance visualizar su avance realizado</p>
                         </div>
                         <div class="d-flex border-top">
                             <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>

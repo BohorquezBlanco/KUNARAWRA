@@ -17,7 +17,7 @@
                         <a href="<?php echo base_url(); ?>index.php/usuarios/ingresar" class="dropdown-item">Reforzar mis Conocimientos</a>
                     </div>
                 </div>
-                <a href="https://api.whatsapp.com/send?phone=+59175999620&text=Quiero%20este%20curso%20:D" target="_blank" class="nav-item nav-link">Contactanos :D</a>
+                <a href="https://api.whatsapp.com/send?phone=+59175999620&text=Hola%20quiero%20....%20:D" target="_blank" class="nav-item nav-link">Contactanos :D</a>
                     <a href="<?php echo base_url(); ?>index.php/usuarios/ingresar" class="btn btn-primary py-4 px-lg-5 fs-5 ">INGRESAR</a>
             </div>
         
