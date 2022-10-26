@@ -82,7 +82,7 @@
                         <div class="p-4">
                             <i class="fa fa-3x  fa-paperclip text-primary mb-4"></i>
                             <h5 class="mb-3">Estadisticas y Reportes</h5>
-                            <p>Aqui podra crear las preguntas de cada tema y de los examenes</p>
+                            <p>En esta seccion podra ver las estadisticas basicas del sistema</p>
                         </div>
                     </div>
                     </a>
