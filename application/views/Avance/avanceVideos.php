@@ -28,6 +28,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <!-- BOOTSTAP.MIN CUSTOMIZADO POR EL TEMPLATE -->
 <link href="<?php echo base_url(); ?>micssjs/css/bootstrapmin.css" rel="stylesheet">
+
+
+
 </head>
 
 
@@ -624,8 +627,8 @@
                                     }
                                     ?>
                                     <!---TOTAL EXAMENES APROVADOS---->
-                                <input type="text" value="<?php echo $A=$TotalEx-$AP;?>">    
-                                <input type="text" value="<?php echo $B=$AP;?>">    
+                                <input type="text" id="NR" value="<?php echo $A=$TotalEx-$AP;?>">    
+                                <input type="text" id="R" value="<?php echo $B=$AP;?>">    
 
                                 <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
                                 <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">

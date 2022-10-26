@@ -36,7 +36,60 @@
 
     <!-- Template Stylesheet -->
     <link href="<?php echo base_url(); ?>micssjs/reporte/css/style.css" rel="stylesheet">
+  
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+                                    <?php 
+                                    $TotalEx=0;
+                                    foreach($CantExMat->result() as $row)
+                                    {
+                                    ?>
+                                                        
+                                    <?php
+                                    $TotalEx++;
+                                    }
+                                    ?>
+                                    <!---TOTAL EXAMENES REALIZADOS---->
+
+                                    <!---TOTAL EXAMENES APROVADOS---->
+                                    <?php 
+                                    $AP=0;
+                                    foreach($CantExRe->result() as $row)
+                                    {
+                                    ?>
+                                                        
+                                    <?php
+                                    $AP++;
+                                    }
+                                    ?>
+                                    <!---TOTAL EXAMENES APROVADOS---->
+                                <input type="text" id="NR" value="<?php echo $A=$TotalEx-$AP;?>">    
+                                <input type="text" id="R" value="<?php echo $B=$AP;?>">    
+
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+      
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['AVANZADO',   <?php echo $AP;?> ],
+          ['NO AVANZADO', <?php echo $TotalEx-$AP;?>]
+        ]);
+
+        var options = {
+            title: 'AVANCE DE LA MATERIA',
+          colors: ['#2bc5d4', '#0e8d99', '#ec8f6e', '#f3b49f', '#f6c7b6']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 
 <body>
@@ -79,6 +132,16 @@
 
         <!-- Content Start -->
         <div class="content">
+
+
+
+
+
+
+
+
+
+        
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
@@ -222,16 +285,16 @@
                                 <p class="mb-2">EXAMENES GLOBALES DE LA MATERIA</p>
                                 <h6 class="mb-0">
                                 <?php 
-                                $indi=0;
+                                $Mat=0;
                                 foreach($CantExMat->result() as $row)
                                   {
                                 ?>
                            
                                 <?php
-                                $indi++;
+                                $Mat++;
                                 }
                                 ?>
-                                   <?php echo $indi;?> 
+                                   <?php echo $Mat;?> 
                                 </h6> 
                             </div>
                         </div>
@@ -265,8 +328,8 @@
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">SU AVANCE EN LA MATERIA</h6>
-                            <div id="piechart" style="width: 900px; height: 500px;"></div>
+                       
+                            <div id="piechart" class="align-items-center justify-content-center bg-light" style="width: 100%; height: 100%;"></div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-6">
@@ -277,8 +340,8 @@
                             <h6 class="mb-4">EL AVANCE SE CALCULA EN BASE A LOS EXAMENES GLOBALES REALIZADOS</h6>
                             <p>Estos examenes globales son examenes pasados de gestiones anteriores los cuales los puedes descargar en pdf en la seccion de examenes :D</p> <br>
                             <h6 class="text-center">RESUMEN GENERAL</h6>
-                            <p>AVANZADO: 45%</p>
-                            <p>NO AVANZADO: 55%</p>
+                            <p>AVANZADO: <?php echo ($indi*100)/$Mat;?> %</p>
+                            <p>NO AVANZADO: <?php echo 100-($indi*100)/$Mat;?> %</p>
 
                             <canvas hidden id="bar-chart"></canvas>
                         </div>

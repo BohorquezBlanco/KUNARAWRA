@@ -1,22 +1,17 @@
 
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
-var $A=5;
-var $B=2
-function drawChart() {
+var $A=0;
+var $B=0;
 
-  var data = google.visualization.arrayToDataTable([
-    ['Task', 'Hours per Day'],
-    ['AVANZADO', $A],
-    ['NO AVANZADO', $B],
 
-  ]);
+    //objeto para agregar el arreglo
+    var $A = document.querySelector('#NR').value; //objeto para agregar el titulo
+    var $B = document.querySelector('#R').value; //objeto para agregar el descrip 
+    
+    
 
-  var options = {
-    title: 'AVANCE DE LA MATERIA'
-  };
 
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-  chart.draw(data, options);
-}
+
+
