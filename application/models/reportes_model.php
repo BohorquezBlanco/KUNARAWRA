@@ -29,6 +29,38 @@ class reportes_model extends CI_Model {
 		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
+
+	public function idLeccion()
+	{
+		$this->db->select('*'); //select * from 
+		$this->db->from('leccion'); //tabla//si hay un rigth o un left , 'left rigth' ','carrera.id=materia.carreraid''
+		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+		return $this->db->get(); //devolucion del resultado de la consulta 
+	}
+	public function idUsuarios()
+	{
+		$this->db->select('*'); //select * from 
+		$this->db->from('usuario'); //tabla//si hay un rigth o un left , 'left rigth' ','carrera.id=materia.carreraid''
+		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+		return $this->db->get(); //devolucion del resultado de la consulta 
+	}
+	public function examenes()
+	{
+		$this->db->select('*'); //select * from 
+		$this->db->from('examen'); //tabla//si hay un rigth o un left , 'left rigth' ','carrera.id=materia.carreraid''
+		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+		$this->db->where('leccion','0');//devuelve la lista solo lso que tienen 1 
+
+		return $this->db->get(); //devolucion del resultado de la consulta 
+	}
+	public function examenesR()
+	{
+		$this->db->select('*'); //select * from 
+		$this->db->from('calificacionexamen'); //tabla//si hay un rigth o un left , 'left rigth' ','carrera.id=materia.carreraid''
+		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+		$this->db->where('aprorepro','APROBADO');//devuelve la lista solo lso que tienen 1 
+		return $this->db->get(); //devolucion del resultado de la consulta 
+	}
 	//para atrapar nombre de las materias
 	public function idMateria2($idCarrera)
 	{

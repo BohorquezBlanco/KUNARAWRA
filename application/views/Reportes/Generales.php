@@ -29,6 +29,46 @@
 
     <!-- Template Stylesheet -->
     <link href="<?php echo base_url(); ?>micssjs/reporte/css/style.css" rel="stylesheet">
+
+    
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <?php $U=0; 
+    foreach($CantU->result() as $row){?>
+   <?php $U++; } ?>
+
+   <?php $ET=0; 
+    foreach($CantE->result() as $row){?>
+   <?php $ET++; } ?>
+
+   <?php $ETR=0; 
+    foreach($CantER->result() as $row){?>
+   <?php $ETR++; } ?>
+                                    
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+      
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['AVANZADO', <?php echo $ETR;?>],
+          ['NO AVANZADO', <?php echo ($ET*$U)-$ETR;?>]
+        ]);
+
+        var options = {
+            title: 'AVANCE GENERAL DE LOS ESTUDIANTES',
+          colors: ['#2bc5d4', '#0e8d99', '#ec8f6e', '#f3b49f', '#f6c7b6']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 
 <body>
@@ -171,7 +211,16 @@
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">CARRERAS TOTALES DEL SISTEMA</p>
-                                <h6 class="mb-0">2</h6>
+                                <h6 class="mb-0">
+                                <?php $C=0; 
+                                foreach($CantC->result() as $row){?>
+                                <?php
+
+                                $C++;
+
+                                } ?>
+                                <?php echo $C;?>  
+                                </h6>
                         </div>
                         </div>
                     </div>
@@ -180,7 +229,16 @@
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">MATERIAS TOTALES DEL SISTEMA</p>
-                                <h6 class="mb-0">5</h6>
+                                <h6 class="mb-0">
+                                <?php $M=0; 
+                                foreach($CantM->result() as $row){?>
+                                <?php
+
+                                $M++;
+
+                                } ?>
+                                <?php echo $M;?>  
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -189,7 +247,16 @@
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">LECCIONES TOTALES DEL SISTEMA</p>
-                                <h6 class="mb-0">2</h6>
+                                <h6 class="mb-0">
+                                <?php $L=0; 
+                                foreach($CantL->result() as $row){?>
+                                <?php
+
+                                $L++;
+
+                                } ?>
+                                <?php echo $L;?>  
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -198,7 +265,16 @@
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">ESTUDIANTES TOTALES EN EL SISTEMA</p>
-                                <h6 class="mb-0">25</h6>
+                                <h6 class="mb-0">
+                                <?php $U=0; 
+                                foreach($CantU->result() as $row){?>
+                                <?php
+
+                                $U++;
+
+                                } ?>
+                                <?php echo $U;?>  
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -210,14 +286,20 @@
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Pie Chart</h6>
-                            <canvas id="pie-chart"></canvas>
+                            <div id="piechart" class="align-items-center justify-content-center bg-light" style="width: 100%; height: 100%;"></div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Single Bar Chart</h6>
-                            <canvas  id="bar-chart"></canvas>
+                        <br>
+                        
+                            <br>
+                            <h6 class="mb-4">EL AVANCE SE CALCULA EN BASE A LOS EXAMENES GLOBALES REALIZADOS</h6>
+                            <p>Estos examenes globales son examenes pasados de gestiones anteriores los cuales los puedes descargar en pdf en la seccion de examenes :D</p> <br>
+                            <h6 class="text-center">RESUMEN GENERAL</h6>
+                            <p>AVANZADO:  %</p>
+                            <p>NO AVANZADO:  %</p>
+
                         </div>
                     </div>
                     <div class="col-sm-w-100 col-xl-w-100">

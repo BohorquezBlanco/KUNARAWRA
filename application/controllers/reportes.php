@@ -9,8 +9,13 @@ class Reportes extends CI_Controller {
 public function index()
 	{
 		//se va a mostrar la cantidad de preguntas que existen por lecciones//
-		$lista=$this->reportes_model->listaExaMat();//se almacena la consulta 
-		$data['infoExaMat']=$lista;//desarrollando un array relacional 
+		$data['CantC']=$this->reportes_model->idCarrera();
+		$data['CantM']=$this->reportes_model->idMateria();
+		$data['CantL']=$this->reportes_model->idLeccion();
+		$data['CantU']=$this->reportes_model->idUsuarios();	
+		$data['CantE']=$this->reportes_model->idUsuarios();	
+		$data['CantER']=$this->reportes_model->idUsuarios();	
+
 		$this->load->view('Reportes/Generales',$data);	
 	}
 
@@ -208,5 +213,6 @@ public function avance()
 
 	$this->load->view('HerramientasEstudiante/Estadistica',$data,'refresh');	
 }
+
 
 }
