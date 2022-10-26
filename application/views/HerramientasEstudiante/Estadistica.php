@@ -8,6 +8,13 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <meta http-equiv="Expires" content="0">
+ 
+ <meta http-equiv="Last-Modified" content="0">
+  
+ <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  
+ <meta http-equiv="Pragma" content="no-cache">
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -29,6 +36,7 @@
 
     <!-- Template Stylesheet -->
     <link href="<?php echo base_url(); ?>micssjs/reporte/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
@@ -167,10 +175,22 @@
                 <div class="row g-4">
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                        <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">CARRERAS</p>
-                                <h6 class="mb-0">AQUI ENTRA CARRERA</h6>
+                                <p class="mb-2">CARRERAS TOTALES INSCRITAS</p>
+                                <h6 class="mb-0">
+                                <?php 
+                                $indice=0;
+                                foreach($CantCarrera->result() as $row)
+                                  {
+                                ?>
+                           
+                                <?php
+                                $indice++;
+                                }
+                                ?>
+                                   <?php echo $indice;?>  
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -178,17 +198,41 @@
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">MATERIAS</p>
-                                <h6 class="mb-0">AQUI ENTRA MATERIAS</h6>
+                                <p class="mb-2">MATERIAS TOTALES INSCRITAS</p>
+                                <h6 class="mb-0">
+                                <?php 
+                                $indic=0;
+                                foreach($CantMat->result() as $row)
+                                  {
+                                ?>
+                           
+                                <?php
+                                $indic++;
+                                }
+                                ?>
+                                   <?php echo $indic;?>  
+                                </h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                        <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">LECCIONES</p>
-                                <h6 class="mb-0">AQUI ENTRA LECCIONES</h6>
+                                <p class="mb-2">EXAMENES GLOBALES DE LA MATERIA</p>
+                                <h6 class="mb-0">
+                                <?php 
+                                $indi=0;
+                                foreach($CantExMat->result() as $row)
+                                  {
+                                ?>
+                           
+                                <?php
+                                $indi++;
+                                }
+                                ?>
+                                   <?php echo $indi;?> 
+                                </h6> 
                             </div>
                         </div>
                     </div>
@@ -196,8 +240,20 @@
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">ESTUDIANTES EN EL SISTEMA</p>
-                                <h6 class="mb-0">25</h6>
+                                <p class="mb-2">EXAMENES GLOBALES APROBADAS</p>
+                                <h6 class="mb-0">
+                                <?php 
+                                $indi=0;
+                                foreach($CantExRe->result() as $row)
+                                  {
+                                ?>
+                           
+                                <?php
+                                $indi++;
+                                }
+                                ?>
+                                   <?php echo $indi;?> 
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -205,12 +261,12 @@
             </div>
             <!-- DATOS BASICOS END -->
             <!-- Chart Start -->
-            <div class="container-fluid pt-4 px-4">
+            <div class="container pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">SU AVANCE EN LA MATERIA</h6>
-                            <canvas id="pie-chart"></canvas>
+                            <div id="piechart" style="width: 900px; height: 500px;"></div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-6">
@@ -219,7 +275,11 @@
                             <br>
                             <br>
                             <h6 class="mb-4">EL AVANCE SE CALCULA EN BASE A LOS EXAMENES GLOBALES REALIZADOS</h6>
-                            <p>Estos examenes globales son examenes pasados de gestiones anteriores los cuales los puedes descargar en pdf en la seccion de examenes :D</p>
+                            <p>Estos examenes globales son examenes pasados de gestiones anteriores los cuales los puedes descargar en pdf en la seccion de examenes :D</p> <br>
+                            <h6 class="text-center">RESUMEN GENERAL</h6>
+                            <p>AVANZADO: 45%</p>
+                            <p>NO AVANZADO: 55%</p>
+
                             <canvas hidden id="bar-chart"></canvas>
                         </div>
                     </div>
@@ -288,6 +348,7 @@
 
     <!-- Template Javascript -->
     <script src="<?php echo base_url(); ?>micssjs/reporte/js/main.js"></script>
+    <script src="<?php echo base_url(); ?>micssjs/graficas.js"></script>
 </body>
 
 </html>

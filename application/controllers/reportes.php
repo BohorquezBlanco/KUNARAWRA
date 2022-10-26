@@ -18,6 +18,7 @@ public function index()
 public function listadoCarrerasMateriasLeccion()
 	{
 	
+
 			$this->pdf=new Pdf();
 			$this->pdf->AddPage();
 			$this->pdf->AliasNbPages();
@@ -175,9 +176,8 @@ public function listadoCarrerasMateriasLeccion()
 
 			//$idAleatorio = array_rand($idExamen, 1);
 			//$idExamen= $idExamen[$idAleatorio] 
-
-
 			$this->pdf->Output("CARRERASMATERIASLECCIONES.pdf","I");
+				
 	}
 
 
@@ -185,7 +185,28 @@ public function listadoCarrerasMateriasLeccion()
 //AVANCE Y BIBLIOGRAFIA DEL ESTUDIANTE POR CARRERA 
 public function avance()
 {
-	$this->load->view('HerramientasEstudiante/Estadistica');	
+	//aqui recupero la cantidad de carreras inscritas por el usuario
+	$idUsuario=$_POST['idUsuario'];
+	$idMateria=$_POST['idMateria'];
+
+	$data['CantCarrera']=$this->reportes_model->cantCarreraIns($idUsuario);
+
+	$data['CantMat']=$this->reportes_model->cantMatIns($idUsuario);
+
+	$data['CantExMat']=$this->reportes_model->cantExMat($idMateria);
+
+	$data['CantExRe']=$this->reportes_model->cantExRe($idMateria,$idUsuario);
+	
+	//$data['CantEx']=$this->reportes_model->cantCarreraIns($idUsuario);
+	//$data['CantAV']=$this->reportes_model->cantCarreraIns($idUsuario);
+
+	//aqui recupero la cantidad de materias inscritas por el usuario
+
+	//aqui recupero la cantidad de examenes resueltos por el usuario
+
+	//aqui recupero el total de lecciones de la materia 
+
+	$this->load->view('HerramientasEstudiante/Estadistica',$data,'refresh');	
 }
 
 }

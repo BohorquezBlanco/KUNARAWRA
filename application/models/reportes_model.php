@@ -48,4 +48,53 @@ class reportes_model extends CI_Model {
 		return $this->db->query($sql);
 	}
 	
+	//*********############################ DATOS GENERALES PARA USUARIO :D ############################***********/
+	public function cantCarreraIns($idUsuario)
+	{
+		$sql="SELECT distinct C.idCarrera,C.nombreCarrera,I.idUsuario
+		FROM carrera C
+		JOIN materia M  ON M.idCarrera=C.idCarrera
+		JOIN inscritos I ON I.idMateria=M.idMateria
+		WHERE I.idUsuario=2
+	";
+		return $this->db->query($sql);
+	}
+	public function cantMatIns($idUsuario)
+	{
+		$sql="SELECT M.nombreMateria,M.idMateria,I.idUsuario
+		FROM materia M
+		JOIN inscritos I ON I.idMateria=M.idMateria
+		WHERE I.idUsuario=$idUsuario";
+		return $this->db->query($sql);
+	}
+
+
+
+	
+	public function cantExMat($idMateria)
+	{
+		$sql="SELECT E.idExamen
+		FROM examen E
+		WHERE E.idMateria=$idMateria;";
+		return $this->db->query($sql);
+	}
+
+	public function cantExRe($idMateria,$idUsuario)
+	{
+		$sql=" SELECT  CE.idUsuario, EC.idLeccion, EC.idMateria,CE.aprorepro
+		FROM calificacionexamen CE 
+		JOIN examen EC ON EC.idExamen = CE.idExamen
+		WHERE CE.aprorepro='APROBADO' AND EC.idMateria=$idMateria AND CE.idUsuario=$idUsuario;";
+		return $this->db->query($sql);
+	}
+	//*********############################ FIN DATOS GENERALES PARA USUARIO :C###########################********/
+
+	//*********############################ DATOS GENERALES PARA ADMINISTRADOR :D ############################***********/
+	//*********############################ FIN DATOS GENERALES PARA ADMINISTRADOR :C #########################********/
+
+	//*********############################ PASTEL DE USUARIO :D ############################***********/
+	//*********############################ FIN DE PASTEL DE USUARIO :C###########################********/
+
+	//*********############################ PASTEL DE ADMINISTRADOR :D ############################***********/
+	//*********############################ FIN DE PASTEL DE ADMINISTRADOR :C#########################********/
 }

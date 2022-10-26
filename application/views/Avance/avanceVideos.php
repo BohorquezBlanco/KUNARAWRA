@@ -7,7 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+    <meta http-equiv="Expires" content="0">
+ 
+ <meta http-equiv="Last-Modified" content="0">
+  
+ <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  
+ <meta http-equiv="Pragma" content="no-cache">
     <!-- Title -->
     <title>Vizew - Blog &amp; Magazine HTML Template</title>
 
@@ -593,8 +599,37 @@
 
                             <!--***********************ir a examenes GLOBALES :D************************-->
                             <?php echo form_open_multipart('reportes/avance'); ?>
-                                <input type="text" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
-                                <input type="submit" name="buttonz" value="EXAMENES REALIZADOS" class="btn btn-warning btn-xs">
+                             <!---TOTAL EXAMENES REALIZADOS---->
+                                    <?php 
+                                    $TotalEx=0;
+                                    foreach($CantExMat->result() as $row)
+                                    {
+                                    ?>
+                                                        
+                                    <?php
+                                    $TotalEx++;
+                                    }
+                                    ?>
+                                    <!---TOTAL EXAMENES REALIZADOS---->
+
+                                    <!---TOTAL EXAMENES APROVADOS---->
+                                    <?php 
+                                    $AP=0;
+                                    foreach($CantExRe->result() as $row)
+                                    {
+                                    ?>
+                                                        
+                                    <?php
+                                    $AP++;
+                                    }
+                                    ?>
+                                    <!---TOTAL EXAMENES APROVADOS---->
+                                <input type="text" value="<?php echo $A=$TotalEx-$AP;?>">    
+                                <input type="text" value="<?php echo $B=$AP;?>">    
+
+                                <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
+                                <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                                <button class="btn btn-warning btn-xs">BIBLIOGRAFIA Y DATOS DE AVANCE</button>
                                 <?php echo form_close(); ?>
                             <!--***********************FIN DE EXAMENES GLOBALES :C************************-->
 

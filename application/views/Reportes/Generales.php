@@ -188,8 +188,12 @@
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">CARRERAS</p>
-                                <h6 class="mb-0">AQUI ENTRA CARRERA</h6>
-                            </div>
+                                <?php echo form_open_multipart('reportes/listadoCarrerasMateriasLeccion'); ?>
+                                <button> 
+                                provar
+                                </button>
+                                <?php echo form_close(); ?>
+                        </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3">

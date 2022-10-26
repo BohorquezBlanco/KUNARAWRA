@@ -156,13 +156,14 @@
         }
     });
 
-
+var i = 29;
+var j= 10;
     // Pie Chart
     var ctx5 = $("#pie-chart").get(0).getContext("2d");
     var myChart5 = new Chart(ctx5, {
         type: "pie",
         data: {
-            labels: ["COMPLETADO", "NO COMPLETADO"],
+            labels: ["AVANZADO","FALTA"],
             datasets: [{
                 backgroundColor: [
                     "rgba(0, 156, 255, .7)",
@@ -171,7 +172,7 @@
                     "rgba(0, 156, 255, .4)",
                     "rgba(0, 156, 255, .3)"
                 ],
-                data: [90, 49]
+                data: [i,j]
             }]
         },
         options: {

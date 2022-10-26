@@ -73,7 +73,16 @@ class Inscripcion extends CI_Controller {
 	{
 		$idMateria=$_POST['idMateria'];
 		$data['infolecciones']=$this->examen_model->selectexalec($idMateria);
-
+		$idUsuario=$_POST['idUsuario'];
+		$idMateria=$_POST['idMateria'];
+	
+		$data['CantCarrera']=$this->reportes_model->cantCarreraIns($idUsuario);
+	
+		$data['CantMat']=$this->reportes_model->cantMatIns($idUsuario);
+	
+		$data['CantExMat']=$this->reportes_model->cantExMat($idMateria);
+	
+		$data['CantExRe']=$this->reportes_model->cantExRe($idMateria,$idUsuario);
 		$this->session->set_userdata('idMateria',$idMateria);// variables de sesion
 		$this->load->view('Avance/avanceVideos',$data);	
 	}
