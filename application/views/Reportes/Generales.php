@@ -99,11 +99,11 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>GENERALES</a>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>CARRERAS</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>USUARIOS</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>BIBLIOGRAFIA</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>ATRAS</a>    
+                    <a href="<?php echo base_url(); ?>index.php/reportes/index" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>GENERALES</a>
+                    <a href="<?php echo base_url(); ?>index.php/reportes/index2" class="nav-item nav-link"><i class="fa fa-th me-2"></i>CARRERAS</a>
+                    <a href="<?php echo base_url(); ?>index.php/reportes/index3" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>USUARIOS</a>
+                    <a href="<?php echo base_url(); ?>index.php/reportes/index4" class="nav-item nav-link"><i class="fa fa-table me-2"></i>BIBLIOGRAFIA</a>
+                    <a href="<?php echo base_url(); ?>index.php/reportes/index5" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>ATRAS</a>    
                 </div>
             </nav>
         </div>
@@ -295,11 +295,11 @@
                         
                             <br>
                             <h6 class="mb-4">EL AVANCE SE CALCULA EN BASE A LOS EXAMENES GLOBALES REALIZADOS</h6>
-                            <p>Estos examenes globales son examenes pasados de gestiones anteriores los cuales los puedes descargar en pdf en la seccion de examenes :D</p> <br>
+                            <p>Estos examenes globales son examenes pasados de gestiones anteriores </p> <br>
                             <h6 class="text-center">RESUMEN GENERAL</h6>
-                            <p>AVANZADO:  %</p>
-                            <p>NO AVANZADO:  %</p>
-
+                            <p>AVANZADO: <?php echo ($ETR/($ET*$U))*100;?>  %</p>
+                            <p>NO AVANZADO: <?php echo 100-(($ETR/($ET*$U))*100);?>  %</p>
+                            <p>TOTAL: 100% QUE REPRESENTA: <?php echo $ET*$U;?>  EXAMENES TOTALES DEL SISTEMA</p>
                         </div>
                     </div>
                     <div class="col-sm-w-100 col-xl-w-100">

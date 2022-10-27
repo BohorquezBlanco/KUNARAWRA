@@ -127,5 +127,17 @@ class reportes_model extends CI_Model {
 
 
 	//*********############################ PASTEL DE ADMINISTRADOR :D ############################***********/
+
+public function InsGraf()
+{
+	$sql="SELECT C.nombreCarrera, count(distinct(I.idUsuario)) AS 'CANTIDAD'
+	FROM carrera C 
+	JOIN materia M ON C.idCarrera = M.idCarrera
+	JOIN inscritos I ON I.idMateria = M.idMateria
+	WHERE C.estado=1
+	group by C.idCarrera";
+	return $this->db->query($sql);
+}
+
 	//*********############################ FIN DE PASTEL DE ADMINISTRADOR :C#########################********/
 }

@@ -5,7 +5,7 @@ include_once "./vendor/autoload.php";
 
 class Reportes extends CI_Controller {
 
-////////////////------PANEL Preguntas------//////////////////// 
+////////////////------PANEL REPORTES------//////////////////// 
 public function index()
 	{
 		//se va a mostrar la cantidad de preguntas que existen por lecciones//
@@ -18,6 +18,16 @@ public function index()
 
 		$this->load->view('Reportes/Generales',$data);	
 	}
+public function index2()
+{
+	$data['CantC']=$this->reportes_model->InsGraf();
+	
+
+	$this->load->view('Reportes/Carrera',$data);	
+}
+
+
+
 
 
 public function listadoCarrerasMateriasLeccion()

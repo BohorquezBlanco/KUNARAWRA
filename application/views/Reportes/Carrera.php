@@ -8,13 +8,6 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <meta http-equiv="Expires" content="0">
- 
- <meta http-equiv="Last-Modified" content="0">
-  
- <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
-  
- <meta http-equiv="Pragma" content="no-cache">
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -28,7 +21,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="<?php echo base_url(); ?>micssjs/reporte/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="<?php
+
+use PhpParser\Node\Stmt\Label;
+
+ echo base_url(); ?>micssjs/reporte/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>micssjs/reporte/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
@@ -36,60 +33,54 @@
 
     <!-- Template Stylesheet -->
     <link href="<?php echo base_url(); ?>micssjs/reporte/css/style.css" rel="stylesheet">
-  
+
+    
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Inscritos", { role: "style" } ],
+     
+ 
+        <?php $color=0;
+         foreach($CantC->result() as $row){?>
+        
+        <?php if ($color==0){?>
+         ["<?php echo $row->nombreCarrera; ?>",<?php echo $row->CANTIDAD; ?>, "#2bc5d4"], //aqui obtendre los datos necesarios
+         <?php $color=0; }?>
 
-                                    <?php 
-                                    $TotalEx=0;
-                                    foreach($CantExMat->result() as $row)
-                                    {
-                                    ?>
-                                                        
-                                    <?php
-                                    $TotalEx++;
-                                    }
-                                    ?>
-                                    <!---TOTAL EXAMENES REALIZADOS---->
+         <?php if ($color==1){?>
+         ["<?php echo $row->nombreCarrera; ?>",<?php echo $row->CANTIDAD; ?>, "#0e8d99"], //aqui obtendre los datos necesarios
+         <?php  $color=1;  }?>
 
-                                    <!---TOTAL EXAMENES APROVADOS---->
-                                    <?php 
-                                    $AP=0;
-                                    foreach($CantExRe->result() as $row)
-                                    {
-                                    ?>
-                                                        
-                                    <?php
-                                    $AP++;
-                                    }
-                                    ?>
-                                    <!---TOTAL EXAMENES APROVADOS---->
-                                <input type="hidden" id="NR" value="<?php echo $A=$TotalEx-$AP;?>">    
-                                <input type="hidden" id="R" value="<?php echo $B=$AP;?>">    
+       <?php 
+        $color++;} ?>
+    
 
+     
+      ]);
 
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      
-      function drawChart() {
-      
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['AVANZADO',   <?php echo $AP;?> ],
-          ['NO AVANZADO', <?php echo $TotalEx-$AP;?>]
-        ]);
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
 
-        var options = {
-            title: 'AVANCE DE LA MATERIA',
-          colors: ['#2bc5d4', '#0e8d99', '#ec8f6e', '#f3b49f', '#f6c7b6']
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
+      var options = {
+        title: "INSCRIPCION POR CARRERA",
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
 </head>
 
 <body>
@@ -120,10 +111,11 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Estadisticas</a>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bibliografia</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Examenes</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Atras</a>
+                    <a href="<?php echo base_url(); ?>index.php/reportes/index" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>GENERALES</a>
+                    <a href="<?php echo base_url(); ?>index.php/reportes/index2" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>CARRERAS</a>
+                    <a href="<?php echo base_url(); ?>index.php/reportes/index3" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>USUARIOS</a>
+                    <a href="<?php echo base_url(); ?>index.php/reportes/index4" class="nav-item nav-link"><i class="fa fa-table me-2"></i>BIBLIOGRAFIA</a>
+                    <a href="<?php echo base_url(); ?>index.php/reportes/index5" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>ATRAS</a>    
                 </div>
             </nav>
         </div>
@@ -132,16 +124,6 @@
 
         <!-- Content Start -->
         <div class="content">
-
-
-
-
-
-
-
-
-
-        
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
@@ -236,86 +218,13 @@
             <!-- DATOS BASICOS -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                    <div class="col-sm-6 col-xl-3">
+                    <div class="col-sm-6 col-xl-6">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                        <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">CARRERAS TOTALES INSCRITAS</p>
+                                <p class="mb-2">EXPORTAR EN PDF</p>
                                 <h6 class="mb-0">
-                                <?php 
-                                $indice=0;
-                                foreach($CantCarrera->result() as $row)
-                                  {
-                                ?>
-                           
-                                <?php
-                                $indice++;
-                                }
-                                ?>
-                                   <?php echo $indice;?>  
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">MATERIAS TOTALES INSCRITAS</p>
-                                <h6 class="mb-0">
-                                <?php 
-                                $indic=0;
-                                foreach($CantMat->result() as $row)
-                                  {
-                                ?>
-                           
-                                <?php
-                                $indic++;
-                                }
-                                ?>
-                                   <?php echo $indic;?>  
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                        <i class="fa fa-chart-line fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">EXAMENES GLOBALES DE LA MATERIA</p>
-                                <h6 class="mb-0">
-                                <?php 
-                                $Mat=0;
-                                foreach($CantExMat->result() as $row)
-                                  {
-                                ?>
-                           
-                                <?php
-                                $Mat++;
-                                }
-                                ?>
-                                   <?php echo $Mat;?> 
-                                </h6> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">EXAMENES GLOBALES APROBADAS</p>
-                                <h6 class="mb-0">
-                                <?php 
-                                $indi=0;
-                                foreach($CantExRe->result() as $row)
-                                  {
-                                ?>
-                           
-                                <?php
-                                $indi++;
-                                }
-                                ?>
-                                   <?php echo $indi;?> 
+                                <a target="_blank" href="<?php echo base_url(); ?>index.php/reportes/listadoCarrerasMateriasLeccion"> <p class="mb-2">RESUMEN DE CARRERAS, MATERIAS Y LECCIONES </p></a>
                                 </h6>
                             </div>
                         </div>
@@ -324,31 +233,65 @@
             </div>
             <!-- DATOS BASICOS END -->
             <!-- Chart Start -->
-            <div class="container pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                       
-                            <div id="piechart" class="align-items-center justify-content-center bg-light" style="width: 100%; height: 100%;"></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4 align-items-center justify-content-center">
-                            <br>
-                            <br>
-                            <br>
-                            <h6 class="mb-4">EL AVANCE SE CALCULA EN BASE A LOS EXAMENES GLOBALES REALIZADOS</h6>
-                            <p>Estos examenes globales son examenes pasados de gestiones anteriores los cuales los puedes descargar en pdf en la seccion de examenes :D</p> <br>
-                            <h6 class="text-center">RESUMEN GENERAL</h6>
-                            <p>AVANZADO: <?php echo ($indi*100)/$Mat;?> %</p>
-                            <p>NO AVANZADO: <?php echo 100-($indi*100)/$Mat;?> %</p>
 
-                            <canvas hidden id="bar-chart"></canvas>
+<!---------grafico de carrera----------->
+
+<!---------grafico de carrera fin----------->
+
+
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="bg-light rounded h-100 p-4">
+                        <div id="columnchart_values" style="width: 100%; height: 100%;"></div>                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="bg-light rounded h-100 p-4">
+                        <br>
+        
+
+                            <br>
+                            <h6 class="mb-4">RESUMEN GENERAL</h6>
+                            <table class="table table-success table-striped">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">CARRERA</th>
+                                    <th scope="col">NUMERO DE INSCRITOS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                <?php 
+                                $c=1;
+                                $CC=0;
+                                foreach($CantC->result() as $row){?>
+                                    <tr>
+                                    <th scope="row"><?php echo $c; ?></th>
+                                    <td><?php echo $row->nombreCarrera; ?> </td>
+                                    <td><?php echo $row->CANTIDAD; ?></td>
+                                
+                                    </tr>
+                                <?php 
+                                $c++;
+                                $CC=($row->CANTIDAD)+$CC;} ?>
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>TOTAL: </td>
+                                        <td><?php echo $CC; ?></td>
+                                    </tr>
+                                 </tbody>
+                            </table>
+
+
                         </div>
                     </div>
                     <div class="col-sm-w-100 col-xl-w-100">
                         <div class="">
-                  
+                  <p> 
+                 
+                    </p>
                             <canvas hidden id="line-chart"></canvas>
                         </div>
                     </div>
@@ -411,7 +354,6 @@
 
     <!-- Template Javascript -->
     <script src="<?php echo base_url(); ?>micssjs/reporte/js/main.js"></script>
-    <script src="<?php echo base_url(); ?>micssjs/graficas.js"></script>
 </body>
 
 </html>
