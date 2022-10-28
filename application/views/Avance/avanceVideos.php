@@ -46,9 +46,16 @@
     </div>
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="<?php echo base_url(); ?>index.php/usuarios/index" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>AVANCE</h2>
-        </a>
+        <?php 
+        echo form_open_multipart('inscripcion/misCursos')
+        ?>
+        <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+        <button class="navbar-brand d-flex align-items-center px-4 px-lg-5 btn btn-outline-link nav-item nav-link">
+            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i><?php echo $this->session->userdata('nombreMateria'); ?></h2>
+        </button>
+        <?php 
+                    echo form_close();
+                ?>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -65,7 +72,7 @@
                     echo form_close();
                 ?>
       
-      <a href="https://api.whatsapp.com/send?phone=+59175999620&text=Quiero%20este%20curso%20:D" target="_blank" class="nav-item nav-link">CONTACTANOS :D</a>
+        <a href="https://api.whatsapp.com/send?phone=+59175999620&text=Quiero%20este%20curso%20:D" target="_blank" class="nav-item nav-link">CONTACTANOS :D</a>
             </div>
             <a href="<?php echo base_url(); ?>index.php/usuarios/logout" class="btn btn-primary py-4 px-lg-5 fs-5 ">CERRAR SESIÓN</a>
         </div>
@@ -541,57 +548,41 @@
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid" src="<?php echo base_url(); ?>img/course-1.jpg" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                         
-
-
-     <?php echo form_open_multipart('Inscripcion/verExamen'); ?>
-    <input type="hidden" name="idcarrera" value=""> <!--Nombre de la tabla-->
-    <input type="submit" name="buttonz" value="EXAMEN GLOBAL" class="btn btn-warning btn-xs">
-    <?php echo form_close(); ?>
-
- 
-
+                            <?php echo form_open_multipart('Inscripcion/verExamen'); ?>
+                            <input type="hidden" name="idcarrera" value=""> <!--Nombre de la tabla-->
+                            <input type="submit" name="buttonz" value="RESOLVER" class="btn btn-warning btn-xs">
+                            <?php echo form_close(); ?>
                             </div>
                         </div>
                         <div class="text-center p-2 pb-0">
-                            <h4 class="mb-2">Examen Global </h4>
-                            <p class="h6">Aqui podra dar su examen global en la que abarcan todas las lecciones</p>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
+                            <h4 class="mb-2">Resolver examen global aleatoriamente</h4>
+                            <p class="h6">Los examenes globales son examenes de gestiones pasadas</p>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid" src="<?php echo base_url(); ?>img/course-1.jpg" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                           
-
                             <!--***********************ir a examenes GLOBALES :D************************-->
                                 <?php echo form_open_multipart('Inscripcion/verExamen'); ?>
                                 <input type="text" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
                                 <input type="submit" name="buttonz" value="EXAMENES REALIZADOS" class="btn btn-warning btn-xs">
                                 <?php echo form_close(); ?>
                             <!--***********************FIN DE EXAMENES GLOBALES :C************************-->
-
-
                             </div>
                         </div>
                         <div class="text-center p-2 pb-0">
-                            <h4 class="mb-2">Examenes Realizados </h4>
-                            <p class="h6">Aqui podra ver los resultados de sus examenes dados</p>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
+                            <h4 class="mb-2">EXAMENES GLOBALES</h4>
+                            <p class="h6">Aqui podra ver todos los examenes globales de la materia los cuales son examenes pasados de gestiones anteriores</Sp>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item bg-light">
                         <div class="position-relative overflow-hidden">
@@ -600,41 +591,13 @@
                            
 
 
-                            <!--***********************ir a examenes GLOBALES :D************************-->
+                            <!--***********************ir a examenes Bibliografia y Avance :D************************-->
                             <?php echo form_open_multipart('reportes/avance'); ?>
-                             <!---TOTAL EXAMENES REALIZADOS---->
-                                    <?php 
-                                    $TotalEx=0;
-                                    foreach($CantExMat->result() as $row)
-                                    {
-                                    ?>
-                                                        
-                                    <?php
-                                    $TotalEx++;
-                                    }
-                                    ?>
-                                    <!---TOTAL EXAMENES REALIZADOS---->
-
-                                    <!---TOTAL EXAMENES APROVADOS---->
-                                    <?php 
-                                    $AP=0;
-                                    foreach($CantExRe->result() as $row)
-                                    {
-                                    ?>
-                                                        
-                                    <?php
-                                    $AP++;
-                                    }
-                                    ?>
-                                    <!---TOTAL EXAMENES APROVADOS---->
-                                <input type="text" id="NR" value="<?php echo $A=$TotalEx-$AP;?>">    
-                                <input type="text" id="R" value="<?php echo $B=$AP;?>">    
-
                                 <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
                                 <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
                                 <button class="btn btn-warning btn-xs">BIBLIOGRAFIA Y DATOS DE AVANCE</button>
                                 <?php echo form_close(); ?>
-                            <!--***********************FIN DE EXAMENES GLOBALES :C************************-->
+                            <!--***********************FIN DE BIBLIOGRAFIA Y AVANCE :C************************-->
 
 
 

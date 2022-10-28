@@ -47,9 +47,8 @@
     <div class="container ">
 
 
-    <?php echo form_open_multipart('inscripcion/calificacionEx');?>
+    <?php echo form_open_multipart('inscripcion/terminar');?>
         <div class="row justify-content-center">
-        
             <?php 
             $indice=0;
             foreach($infoExamen -> result() as $row)
@@ -69,27 +68,31 @@
                                             <!-----preguntas con radio boton---->
 
                 <div class="col-lg-8">
+                    
                     <h5><?php echo $row->pregunta; ?> </h5>
+                    <div class="input-group">
+                    <label for="">La respuesta es el inciso: </label>
+                    <p class="h3 text-danger"> <?php echo $row->correcta;?></p>
+                    </div>
+                   
                     <div class="form-check">
-                    <input class="form-check-input" value="<?php echo'A'.$indice;?>" type="radio" name="respuesta<?php echo $indice;?>" id="<?php echo'A'.$indice;?>" required>
+                    <input class="form-check-input" value="<?php echo'A'.$indice;?>" type="radio" name="respuesta<?php echo $indice;?>" id="<?php echo'A'.$indice;?>" >
                     <label class="form-check-label" for="<?php echo'A'.$indice;?>"> A) <?php echo $row->A; ?></label>
                     
-                    <input type="hidden" name="correcta[]" value="<?php echo $row->correcta.$indice;?>" > <!--aqui muestra la pregunta correcta-->
-
                     </div>
 
                     <div class="form-check">
-                    <input class="form-check-input" value="<?php echo'B'.$indice;?>" type="radio" name="respuesta<?php echo $indice;?>" id="<?php echo'B'.$indice;?>" required>
+                    <input class="form-check-input" value="<?php echo'B'.$indice;?>" type="radio" name="respuesta<?php echo $indice;?>" id="<?php echo'B'.$indice;?>" >
                     <label class="form-check-label" for="<?php echo'B'.$indice;?>"> B) <?php echo $row->B; ?></label>
                     </div>
 
                     <div class="form-check">
-                    <input class="form-check-input" value="<?php echo'C'.$indice;?>" type="radio" name="respuesta<?php echo $indice;?>" id="<?php echo'C'.$indice;?>" required>
+                    <input class="form-check-input" value="<?php echo'C'.$indice;?>" type="radio" name="respuesta<?php echo $indice;?>" id="<?php echo'C'.$indice;?>" >
                     <label class="form-check-label" for="<?php echo'C'.$indice;?>"> C) <?php echo $row->C; ?></label>
                     </div>
 
                     <div class="form-check">
-                    <input class="form-check-input" value="<?php echo'D'.$indice;?>" type="radio" name="respuesta<?php echo $indice;?>" id="<?php echo'D'.$indice;?>" required>
+                    <input class="form-check-input" value="<?php echo'D'.$indice;?>" type="radio" name="respuesta<?php echo $indice;?>" id="<?php echo'D'.$indice;?>" >
                     <label class="form-check-label" for="<?php echo'D'.$indice;?>"> D) <?php echo $row->D; ?></label>
                     </div>
                 </div>
@@ -115,9 +118,11 @@
                 <input type="hidden" name="contador" value=" <?php echo $indice; ?>"><!--CON ESTO SABREMOS CUANTAS VECES SE RECORRERA EL CICLO FOR ---->
 
                 <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>">
+
 
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            ENVIAR EXAMEN
+           TERMINAR REVISIÓN
         </button>
 
             </div>
@@ -136,13 +141,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               se enviaran los resultados
+               una vez finalizada no podra volver a revisar el examen
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Atras</button>
 
                 <button class="btn btn-primary">
-                ENVIAR RESPUESTAS
+                TERMINAR REVISIÓN
                 </button>
             </div>
             </div>

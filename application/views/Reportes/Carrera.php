@@ -113,9 +113,8 @@ use PhpParser\Node\Stmt\Label;
                 <div class="navbar-nav w-100">
                     <a href="<?php echo base_url(); ?>index.php/reportes/index" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>GENERALES</a>
                     <a href="<?php echo base_url(); ?>index.php/reportes/index2" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>CARRERAS</a>
-                    <a href="<?php echo base_url(); ?>index.php/reportes/index3" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>USUARIOS</a>
                     <a href="<?php echo base_url(); ?>index.php/reportes/index4" class="nav-item nav-link"><i class="fa fa-table me-2"></i>BIBLIOGRAFIA</a>
-                    <a href="<?php echo base_url(); ?>index.php/reportes/index5" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>ATRAS</a>    
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/Atras" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>ATRAS</a>    
                 </div>
             </nav>
         </div>

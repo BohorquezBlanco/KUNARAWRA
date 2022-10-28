@@ -81,7 +81,7 @@ class Pregunta extends CI_Controller {
 	{
 	//se va a mostrar la cantidad de preguntas que existen por lecciones//
 	$this->load->view('inc/cabeza/cabeza1');
-	$this->load->view('inc/navbar/navbar1');
+	$this->load->view('inc/navbar/navbarADM');
 	$this->load->view('inc/spinner/spinner');
 	$this->load->view('Usuarios/5areaAdm');
 	$this->load->view('inc/pie/pie1');

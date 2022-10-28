@@ -1,7 +1,4 @@
-<input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
- <h1 >Login: <?php echo $this->session->userdata('idusuario'); ?></h1>
 
-    
 
     <!-- Categories Start -->
     <div class="container-xxl py-5 category">
@@ -28,8 +25,8 @@
 
             <!-- VER MATERIAS (aqui iremos a ver las materias al que se puede inscribir)-->               
                 <?php echo form_open_multipart('inscripcion/misMaterias');?>
-                <input type="text" name="idCarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
-                <input type="text" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                <input type="hidden" name="idCarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
+                <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
                 <input type="submit" value="MATERIAS INSCRITAS" class="btn btn-primary btn-xs">            
                 <?php echo form_close(); ?>
             <!-- VER MATERIAS "FIN" -->  

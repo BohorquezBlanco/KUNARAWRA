@@ -120,10 +120,19 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Estadisticas</a>
+                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Estadisticas</a>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bibliografia</a>
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Examenes</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Atras</a>
+                  
+                    <?php echo form_open_multipart('inscripcion/avanceVideos')?>
+                        <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                        <input type="hidden" name="nombreMateria" value="<?php echo $this->session->userdata('nombreMateria'); ?>">
+                        <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>">
+
+                        <button type="submit" class="btn btn-outline-link nav-item nav-link" >
+                        <a  class="nav-item nav-link"><i class="fa fa-table me-2"></i>Atras</a>
+                        </button>
+                    <?php echo form_close(); ?>
                 </div>
             </nav>
         </div>

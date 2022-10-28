@@ -72,6 +72,7 @@ class Inscripcion extends CI_Controller {
 	public function avanceVideos()
 	{
 		$idMateria=$_POST['idMateria'];
+		$nombreMateria=$_POST['nombreMateria'];
 		$data['infolecciones']=$this->examen_model->selectexalec($idMateria);
 		$idUsuario=$_POST['idUsuario'];
 		$idMateria=$_POST['idMateria'];
@@ -84,6 +85,9 @@ class Inscripcion extends CI_Controller {
 	
 		$data['CantExRe']=$this->reportes_model->cantExRe($idMateria,$idUsuario);
 		$this->session->set_userdata('idMateria',$idMateria);// variables de sesion
+
+		$this->session->set_userdata('nombreMateria',$nombreMateria);// variables de sesion
+
 		$this->load->view('Avance/avanceVideos',$data);	
 	}
 
@@ -151,26 +155,35 @@ public function calificacionEx()
 	   $aprorepro="REPROBADO";
 	   $data['aprorepro']=$aprorepro;
 	}
-	
-
 
 	$data['idUsuario']=$_POST['idUsuario'];
 	$data['calificacion']=$calificacion;
-	$data['idExamen']=79;
-	$this->inscripcion_model->examen($data);
+	$data['idExamen']=$_POST['idExamen'];
+	$lista=$this->inscripcion_model->examen($data);
 
+	$data['infoExamen']=$lista;//desarrollando un array relacional 
 
-	//aqui mandaria de nuevo atras :D
-	$idUsuario=$_POST['idUsuario'];
-	
-	$lista=$this->inscripcion_model->selectCalEx($idUsuario);//se almacena la consulta 
-	$data['infoexamenes']=$lista;//desarrollando un array relacional 
-	//en aqui se acumula informacion ;	
-	$this->load->view('inc/cabeza/cabeza1');
-	$this->load->view('inc/navbar/navbar2');	
-	$this->load->view('Avance/visualizarExamen',$data);
-	$this->load->view('inc/pie/pie1');	
+		$this->load->view('Avance/visualizarNota',$data);
 }
+
+	function terminar()
+	{
+		$idMateria=$_POST['idMateria'];
+	
+
+		$data['infolecciones']=$this->examen_model->selectexalec($idMateria);
+
+
+		$this->load->view('Avance/avanceVideos',$data);	
+	}
+
+	function revisar()
+	{
+		$idExamen=$_POST['idExamen'];
+		$data['infoExamen']=$this->inscripcion_model->selectexarev($idExamen);
+
+		$this->load->view('Avance/revision',$data);	
+	}
 
 	function verExamen()
 	{
@@ -182,6 +195,23 @@ public function calificacionEx()
 		$this->load->view('inc/cabeza/cabeza1');
 		$this->load->view('inc/navbar/navbar2');	
 		$this->load->view('Avance/visualizarExamen',$data);
+		$this->load->view('inc/pie/pie1');	
+	}
+	//aqui se crea el examen para luego ser resuelto
+	function creacionExGs()
+	{
+		$data['calificacion']=0;
+		$data['aprorepro']='REPROBADO';
+		$data['idExamen']=$_POST['idExamen'];
+		$data['idUsuario']=$_POST['idUsuario'];
+
+		$lista=$this->inscripcion_model->selectExG($data);//se almacena la consulta 
+
+		$data['infoexamenes']=$lista;//desarrollando un array relacional 
+
+		$this->load->view('inc/cabeza/cabeza1');
+		$this->load->view('inc/navbar/navbar2');	
+		$this->load->view('Avance/visualizarExamenG',$data);
 		$this->load->view('inc/pie/pie1');	
 	}
 

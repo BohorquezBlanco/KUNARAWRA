@@ -5,7 +5,7 @@ include_once "./vendor/autoload.php";
 
 class Reportes extends CI_Controller {
 
-////////////////------PANEL REPORTES------//////////////////// 
+////////////////------PANEL REPORTES PARA EL ADMINISTRADOR DE LA PAGINA------//////////////////// 
 public function index()
 	{
 		//se va a mostrar la cantidad de preguntas que existen por lecciones//
@@ -197,7 +197,8 @@ public function listadoCarrerasMateriasLeccion()
 
 
 
-//AVANCE Y BIBLIOGRAFIA DEL ESTUDIANTE POR CARRERA 
+////////////////------PANEL REPORTES PARA EL USUARIO DE LA PAGINA------//////////////////// 
+
 public function avance()
 {
 	//aqui recupero la cantidad de carreras inscritas por el usuario
@@ -211,18 +212,10 @@ public function avance()
 	$data['CantExMat']=$this->reportes_model->cantExMat($idMateria);
 
 	$data['CantExRe']=$this->reportes_model->cantExRe($idMateria,$idUsuario);
-	
-	//$data['CantEx']=$this->reportes_model->cantCarreraIns($idUsuario);
-	//$data['CantAV']=$this->reportes_model->cantCarreraIns($idUsuario);
-
-	//aqui recupero la cantidad de materias inscritas por el usuario
-
-	//aqui recupero la cantidad de examenes resueltos por el usuario
-
-	//aqui recupero el total de lecciones de la materia 
 
 	$this->load->view('HerramientasEstudiante/Estadistica',$data,'refresh');	
 }
+
 
 
 }

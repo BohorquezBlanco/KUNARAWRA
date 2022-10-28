@@ -1,5 +1,4 @@
-<input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
- <h1 >Login: <?php echo $this->session->userdata('idusuario'); ?></h1>
+
 
     
 

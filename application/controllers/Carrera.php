@@ -9,6 +9,9 @@ class Carrera extends CI_Controller {
 		$lista=$this->carrera_model->listacarreras();//se almacena la consulta 
 		$data['carrera']=$lista;//desarrollando un array relacional 
 		//en aqui se acumula informacion 
+		$this->load->view('inc/cabeza/cabeza1');	
+		$this->load->view('inc/spinner/spinner');	
+		$this->load->view('inc/navbar/navbarC');	
 		$this->load->view('Carreras/carreras',$data);	
 	}
 

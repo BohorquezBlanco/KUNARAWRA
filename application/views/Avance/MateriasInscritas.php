@@ -1,7 +1,4 @@
-<input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
- <h1 >Login: <?php echo $this->session->userdata('idusuario'); ?></h1>
 
-    
 
     <!-- Categories Start -->
     <div class="container-xxl py-5 category">
@@ -28,9 +25,11 @@
 
             <!-- VER MATERIAS (aqui iremos a ver las materias al que se puede inscribir)-->               
                 <?php echo form_open_multipart('inscripcion/avanceVideos');?>
-                <input type="text" name="idMateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
-                <input type="text" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                <input type="hidden" name="idMateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
+                <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                <input type="hidden" name="nombreMateria" value="<?php echo $row->nombreMateria; ?>"> <!--Nombre de la tabla-->
                 <input type="submit" value="VAMOS A REFORZAR" class="btn btn-primary btn-xs">            
+ 
                 <?php echo form_close(); ?>
             <!-- VER MATERIAS "FIN" -->  
 
@@ -38,6 +37,7 @@
                         </div>
                         <div class="text-center p-2 pb-0">
                             <h4 class="mb-2"> <?php echo $row->nombreMateria; ?></h4>
+
                             <p><?php echo $row->descripcion; ?></p>
                         </div>
                         <div class="d-flex border-top">

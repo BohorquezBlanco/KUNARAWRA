@@ -101,7 +101,15 @@ public function selectMaterias()
 //aqui se califica el examen
 public function examen($data)
 {
-	$this->db->insert('calificacionexamen',$data);  
+	$this->db->insert('calificacionexamen',$data); 
+
+	$idExamen=$this->db->insert_id(); //recuper id de nueva muestra creada
+
+	$this->db->select('*'); //select * from 
+	$this->db->from('calificacionexamen'); //tabla
+	$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+	$this->db->where('idCalificacion',$idExamen);//devuelve la lista solo lso que tienen 1 
+	return $this->db->get(); //devolucion del resultado de la consulta 
 }
 
 
@@ -115,6 +123,31 @@ public function selectExGlo($idMateria)
     WHERE E.idLeccion=0 AND E.idMateria=$idMateria";
 	return $this->db->query($sql);
 }
+
+public function selectexarev($idExamen)
+{
+	$sql="SELECT  E.nombreExamen,E.idExamen,E.idLeccion,P.correcta,P.pregunta,P.A,P.B,P.C,P.D
+	FROM examen E
+	JOIN preguntasexamen PE ON PE.idExamen=E.idExamen
+	JOIN pregunta P ON P.idPregunta=PE.idPregunta
+	WHERE  E.idExamen=$idExamen";
+	return $this->db->query($sql);
+}
+
+public function selectExG($data)
+{
+	
+	$this->db->insert('calificacionexamen',$data); 
+
+	$idExamen=$this->db->insert_id(); //recuper id de nueva muestra creada
+
+	$this->db->select('*'); //select * from 
+	$this->db->from('calificacionexamen'); //tabla
+	$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+	$this->db->where('idCalificacion',$idExamen);//devuelve la lista solo lso que tienen 1 
+	return $this->db->get(); //devolucion del resultado de la consulta
+}
+
 
 
 }

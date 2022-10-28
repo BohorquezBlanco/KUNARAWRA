@@ -52,7 +52,7 @@
         
             <?php 
             $indice=0;
-            foreach($infoExamen -> result() as $row)
+            foreach($infoExamenG -> result() as $row)
             {
             ?>
                 <?php 

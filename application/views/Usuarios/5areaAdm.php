@@ -1,18 +1,12 @@
 
 
     <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header">
-        <div class="container py-5">
+    <div class="container-fluid bg-primary py-5 mb-2 page-header">
+        <div class="container py-4">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
                     <h1 class="display-3 text-white animated slideInDown">Area Administrativa</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Inicio</a></li>
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Noticias</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Jose Luis</li>
-                        </ol>
-                    </nav>
+
                 </div>
             </div>
         </div>
@@ -50,18 +44,6 @@
                     </a>
                     
                 </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <a href="">
-                         <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
-                            <h5 class="mb-3">Libros y Textos</h5>
-                            <p>Aqui podra añadir,ver y editar los libros si es necesario</p>
-                        </div>
-                    </div>
-                    </a>
-                   
-                </div>
 
                 <!---INGRESAR A LA CREACION DE PREGUNTAS--->
                 <div class="col-lg-3 col-sm-6 wow fadeInUp " data-wow-delay="0.7s">
@@ -87,6 +69,18 @@
                     </div>
                     </a>
                     
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <a href="">
+                         <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
+                            <h5 class="mb-3">Libros y Textos</h5>
+                            <p>Aqui podra añadir,ver y editar los libros si es necesario</p>
+                        </div>
+                    </div>
+                    </a>
+                   
                 </div>
             </div>
         </div>

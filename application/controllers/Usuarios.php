@@ -50,7 +50,7 @@ class Usuarios extends CI_Controller {
 	public function AreaAdm()
 	{
 		$this->load->view('inc/cabeza/cabeza1');
-		$this->load->view('inc/navbar/navbar1');
+		$this->load->view('inc/navbar/navbarADM');
 		$this->load->view('inc/spinner/spinner');
 		$this->load->view('Usuarios/5areaAdm');
 		$this->load->view('inc/pie/pie1');	

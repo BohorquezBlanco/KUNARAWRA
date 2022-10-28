@@ -9,14 +9,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="<?php echo base_url(); ?>index.php/usuarios/inicioUsuario" class="nav-item nav-link active">Inicio</a>
-                <a href="<?php echo base_url(); ?>index.php/Inscripcion/explorar" class="nav-item nav-link">Cursos</a>
+                <a href="<?php echo base_url(); ?>index.php/usuarios/AreaAdm" class="nav-item nav-link">Inicio</a>
+                <a href="<?php echo base_url(); ?>index.php/Carrera/index" class="nav-item nav-link active">CARRERA</a>
                 
                 <?php 
                     echo form_open_multipart('inscripcion/misCursos')
                 ?>
-                <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-                <button type="submit" class="btn btn-outline-link nav-item nav-link" ><a>Mis Cursos</a></button>
+                <button type="submit" class="btn btn-outline-link nav-item nav-link disabled" ><a>MATERIAS</a></button>
+                <?php 
+                    echo form_close();
+                ?>
+
+                <?php 
+                    echo form_open_multipart('inscripcion/misCursos')
+                ?>
+                <button type="submit" class="btn btn-outline-link nav-item nav-link disabled" ><a>LECCIONES</a></button>
                 <?php 
                     echo form_close();
                 ?>
