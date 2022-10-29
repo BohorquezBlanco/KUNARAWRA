@@ -40,12 +40,12 @@
     <div class="container">
         <div class="row g-4 justify-content-center"> 
                     <div class="section-heading">
-                        <h4 class="text-center">EXAMEN PASADO</h4>
+                        <h4 class="text-center">REVISIÓN DE EXAMEN</h4>
                         <div class="line"></div>
                     </div>  
                 <?php 
                     $indice=1;
-                    foreach($infoexamenes -> result() as $row)
+                    foreach($infoExamen -> result() as $row)
                     {
                 ?>  
                   <!-- Section Heading -->
@@ -54,14 +54,22 @@
                     <div class="card text-bg-dark">
                     <img src="<?php echo base_url(); ?>img/resultado.jpg" class="card-img " alt="..." height="450px">
                         <div class="card-img-overlay p-4">
-                            <h5 class="card-title text-center"><?php echo $row->nombreExamen; ?> </h5>
-                            <p class="card-text">DESCRIPCION: <?php echo $row->descripcion ;?></p>
+                            <h4 class="card-title text-center">Examen Global</h4> <br> <br>
+                            <p class="card-text h5">CALIFICACION: <?php echo $row->calificacion; ?> <br> <br>
+                            <p class="card-text h5">ESTADO: <?php echo $row->aprorepro ?></p>
+                           
                             <br>
 
-                            <?php echo form_open_multipart('Inscripcion/creacionExGs'); ?>
-                            
+                            <?php echo form_open_multipart('Inscripcion/revisar'); ?>
+                            <input type="hidden" name="idExamen" value=" <?php echo $row->idExamen; ?>">
                             <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-                            <input type="submit" name="buttonz" value="RESOLVER" class="btn btn-warning btn-xs">
+                            <input type="submit" name="buttonz" value="REVISION DE EXAMEN" class="btn btn-warning btn-xs">
+                            <?php echo form_close(); ?> <br>
+                            
+                            <?php echo form_open_multipart('Inscripcion/terminar'); ?>
+                            <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                            <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>">
+                            <input type="submit" name="buttonz" value="TERMINAR REVISION" class="btn btn-warning btn-xs">
                             <?php echo form_close(); ?> <br>
                         </div>
                     </div>

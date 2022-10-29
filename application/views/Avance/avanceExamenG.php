@@ -47,12 +47,12 @@
     <div class="container ">
 
 
-    <?php echo form_open_multipart('inscripcion/calificacionEx');?>
+    <?php echo form_open_multipart('inscripcion/calificacionExG');?>
         <div class="row justify-content-center">
         
             <?php 
             $indice=0;
-            foreach($infoExamenG -> result() as $row)
+            foreach($infoExamen -> result() as $row)
             {
             ?>
                 <?php 
@@ -144,6 +144,7 @@
                 <button class="btn btn-primary">
                 ENVIAR RESPUESTAS
                 </button>
+                
             </div>
             </div>
         </div>

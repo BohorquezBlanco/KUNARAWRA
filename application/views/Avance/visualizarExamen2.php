@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row g-4 justify-content-center"> 
                     <div class="section-heading">
-                        <h4 class="text-center">EXAMENES GLOBALES</h4>
-                        <p class="text-center">Estos examenes globales son examenes pasados de gestiones anteriores</p>
+                        <h4 class="text-center">EXAMENES GLOBALES REALIZADOS</h4>
+                        <p class="text-center">PUEDES VOLVERLOS A RESOLVER :D</p>
                         <div class="line"></div>
                     </div>  
                 <?php 
@@ -22,15 +22,17 @@
                     <img src="<?php echo base_url(); ?>img/resultado.jpg" class="card-img " alt="..." height="450px">
                         <div class="card-img-overlay p-4">
                             <h5 class="card-title text-center"><?php echo $row->nombreExamen; ?> </h5>
-                            <p class="card-text">DESCRIPCION: <?php echo $row->descripcion ;?></p>
+                            <p class="card-text h5"> <?php echo $row->descripcion ;?></p><br>
+                            <p class="card-text h4">CALIFICACIÓN: <?php echo $row->calificacion ;?></p>
+                            <p class="card-text h4">ESTADO: <?php echo $row->aprorepro;?></p>
                             <br>
 
-                            <?php echo form_open_multipart('Inscripcion/creacionExGs'); ?>
+                            <?php echo form_open_multipart('Inscripcion/UPDATE'); ?>
                             <input type="text" name="idExamen" value="<?php echo $row->idExamen; ?>">
                             <input type="text" name="idLeccion" value="<?php echo $row->idLeccion; ?>">
                             <input type="text" name="idMateria" value="<?php echo $row->idMateria; ?>">
                             <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-                            <input type="submit" name="buttonz" value="RESOLVER" class="btn btn-warning btn-xs">
+                            <input type="submit" name="buttonz" value="VOLVER A RESOLVER" class="btn btn-warning btn-xs">
                             <?php echo form_close(); ?> <br>
                         </div>
                     </div>

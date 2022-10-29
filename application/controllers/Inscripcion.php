@@ -197,22 +197,83 @@ public function calificacionEx()
 		$this->load->view('Avance/visualizarExamen',$data);
 		$this->load->view('inc/pie/pie1');	
 	}
+	function verExamenR()
+	{
+		$idMateria=$_POST['idMateria'];
+
+		$lista=$this->inscripcion_model->selectExGloR($idMateria);//se almacena la consulta 
+		$data['infoexamenes']=$lista;//desarrollando un array relacional 
+		//en aqui se acumula informacion ;	
+		$this->load->view('inc/cabeza/cabeza1');
+		$this->load->view('inc/navbar/navbar2');	
+		$this->load->view('Avance/visualizarExamen2',$data);
+		$this->load->view('inc/pie/pie1');	
+	}
+
+
+
+
+
+
+	
 	//aqui se crea el examen para luego ser resuelto
 	function creacionExGs()
 	{
-		$data['calificacion']=0;
-		$data['aprorepro']='REPROBADO';
-		$data['idExamen']=$_POST['idExamen'];
-		$data['idUsuario']=$_POST['idUsuario'];
-
-		$lista=$this->inscripcion_model->selectExG($data);//se almacena la consulta 
-
-		$data['infoexamenes']=$lista;//desarrollando un array relacional 
-
+		//aqui atrapo el id de la leccion del examen que voy a resolver
+		$idLeccion=0;
+		$idExamen=$_POST['idExamen'];
+		
+		$lista2=$this->inscripcion_model->selectExamen2($idLeccion,$idExamen);//se almacena la consulta 
+		$data['infoExamen']=$lista2;//desarrollando un array relacional 
 		$this->load->view('inc/cabeza/cabeza1');
 		$this->load->view('inc/navbar/navbar2');	
-		$this->load->view('Avance/visualizarExamenG',$data);
+		$this->load->view('Avance/avanceExamenG',$data);
 		$this->load->view('inc/pie/pie1');	
 	}
+
+
+	public function calificacionExG()
+{
+	$contador=$_POST['contador'];//CANTIDAD DE PREGUNTAS
+	$correcta=$_POST['correcta']; //ARRAY DE PREGUNTAS CORRECTAS
+	
+	$nota=100/$contador;
+	$calificacion=0;
+
+    for($i=0;$i<count($correcta);$i++)
+    {
+	
+		$respuesta=$_POST['respuesta'.$i];//array de respuestas
+	
+	
+
+		if ($respuesta==$correcta[$i]) 
+		{
+		$calificacion=$calificacion+$nota;
+		} else {
+		$calificacion=$calificacion+0;
+		}	
+    }
+	if ($calificacion>=51) 
+	{
+		$aprorepro="APROBADO";
+		$data['aprorepro']=$aprorepro;
+	}
+	else
+	{
+	   $aprorepro="REPROBADO";
+	   $data['aprorepro']=$aprorepro;
+	}
+
+	$data['idUsuario']=$_POST['idUsuario'];
+	$data['calificacion']=$calificacion;
+	$data['idExamen']=$_POST['idExamen'];
+	$lista=$this->inscripcion_model->examen($data);
+
+	$data['infoExamen']=$lista;//desarrollando un array relacional 
+
+		$this->load->view('Avance/visualizarNotaG',$data);
+}
+
 
 }

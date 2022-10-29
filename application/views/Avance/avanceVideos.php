@@ -549,13 +549,13 @@
                             <img class="img-fluid" src="<?php echo base_url(); ?>img/course-1.jpg" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                             <?php echo form_open_multipart('Inscripcion/verExamen'); ?>
-                            <input type="hidden" name="idcarrera" value=""> <!--Nombre de la tabla-->
-                            <input type="submit" name="buttonz" value="RESOLVER" class="btn btn-warning btn-xs">
-                            <?php echo form_close(); ?>
+                                <input type="text" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
+                                <input type="submit" name="buttonz" value="EXAMENES REALIZADOS" class="btn btn-warning btn-xs">
+                                <?php echo form_close(); ?>
                             </div>
                         </div>
                         <div class="text-center p-2 pb-0">
-                            <h4 class="mb-2">Resolver examen global aleatoriamente</h4>
+                            <h4 class="mb-2">Examenes globales</h4>
                             <p class="h6">Los examenes globales son examenes de gestiones pasadas</p>
                         </div>
                     </div>
@@ -568,16 +568,17 @@
                             <img class="img-fluid" src="<?php echo base_url(); ?>img/course-1.jpg" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                             <!--***********************ir a examenes GLOBALES :D************************-->
-                                <?php echo form_open_multipart('Inscripcion/verExamen'); ?>
+                                <?php echo form_open_multipart('Inscripcion/verExamenR'); ?>
                                 <input type="text" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
                                 <input type="submit" name="buttonz" value="EXAMENES REALIZADOS" class="btn btn-warning btn-xs">
                                 <?php echo form_close(); ?>
+                                
                             <!--***********************FIN DE EXAMENES GLOBALES :C************************-->
                             </div>
                         </div>
                         <div class="text-center p-2 pb-0">
-                            <h4 class="mb-2">EXAMENES GLOBALES</h4>
-                            <p class="h6">Aqui podra ver todos los examenes globales de la materia los cuales son examenes pasados de gestiones anteriores</Sp>
+                            <h4 class="mb-2">EXAMENES GLOBALES REALIZADOS</h4>
+                            <p class="h6">Aqui podra ver todos los examenes globales que ha resuelto</Sp>
                         </div>
                     </div>
                 </div>
@@ -593,7 +594,7 @@
 
                             <!--***********************ir a examenes Bibliografia y Avance :D************************-->
                             <?php echo form_open_multipart('reportes/avance'); ?>
-                                <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
+                                <input type="text" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
                                 <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
                                 <button class="btn btn-warning btn-xs">BIBLIOGRAFIA Y DATOS DE AVANCE</button>
                                 <?php echo form_close(); ?>
