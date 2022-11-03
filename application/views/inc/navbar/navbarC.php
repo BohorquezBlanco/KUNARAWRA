@@ -1,6 +1,6 @@
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0  navbar-fixed-top">
         <a href="<?php echo base_url(); ?>index.php/usuarios/index" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>KUNARAWRA</h2>
         </a>
@@ -28,7 +28,6 @@
                     echo form_close();
                 ?>
                    
-                <a href="https://api.whatsapp.com/send?phone=+59175999620&text=Quiero%20este%20curso%20:D" target="_blank" class="nav-item nav-link">Contactanos :D</a>
                 <a href="<?php echo base_url(); ?>index.php/usuarios/logout" class="btn btn-primary py-4 px-lg-5 fs-5 ">CERRAR SESIÓN</a>
             </div>
         

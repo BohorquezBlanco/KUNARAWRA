@@ -12,10 +12,12 @@ class Materia_model extends CI_Model {
 
 	public function listamaterias($idcarrera)
 	{
-		$this->db->select('*'); //select * from 
+		$this->db->select('materia.idMateria,materia.nombreMateria,materia.descripcion,materia.fechaRegistro,materia.fechaActualizacion,materia.estado,materia.idCarrera,carrera.nombreCarrera'); //select * from 
 		$this->db->from('materia'); //tabla
-		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
-		$this->db->where('idCarrera',$idcarrera);//devuelve la lista solo lso que tienen 1
+		$this->db->join('carrera','carrera.idCarrera=materia.idCarrera');//devuelve la lista solo lso que tienen 1
+
+		$this->db->where('materia.estado','1');//devuelve la lista solo lso que tienen 1 
+		$this->db->where('materia.idCarrera',$idcarrera);//devuelve la lista solo lso que tienen 1
 
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}

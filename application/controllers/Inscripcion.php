@@ -73,17 +73,13 @@ class Inscripcion extends CI_Controller {
 	{
 		$idMateria=$_POST['idMateria'];
 		$nombreMateria=$_POST['nombreMateria'];
-		$data['infolecciones']=$this->examen_model->selectexalec($idMateria);
+		
+		$data['infolecciones']=$this->examen_model->selectexalec2($idMateria);
+		
+
 		$idUsuario=$_POST['idUsuario'];
 		$idMateria=$_POST['idMateria'];
 	
-		$data['CantCarrera']=$this->reportes_model->cantCarreraIns($idUsuario);
-	
-		$data['CantMat']=$this->reportes_model->cantMatIns($idUsuario);
-	
-		$data['CantExMat']=$this->reportes_model->cantExMat($idMateria);
-	
-		$data['CantExRe']=$this->reportes_model->cantExRe($idMateria,$idUsuario);
 		$this->session->set_userdata('idMateria',$idMateria);// variables de sesion
 
 		$this->session->set_userdata('nombreMateria',$nombreMateria);// variables de sesion
@@ -171,7 +167,7 @@ public function calificacionEx()
 		$idMateria=$_POST['idMateria'];
 	
 
-		$data['infolecciones']=$this->examen_model->selectexalec($idMateria);
+		$data['infolecciones']=$this->examen_model->selectexalec2($idMateria);
 
 
 		$this->load->view('Avance/avanceVideos',$data);	
@@ -275,5 +271,70 @@ public function calificacionEx()
 		$this->load->view('Avance/visualizarNotaG',$data);
 }
 
+//################################################ UPLOAD ##################
+function creacionExGsR()
+{
+	//aqui atrapo el id de la leccion del examen que voy a resolver
+	$idLeccion=0;
+	$idExamen=$_POST['idExamen'];
+	
+	$lista2=$this->inscripcion_model->selectExamen22($idLeccion,$idExamen);//se almacena la consulta 
+	$data['infoExamen']=$lista2;//desarrollando un array relacional 
+	$this->load->view('inc/cabeza/cabeza1');
+	$this->load->view('inc/navbar/navbar2');	
+	$this->load->view('Avance/avanceExamenGR',$data);
+	$this->load->view('inc/pie/pie1');	
+}
+
+
+
+
+public function calificacionExGR()
+{
+	$contador=$_POST['contador'];//CANTIDAD DE PREGUNTAS
+	$correcta=$_POST['correcta']; //ARRAY DE PREGUNTAS CORRECTAS
+	
+	$nota=100/$contador;
+	$calificacion=0;
+
+    for($i=0;$i<count($correcta);$i++)
+    {
+	
+		$respuesta=$_POST['respuesta'.$i];//array de respuestas
+	
+	
+
+		if ($respuesta==$correcta[$i]) 
+		{
+		$calificacion=$calificacion+$nota;
+		} else {
+		$calificacion=$calificacion+0;
+		}	
+    }
+	if ($calificacion>=51) 
+	{
+		$aprorepro="APROBADO";
+		$data['aprorepro']=$aprorepro;
+	}
+	else
+	{
+	   $aprorepro="REPROBADO";
+	   $data['aprorepro']=$aprorepro;
+	}
+
+
+	$idCalificacion=$_POST['idCalificacion'];//muy importante
+
+	$data['idUsuario']=$_POST['idUsuario'];
+	$data['calificacion']=$calificacion;
+	$data['idExamen']=$_POST['idExamen'];
+
+	$this->inscripcion_model->UPLOAD($data,$idCalificacion);
+
+	$lista=$this->inscripcion_model->examen22($idCalificacion);
+
+	$data['infoExamen']=$lista;//desarrollando un array relacional 
+	$this->load->view('Avance/visualizarNotaG',$data);
+}
 
 }

@@ -1,4 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <title>CarrerasVista</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="../img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+ <!-- LIBRERIA PARA EL ESTILO-->
+<link href="<?php echo base_url(); ?>micssjs/lib/animate/animate.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>micssjs/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+<!-- BOOTSTAP.MIN CUSTOMIZADO POR EL TEMPLATE -->
+<link href="<?php echo base_url(); ?>micssjs/css/bootstrapmin.css" rel="stylesheet">  
+
+<!-- TEMPLATE STYLE -->
+<link href="<?php echo base_url(); ?>micssjs/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    
 
 
     <!-- Header End -->
@@ -6,8 +40,7 @@
     <div class="container">
         <div class="row g-4 justify-content-center"> 
                     <div class="section-heading">
-                        <h4 class="text-center">EXAMENES GLOBALES</h4>
-                        <p class="text-center">Estos examenes globales son examenes pasados de gestiones anteriores</p>
+                        <h4 class="text-center">EXAMEN PASADO</h4>
                         <div class="line"></div>
                     </div>  
                 <?php 
@@ -26,9 +59,7 @@
                             <br>
 
                             <?php echo form_open_multipart('Inscripcion/creacionExGs'); ?>
-                            <input type="hidden" name="idExamen" value="<?php echo $row->idExamen; ?>">
-                            <input type="hidden" name="idLeccion" value="<?php echo $row->idLeccion; ?>">
-                            <input type="hidden" name="idMateria" value="<?php echo $row->idMateria; ?>">
+                            
                             <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
                             <input type="submit" name="buttonz" value="RESOLVER" class="btn btn-warning btn-xs">
                             <?php echo form_close(); ?> <br>

@@ -45,5 +45,16 @@ public function selectexalec($idMateria)
 
 }
 
+public function selectexalec2($idMateria)
+{
+  $sql="SELECT distinct E.idLeccion,L.nombreLeccion,L.descripcion,M.idMateria,L.urlVideo
+  FROM examen E
+  JOIN leccion L  ON L.idLeccion=E.idLeccion
+  JOIN materia M  ON M.idMateria=L.idMateria
+  WHERE M.idMateria=$idMateria AND E.estado=1 ;";
+	return $this->db->query($sql);
+
+}
+
 
 }

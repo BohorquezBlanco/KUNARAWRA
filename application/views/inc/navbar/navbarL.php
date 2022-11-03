@@ -18,15 +18,18 @@
                     <input type="hidden" name="idcarrera" value="<?php echo $this->session->userdata('idCarrera'); ?>"> <!--Nombre de la tabla-->
                     <input type="hidden" name="nombreCarrera" value="<?php echo $this->session->userdata('nombreCarrera'); ?>"> <!--Nombre de la tabla-->
 
-                <button type="submit" class="btn btn-outline-link nav-item nav-link active" ><a>MATERIAS</a></button>
+                <button type="submit" class="btn btn-outline-link nav-item nav-link " ><a>MATERIAS</a></button>
                 <?php 
                     echo form_close();
                 ?>
 
                 <?php 
-                    echo form_open_multipart('inscripcion/misCursos')
+                    echo form_open_multipart('leccion/index')
                 ?>
-                <button type="submit" class="btn btn-outline-link nav-item nav-link disabled" ><a>LECCIONES</a></button>
+                    <input type="hidden" name="nombreMateria" value="<?php echo $this->session->userdata('nombreMateria'); ?>"> <!--Nombre de la tabla-->
+                    <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
+
+                <button type="submit" class="btn btn-outline-link nav-item nav-link active" > <a>LECCIONES</a> </button>
                 <?php 
                     echo form_close();
                 ?>

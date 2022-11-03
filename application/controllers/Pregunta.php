@@ -73,10 +73,6 @@ class Pregunta extends CI_Controller {
 	}
 
 
-
-
-
-
 	public function Atras()
 	{
 	//se va a mostrar la cantidad de preguntas que existen por lecciones//

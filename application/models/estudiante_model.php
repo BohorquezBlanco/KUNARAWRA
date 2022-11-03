@@ -10,6 +10,16 @@ class Estudiante_model extends CI_Model {
 		$this->db->select('*'); //select * from 
 		$this->db->from('usuario'); //tabla
 		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+		$this->db->where('tipo',1);//devuelve la lista solo lso que tienen 1 
+		return $this->db->get(); //devolucion del resultado de la consulta 
+	}
+	public function listaestudiantes2()
+	{
+		$this->db->select('*'); //select * from 
+		$this->db->from('usuario'); //tabla
+		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+		$this->db->where('tipo',2);//devuelve la lista solo lso que tienen 1 
+
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
 

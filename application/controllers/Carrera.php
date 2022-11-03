@@ -17,6 +17,9 @@ class Carrera extends CI_Controller {
 
 public function formcarrera()
 {
+	$this->load->view('inc/cabeza/cabeza1');	
+	$this->load->view('inc/spinner/spinner');	
+	$this->load->view('inc/navbar/navbarC');	
 	$this->load->view('Carreras/agregarCarrera');	
 }
 
@@ -26,8 +29,8 @@ public function formcarrera()
 	public function agregarbd()
 	{
 		//nombre de la columna de la base dedatos y el otro como esta en formulario
-	$data['nombreCarrera']=$_POST['nombrecarrera'];
-	$data['descripcion']=$_POST['descripcioncarrera'];
+	$data['nombreCarrera']=strtoupper($_POST['nombrecarrera']);
+	$data['descripcion']=strtoupper($_POST['descripcioncarrera']);
 
 
 	$lista=$this->carrera_model->agregarcarrera($data);//se almacena la consulta 
@@ -39,6 +42,10 @@ public function formcarrera()
 {
 	$idcarrera=$_POST['idcarrera'];
 	$data['infocarrera']=$this -> carrera_model ->recuperarcarrera($idcarrera);//en inforestudiante se almacena todo el resultado de la consulta
+
+	$this->load->view('inc/cabeza/cabeza1');	
+	$this->load->view('inc/spinner/spinner');	
+	$this->load->view('inc/navbar/navbarC');	
 	$this->load->view('Carreras/EdicionCarrera',$data);//envio resultado de consulta 
 
 }
@@ -46,8 +53,8 @@ public function formcarrera()
 public function modificarbd()
 {
 	$idcarrera=$_POST['idcarrera'];
-	$data['nombreCarrera']=$_POST['nombrecarrera'];
-	$data['descripcion']=$_POST['descripcion'];
+	$data['nombreCarrera']=strtoupper($_POST['nombrecarrera']);
+	$data['descripcion']=strtoupper($_POST['descripcion']);
 
 
 	$this -> carrera_model ->modificarcarrera($idcarrera,$data);

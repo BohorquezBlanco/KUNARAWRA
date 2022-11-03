@@ -51,7 +51,7 @@
         ?>
         <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
         <button class="navbar-brand d-flex align-items-center px-4 px-lg-5 btn btn-outline-link nav-item nav-link">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i><?php echo $this->session->userdata('nombreMateria'); ?></h2>
+            <h3 class="m-0 text-primary"><i class="fa fa-book me-3"></i><?php echo $this->session->userdata('nombreMateria'); ?></h3>
         </button>
         <?php 
                     echo form_close();
@@ -113,7 +113,7 @@
                             <!-- Single Feature Post -->
                             <div class="single-feature-post video-post bg-img" style="background-image: url(<?php echo base_url(); ?>img/video.jpg);">
 
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/A1v6r79H9Ys" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/kkosC7RvVxE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 <!-- Play Button -->
                                 <a href="video-post.html" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
 
@@ -389,6 +389,158 @@
     </section>
    <!-- ##### VIDEOS END:C ##### -->
 
+
+
+
+
+
+
+
+
+     <!--*****************Aqui se veran los examenes :D *********************--->
+     <section class="hero--area section-padding-80">
+        <div class="container">
+            <div class="row no-gutters">
+            <div class="col-12">
+                    <!-- Section Heading -->
+                    <div class="section-heading">
+                        <h4>VIDEOS DE AVANCE</h4>
+                        <div class="line"></div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-7 col-lg-8">
+                    <div class="tab-content">
+                        <?php 
+                        $indice=1;
+                        foreach($leccion-> result() as $row)
+                        {
+                        ?>
+
+                        <?php 
+                        if ($indice==1) { 
+                        ?>
+                        <div class="tab-pane fade show active" id="post-v<?php echo $indice;?>" role="tabpanel" aria-labelledby="post-v<?php echo $indice;?>-tab">
+                             <!-- Single Feature Post -->
+                             <div class="single-feature-post video-post bg-img" >
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?php echo $row->urlVideo;?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <a href="#" class="post-cata">Videos</a>
+                                    <a href="single-post.html" class="post-title">Reunification of migrant toddlers, parents should be completed Thursday</a>
+                                    
+                                </div>
+
+                                <!-- Video Duration -->
+                                <span class="video-duration">05.03</span>
+                            </div>
+                         </div>
+                        <?php 
+                        }
+                        else  {  
+                        ?> 
+                        <div class="tab-pane fade" id="post-v<?php echo $indice;?>" role="tabpanel" aria-labelledby="post-v<?php echo $indice;?>-tab">
+                             <!-- Single Feature Post -->
+                             <div class="single-feature-post video-post bg-img" >
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?php echo $row->urlVideo;?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <a href="#" class="post-cata">Videos</a>
+                                    <a href="single-post.html" class="post-title">Reunification of migrant toddlers, parents should be completed Thursday</a>
+                                    
+                                </div>
+
+                                <!-- Video Duration -->
+                                <span class="video-duration">05.03</span>
+                            </div>
+                        </div>
+                        <?php 
+                        }
+                        ?> 
+                        <?php
+                        $indice++;
+                        }
+                        ?>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-5 col-lg-4">
+                    <ul class="nav vizew-nav-tab" role="tablist">
+                        <?php 
+                        $indice=1;
+                        foreach($leccion-> result() as $row)
+                        {
+                        ?> 
+
+                        <?php 
+                        if ($indice==1) { 
+                        ?>
+
+                        <li class="nav-item">
+                          
+                            <a class="nav-link active" id="post-v<?php echo $indice;?>-tab" data-toggle="pill" href="#post-v<?php echo $indice;?>" role="tab" aria-controls="post-v<?php echo $indice;?>" aria-selected="true">
+                                <!-- Single Blog Post -->
+                                <div class="single-blog-post style-2 d-flex align-items-center">
+                                    <div class="post-thumbnail">
+                                        <img src="img/bg-img/3.jpg" alt="">
+                                    </div>
+                                    <div class="post-content">
+                                        <h6 class="post-title">5</h6>
+                              
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <?php 
+                        }
+                        else{  
+                        ?> 
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="post-v<?php echo $indice;?>-tab" data-toggle="pill" href="#post-v<?php echo $indice;?>" role="tab" aria-controls="post-v<?php echo $indice;?>" aria-selected="false">
+                                <!-- Single Blog Post -->
+                                <div class="single-blog-post style-2 d-flex align-items-center">
+                                    <div class="post-thumbnail">
+                                        <img src="img/bg-img/4.jpg" alt="">
+                                    </div>
+                                    <div class="post-content">
+                                        <h6 class="post-title">Meet the 12 boys rescued from cave</h6>
+                                        <div class="post-meta d-flex justify-content-between">
+                                            <span><i class="fa fa-comments-o" aria-hidden="true"></i> 14</span>
+                                            <span><i class="fa fa-eye" aria-hidden="true"></i> 34</span>
+                                            <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <?php 
+                        }
+                        ?> 
+                        <?php
+                        $indice++;
+                        }
+                        ?>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+   <!--*****************Aqui termina los examenes :C*********************--->
+
+
+
+
+
+
+
+
+
+
+
+
+
      <!--*****************Aqui se veran los examenes :D *********************--->
      <section class="hero--area section-padding-80">
         <div class="container">
@@ -420,7 +572,7 @@
                                  <a href="#" class="post-cata"><?php echo $row->nombreLeccion;?></a>
                                     <?php echo form_open_multipart('inscripcion/examenes_leccion')?>
                                       <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-                                      <input type="text" name="idLeccion" value="<?php echo $row->idLeccion;?>">
+                                      <input type="hidden" name="idLeccion" value="<?php echo $row->idLeccion;?>">
 
                                       <button type="submit" class="btn btn-outline-link  " ><a class="post-title"><?php echo $row->descripcion;?></a></button>
                                     <?php echo form_close();?>
@@ -436,7 +588,7 @@
                         ?> 
                         <div class="tab-pane fade" id="post-l<?php echo $indice;?>" role="tabpanel" aria-labelledby="post-l<?php echo $indice;?>-tab">
                             <!-- Single Feature Post -->
-                            <div class="single-feature-post video-post bg-img" style="background-image: url(<?php echo base_url(); ?>img/video.jpg);">
+                            <div class="single-feature-post video-post bg-img"  style="background-image: url(<?php echo base_url(); ?>img/examen.jpg);">
 
                                 <!-- Play Button -->
                                 <a href="video-post.html" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
@@ -446,7 +598,7 @@
                                 <a href="#" class="post-cata"><?php echo $row->nombreLeccion;?></a>
                                 <?php echo form_open_multipart('inscripcion/examenes_leccion')?>
                                       <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-                                      <input type="text" name="idLeccion" value="<?php echo $row->idLeccion;?>">
+                                      <input type="hidden" name="idLeccion" value="<?php echo $row->idLeccion;?>">
                                       <button type="submit" class="btn btn-outline-link  " ><a class="post-title"><?php echo $row->descripcion;?></a></button>
                                     <?php echo form_close();?>
                                 </div>
@@ -486,12 +638,8 @@
                                         <img src="img/bg-img/3.jpg" alt="">
                                     </div>
                                     <div class="post-content">
-                                        <h6 class="post-title">Boys 'doing well' after Thai cave rescue</h6>
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <span><i class="fa fa-comments-o" aria-hidden="true"></i> 25</span>
-                                            <span><i class="fa fa-eye" aria-hidden="true"></i> 11</span>
-                                            <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 19</span>
-                                        </div>
+                                        <h6 class="post-title"><?php echo $row->nombreLeccion;?> "<?php echo $row->descripcion;?>"</h6>
+                              
                                     </div>
                                 </div>
                             </a>
@@ -549,7 +697,7 @@
                             <img class="img-fluid" src="<?php echo base_url(); ?>img/course-1.jpg" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                             <?php echo form_open_multipart('Inscripcion/verExamen'); ?>
-                                <input type="text" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
+                                <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
                                 <input type="submit" name="buttonz" value="EXAMENES REALIZADOS" class="btn btn-warning btn-xs">
                                 <?php echo form_close(); ?>
                             </div>
@@ -569,7 +717,7 @@
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                             <!--***********************ir a examenes GLOBALES :D************************-->
                                 <?php echo form_open_multipart('Inscripcion/verExamenR'); ?>
-                                <input type="text" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
+                                <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
                                 <input type="submit" name="buttonz" value="EXAMENES REALIZADOS" class="btn btn-warning btn-xs">
                                 <?php echo form_close(); ?>
                                 
@@ -594,7 +742,7 @@
 
                             <!--***********************ir a examenes Bibliografia y Avance :D************************-->
                             <?php echo form_open_multipart('reportes/avance'); ?>
-                                <input type="text" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
+                                <input type="hidden" name="idMateria" value="<?php echo $this->session->userdata('idMateria'); ?>"> <!--Nombre de la tabla-->
                                 <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
                                 <button class="btn btn-warning btn-xs">BIBLIOGRAFIA Y DATOS DE AVANCE</button>
                                 <?php echo form_close(); ?>

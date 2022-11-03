@@ -150,7 +150,37 @@ public function selectExGloR($idMateria)
 	return $this->db->query($sql);
 }
 
+//################################# UPLOAD ########################
+public function UPLOAD($data,$idCalificacion)
+{
+	$this->db->where('idCalificacion',$idCalificacion);
+	$this->db-> update('calificacionexamen',$data);//nombre de la tabla
+}
 
+public function selectExamen22($idLeccion,$idExamen)
+		{
+		$sql="SELECT  E.nombreExamen,E.idExamen,E.idLeccion,CE.idCalificacion,P.correcta,P.pregunta,P.A,P.B,P.C,P.D
+		FROM examen E
+		JOIN preguntasexamen PE ON PE.idExamen=E.idExamen
+		JOIN pregunta P ON P.idPregunta=PE.idPregunta
+		JOIN calificacionexamen CE ON CE.idExamen=E.idExamen
+		WHERE E.idLeccion=$idLeccion AND E.idExamen=$idExamen
+    ";
 
+		return $this->db->query($sql);
+		}
+
+		public function examen22($idCalificacion)
+		{
+	
+		
+	
+		
+			$this->db->select('*'); //select * from 
+			$this->db->from('calificacionexamen'); //tabla
+			$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
+			$this->db->where('idCalificacion',$idCalificacion);//devuelve la lista solo lso que tienen 1 
+			return $this->db->get(); //devolucion del resultado de la consulta 
+		}
 
 }

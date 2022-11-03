@@ -27,10 +27,10 @@
                             <p class="card-text h4">ESTADO: <?php echo $row->aprorepro;?></p>
                             <br>
 
-                            <?php echo form_open_multipart('Inscripcion/UPDATE'); ?>
-                            <input type="text" name="idExamen" value="<?php echo $row->idExamen; ?>">
-                            <input type="text" name="idLeccion" value="<?php echo $row->idLeccion; ?>">
-                            <input type="text" name="idMateria" value="<?php echo $row->idMateria; ?>">
+                            <?php echo form_open_multipart('Inscripcion/creacionExGsR'); ?>
+                            <input type="hidden" name="idExamen" value="<?php echo $row->idExamen; ?>">
+                            <input type="hidden" name="idLeccion" value="<?php echo $row->idLeccion; ?>">
+                            <input type="hidden" name="idMateria" value="<?php echo $row->idMateria; ?>">
                             <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
                             <input type="submit" name="buttonz" value="VOLVER A RESOLVER" class="btn btn-warning btn-xs">
                             <?php echo form_close(); ?> <br>

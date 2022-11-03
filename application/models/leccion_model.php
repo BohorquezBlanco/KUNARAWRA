@@ -9,10 +9,11 @@ class Leccion_model extends CI_Model {
 	//aqui se realiza el select 
 	public function listaLeccion($idMateria)
 	{
-		$this->db->select('*'); //select * from 
+		$this->db->select('leccion.idLeccion,leccion.nombreLeccion,leccion.descripcion,leccion.urlVideo,leccion.idMateria,materia.nombreMateria'); //select * from 
 		$this->db->from('leccion'); //tabla
-		$this->db->where('estado','1');//devuelve la lista solo lso que tienen 1 
-		$this->db->where('idMateria',$idMateria);
+		$this->db->join('materia','leccion.idMateria=materia.idMateria');//devuelve la lista solo lso que tienen 1
+		$this->db->where('leccion.estado','1');//devuelve la lista solo lso que tienen 1 
+		$this->db->where('leccion.idMateria',$idMateria);
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
 

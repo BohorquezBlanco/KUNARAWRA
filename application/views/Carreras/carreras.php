@@ -3,7 +3,7 @@
         <div class="container py-3">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">CARRERAS</h1>
+                    <h1 class="display-3 text-white animated slideInDown">CURSOS</h1>
                 </div>
             </div>
         </div>
@@ -12,7 +12,7 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-4 justify-content-center">
-            <a href="<?php echo base_url(); ?>index.php/Carrera/formcarrera" class="btn btn-primary py-4 px-lg-5 fs-5 ">AGREGAR CARRERA</a> 
+            <a href="<?php echo base_url(); ?>index.php/Carrera/formcarrera" class="btn btn-primary py-4 px-lg-5 fs-5 ">AGREGAR CURSOS</a> 
                 <?php 
                  $indice=1;
                     foreach($carrera -> result() as $row)
@@ -24,20 +24,22 @@
                             <img class="img-fluid" src="<?php echo base_url(); ?>img/course-1.jpg" alt="">
                             <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                            
-    <?php echo form_open_multipart('Carrera/modificar'); ?>
-     <input type="hidden" name="idcarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
-     <input type="submit" name="buttony" value="MODIFICAR" class="btn btn-success btn-xs" >
-     <?php echo form_close(); ?>
+                                <?php echo form_open_multipart('Carrera/modificar'); ?>
+                                <input type="hidden" name="idcarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
+                                <input type="submit" name="buttony" value="MODIFICAR" class="btn btn-success btn-xs" >
+                                <?php echo form_close(); ?>
 
-     <?php echo form_open_multipart('Carrera/deshabilitarbd'); ?>
-    <input type="hidden" name="idcarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
-    <input type="submit" name="buttonz" value="DESHABILITAR" class="btn btn-warning btn-xs">
-    <?php echo form_close(); ?>
+                                <?php echo form_open_multipart('Carrera/deshabilitarbd'); ?>
+                                <input type="hidden" name="idcarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
+                                <input type="submit" name="buttonz" value="DESHABILITAR" class="btn btn-warning btn-xs">
+                                <?php echo form_close(); ?>
 
-    <?php echo form_open_multipart('materia/index');//ir a select de materias?>
-    <input type="hidden" name="idcarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
-    <input type="submit" value="MATERIAS" class="btn btn-primary btn-xs">
-    <?php echo form_close(); ?>
+                                <?php echo form_open_multipart('materia/index');//ir a select de materias?>
+                                <input type="hidden" name="idcarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
+                                <input type="hidden" name="nombreCarrera" value="<?php echo $row->nombreCarrera; ?>"> <!--Nombre de la tabla-->
+
+                                <input type="submit" value="MATERIAS" class="btn btn-primary btn-xs">
+                                <?php echo form_close(); ?>
 
                             </div>
                         </div>
@@ -46,9 +48,9 @@
                             <p><?php echo $row->descripcion; ?></p>
                         </div>
                         <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
+                          <!--  <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small> -->
+                          <!--  <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small> -->
+                         <!--   <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small> -->
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,5 @@
 
 
-
 <br><br>
     <!-- Contact Start -->
     <div class="container-xxl py-5">
@@ -8,46 +7,55 @@
         <div class="row g-4 align-items-center justify-content-center">
             <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title bg-white text-center text-primary px-3">Creación de cursos</h6>
-                    <h1 class="mb-5">CREA UN CURSO</h1>
+                    <h6 class="section-title bg-white text-center text-primary px-3">Crear leccion de la materia</h6>
+                    <h1 class="mb-5">Crea una leccion</h1>
                 </div>
-                <?php echo form_open_multipart('carrera/agregarbd'); //apertura de formulario llegando al metodo agregarbase de datos?>
+                <?php echo form_open_multipart('leccion/agregarbd'); //apertura de formulario llegando al metodo agregarbase de datos?>
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input style="text-transform:uppercase;" type="text" name="nombrecarrera" class="form-control" id="name" placeholder="Your Name" required>
-                                <label for="name" >Escribe la carrera</label>
+                                <input style="text-transform:uppercase;" type="text" name="nombreleccion" class="form-control" id="name" placeholder="Your Name" required>
+                                <label for="name" >Escribe el nombre de la leccion</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input style="text-transform:uppercase;" type="text" name="descripcioncarrera" class="form-control" id="email" placeholder="Your Email" required>
+                                <input style="text-transform:uppercase;" type="text" name="descripcionleccion" class="form-control" id="email" placeholder="Your Email" required>
                                 <label for="name">Escribe su descripcion</label>
                             </div>
                         </div>
-                       
-                      
-            
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" name="urlVideo" class="form-control" id="email" placeholder="Your Email" required>
+                                <label for="name">Escribe su URL</label>
+                            </div>
+                        </div>
+
+<select name="idmateria" class="form-control form-select form-select-lg" required>
+    <option value="" disabled selected>Seleccione una...  </option> 
+   <?php
+    foreach($infomaterias->result() as $row)
+    {
+      ?>
+      <option value="<?php echo $row->idMateria;?>"><?php echo $row->nombreMateria;?></option>
+      <?php
+    }
+    ?>
+    </select>
+               
                        
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">CREAR CARRERA</button>
+                            <button class="btn btn-primary w-100 py-3" type="submit">CREAR LECCIONES</button>
                         </div>
                     </div>
-                  <br>
-                    <?php echo form_close() ;?>
-
-                    <?php echo form_open_multipart('carrera/index'); //apertura de formulario llegando al metodo agregarbase de datos?>
-                    <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">ATRAS</button>
-                        </div>
-                    <?php echo form_close() ;?>
+                  
+                    <?php form_close() ;?>
             </div>
         </div>
     </div>
     <!-- Contact End -->
 
 
-  
 
 
     <!-- Back to Top -->

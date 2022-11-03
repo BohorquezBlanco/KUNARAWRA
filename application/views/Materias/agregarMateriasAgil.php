@@ -27,10 +27,16 @@
                         <div class="col-md-12 text-center">
                             <div class="form-floating">
         
-                                <select name="idCarrera" class="form-control form-select form-select-md" required>
-
-                                    <option value="<?php echo $this->session->userdata('idCarrera'); ?>"><?php echo $this->session->userdata('nombreCarrera'); ?></option>
-                                    
+                                <select name="idCarrera" class="form-control form-select form-select-lg" required>
+                                    <option value="" disabled selected>Seleccione una...  </option> 
+                                <?php
+                                    foreach($infocarreras->result() as $row)
+                                    {
+                                    ?>
+                                    <option value="<?php echo $row->idCarrera;?>"><?php echo $row->nombreCarrera;?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
 
 
@@ -44,7 +50,7 @@
             
                        
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">CREAR MATERIA</button>
+                            <button class="btn btn-primary w-100 py-3" type="submit">CREAR CARRERA</button>
                         </div>
                     </div>
                   
