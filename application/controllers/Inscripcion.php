@@ -75,6 +75,8 @@ class Inscripcion extends CI_Controller {
 		$nombreMateria=$_POST['nombreMateria'];
 		
 		$data['infolecciones']=$this->examen_model->selectexalec2($idMateria);
+
+		$data['lecciones']=$this->leccion_model->listaLeccion($idMateria);//se almacena la consulta 
 		
 
 		$idUsuario=$_POST['idUsuario'];
