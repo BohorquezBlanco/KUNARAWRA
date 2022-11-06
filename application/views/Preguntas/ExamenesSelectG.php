@@ -166,9 +166,9 @@
     <div class="container">
         <div class="row g-4 justify-content-center">
 
-            <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamenG" class="btn btn-primary py-2 px-lg-2 fs-6 col-5 m-4">EXAMENES GLOBALES</a> 
+            <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamenG" class="btn btn-primary py-2 px-lg-2 fs-5 col-5 m-4">EXAMENES GLOBALES</a> 
            
-            <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamen" class="btn btn-primary py-2 px-lg-2 fs-5 col-5 m-4">EXAMENES POR LECCION</a> 
+            <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamen" class="btn btn-primary py-2 px-lg-2 fs-6 col-5 m-4">EXAMENES POR LECCION</a> 
 
                 <?php 
            
@@ -178,14 +178,14 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item bg-light">
                         <div class="container bg-white border"> <br>
-                        <h6 class="text-primary text-center">EXAMEN POR LECCIÓN "<?php echo $row->nombreLeccion;?>"</h6>
+                        <h6 class="text-primary text-center">EXAMEN GLOBAL </h6>
                         <p class="text-black">Titulo: <?php echo $row->nombreExamen;  ?></p> 
                         <p class="text-black"> Dificultad: <?php echo $row->dificultad;  ?></p> 
                         <p class="text-black"> Materia: <?php echo $row->nombreMateria;  ?></p> 
                     
                         <div class="input-group text-center justify-content-center ">
                             <!---------------------modificar preguntas :D------------------------->
-                        <?php echo form_open_multipart('Pregunta/modificarEx'); ?>
+                        <?php echo form_open_multipart('Pregunta/modificarExG'); ?>
                            <input type="hidden" name="idExamen" id="idExamen" value="<?php echo $row->idExamen; ?>"> <!--Nombre de la tabla-->
                            <input type="submit" name="buttony" value="MODIFICAR" class="btn btn-success btn-xs" >
                         <?php echo form_close(); ?>

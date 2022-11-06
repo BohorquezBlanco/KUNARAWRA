@@ -178,14 +178,42 @@ class pregunta_model extends CI_Model {
 		$this->db->join('leccion','leccion.idLeccion=examen.idLeccion');//devuelve la lista solo lso que tienen 1
 		$this->db->join('materia','materia.idMateria=leccion.idMateria');//devuelve la lista solo lso que tienen 1
 		$this->db->join('carrera','carrera.idCarrera=materia.idCarrera');//devuelve la lista solo lso que tienen 1
-		
+
 		$this->db->where('examen.estado','1');//devuelve la lista solo lso que tienen 1 
 		$this->db->where('examen.idExamen',$idExamen);//devuelve la lista solo lso que tienen 1 
 
 		return $this->db->get(); //devolucion del resultado de la consulta 
 	}
+//PARA EXAMENES GLOBALES
+public function listaexamenG()
+{
+	$sql="SELECT  E.nombreExamen,E.descripcion,E.idExamen,E.idLeccion,E.idMateria,M.nombreMateria,E.dificultad
+	FROM examen E
+	JOIN materia M on M.idMateria=E.idMateria 
+    WHERE E.idLeccion=0 AND E.estado=1
+    ";
+	return $this->db->query($sql);
+}
 
+public function examenG($idExamen)
+{
+	$sql="SELECT  E.nombreExamen,E.descripcion,E.idExamen,E.idLeccion,E.idMateria,M.nombreMateria,E.dificultad
+	FROM examen E
+JOIN materia M on M.idMateria=E.idMateria 
+    WHERE E.idLeccion=0 AND E.idExamen=$idExamen AND E.estado=1
+    ";
+	return $this->db->query($sql);
+}
 
-
+public function listaCMLG($idExamen)
+{
+	$sql="SELECT  E.nombreExamen,E.descripcion,E.idExamen,E.idLeccion,E.idMateria,M.nombreMateria,M.idMateria,C.idCarrera,C.nombreCarrera,E.dificultad
+	FROM examen E
+JOIN materia M on M.idMateria=E.idMateria 
+JOIN carrera C on C.idCarrera=M.idCarrera 
+    WHERE E.idLeccion=0 AND E.idExamen=$idExamen AND E.estado=1
+    ";
+	return $this->db->query($sql);
+}
 
 }

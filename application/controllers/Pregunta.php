@@ -121,6 +121,19 @@ class Pregunta extends CI_Controller {
 	}
 
 
+	public function indexExamenG()
+	{
+	//se va a mostrar la cantidad de preguntas que existen por lecciones//
+	$lista=$this->pregunta_model->listaexamenG();//se almacena la consulta 
+	$data['examen']=$lista;//desarrollando un array relacional 
+
+	$data['infocarreras']=$this->carrera_model->listacarreras();
+			//en aqui se acumula informacion 
+		$this->load->view('Preguntas/ExamenesSelectG',$data);	
+	}
+
+
+
 
 	//#################-----buscaremos los examenes en dicha leccion-----############################
 	public function indexExamen2()
@@ -284,7 +297,28 @@ public function modificarEx()
 
 	$this->load->view('Preguntas/ExamenesModificar',$data);		 
 }
+//############################ modificacion de examenes globales ############################## 
+public function modificarExG() 
+{
+	//recuperar id
+	$idExamen= $this->input->post('idExamen');
+	
+	//array relacional de examenes 
+	$lista=$this->pregunta_model->examenG($idExamen); 
+	$data['examen']=$lista;
+	
+	//array relacional de preguntas 
+	$lista=$this->pregunta_model->listaPreguntasExamenes($idExamen);
+	$data['preguntaEx']=$lista;
 
+	$data['pregunta'] = $this->pregunta_model->listapreguntas();
+	$data['infocarreras']=$this->carrera_model->listacarreras();
+
+	$lista=$this->pregunta_model->listaCMLG($idExamen);//se almacena la consulta 
+	$data['preguntaE']=$lista;//desarrollando un array relacional 
+
+	$this->load->view('Preguntas/ExamenesModificarG',$data);		 
+}
 
 public function modificarEx2() 
 {
@@ -341,6 +375,34 @@ public function modificarbdEx()
 	$data2['infocarreras']=$this->carrera_model->listacarreras();
 			//en aqui se acumula informacion 
 		$this->load->view('Preguntas/ExamenesSelect',$data2);	
+}
+public function modificarbdExG() 
+{
+// $pregunta=json_decode($_POST["p"]);
+      //$pregunta=json_decode($tempstore->get('simulation_ids'));
+      //echo($pregunta) ;
+	  $idExamen=$_POST['idExamen'];
+
+	  $data['idUsuario']=$_POST['idUsuario'];
+	  $data['nombreExamen']=$_POST['tituloEx'];
+	  $data['descripcion']=$_POST['DescripEx'];
+	  $data['idLeccion']=$_POST['idLeccion1'];;
+	  $data['idMateria']=$_POST['idMateria1'];;
+	
+	  $data['dificultad']=$_POST['dificultad'];
+
+	  $idP=array_values(array_unique($_POST['idP']));//arrays de preguntas
+
+
+	 $this->examen_model->creacionEx2($data,$idP,$idExamen);
+	 
+	//se va a mostrar la cantidad de preguntas que existen por lecciones//
+	$lista=$this->pregunta_model->listaexamenG();//se almacena la consulta 
+	$data['examen']=$lista;//desarrollando un array relacional 
+
+	$data['infocarreras']=$this->carrera_model->listacarreras();
+			//en aqui se acumula informacion 
+		$this->load->view('Preguntas/ExamenesSelectG',$data);	
 }
 //######################### modificacion de examen ###########################################	
 }
