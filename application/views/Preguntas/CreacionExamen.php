@@ -49,7 +49,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>KUNARAWRA</h3>
  
                 </a>
         
@@ -65,9 +65,10 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>PreguntasS</a>
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Preguntas</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="nav-item nav-link" ><i class="fa fa-th me-2"></i>Nueva Pregunta</a>
-                    <a href="<?php echo base_url(); ?>index.php/Pregunta/ListadoPregunta" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Lista Preguntas</a>
+
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Examenes</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
                                <!--TE LLEVARA ATRAS DONDE ESTA ADMI CONTROL-->
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Atras" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Atras</a>
@@ -93,7 +94,7 @@
            
                 <div class="navbar-nav align-items-center ms-auto">
                 <div class="nav-item dropdown text-center ">
-                      <h4 class="text-primary">  GESTION DE PREGUNTAS</h4> 
+                      <h4 class="text-primary">  GESTIÓN DE PREGUNTAS</h4> 
                     </div>
                     <img src="<?php echo base_url();?>img/logo.png" alt="">
                  
@@ -108,13 +109,13 @@
         <div class="container pt-3 px-4">
         <?php echo form_open_multipart('Examen/preguntas'); ?>
           <div class="row bg-light">
-            <h1 class="text-center p-4">CREACION DE EXAMENES</h1>
+            <h1 class="text-center p-4">CREACIÓN DE EXAMENES</h1>
 
 
 
  <!--******************* este es la variable global del id del usuario*************************** -->
  <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
- <h1 >Login: <?php echo $this->session->userdata('idusuario'); ?></h1>
+
  <!--**************** este es la variable global del id del usuario ******************************-->
 
 

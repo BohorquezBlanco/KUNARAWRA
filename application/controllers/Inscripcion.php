@@ -167,9 +167,14 @@ public function calificacionEx()
 	function terminar()
 	{
 		$idMateria=$_POST['idMateria'];
-	
 
 		$data['infolecciones']=$this->examen_model->selectexalec2($idMateria);
+
+		$data['lecciones']=$this->leccion_model->listaLeccion($idMateria);//se almacena la consulta 
+		
+
+	
+		$idMateria=$_POST['idMateria'];
 
 
 		$this->load->view('Avance/avanceVideos',$data);	

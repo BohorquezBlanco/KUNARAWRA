@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Preguntas</a>
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Preguntas</a>
                    
                     <?php echo form_open_multipart('Pregunta/NuevaPregunta');?>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="nav-item nav-link" ><i class="fa fa-th me-2"></i>Nueva Pregunta</a>
@@ -65,7 +65,7 @@
 
 
            
-
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamen" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Examenes</a>
                     <?php echo form_open_multipart('Pregunta/Examen');?>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
                     <?php echo form_close();?>
@@ -108,7 +108,7 @@
         <!---###################-BUSQUEDA DE PREGUNTAS :D -######################---->                   
         <div class="row">
             <div class="col-12">
-            <?php echo form_open_multipart('pregunta/index2');?>
+            <?php echo form_open_multipart('pregunta/indexExamen2');?>
             <form class="row g-3 ">
                 <div class="row">
                     <div class="col-4 mb-3">
@@ -148,7 +148,7 @@
 
                     <div class="row col-12 ">
                         <button type="submit" value="Send Message" class="btn btn-primary">
-                            BUSCAR PREGUNTAS
+                            BUSCAR EXAMEN POR LECCIÓN
                         </button>
                     </div> 
               </div>
@@ -161,41 +161,36 @@
 
                 <div class="row  bg-light rounded align-items-center justify-content-center mx-0">
                     <div class="col-md-12 ">  <br>
-                        <h3 class="text-center">PREGUNTAS</h3>
+                        <h3 class="text-center">EXAMENES POR LECCION</h3>
                         <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-4 justify-content-center">
-            <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="btn btn-primary py-4 px-lg-5 fs-5 col-5 m-2">AGREGAR PREGUNTAS</a> 
-            <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="btn btn-primary py-4 px-lg-5 fs-5 col-5 m-2">TODAS LAS PREGUNTAS</a> 
 
+            <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="btn btn-primary py-2 px-lg-2 fs-6 col-5 m-4">EXAMENES GLOBALES</a> 
+            <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamen" class="btn btn-primary py-2 px-lg-2 fs-5 col-5 m-4">EXAMENES POR LECCION</a> 
                 <?php 
            
-                    foreach($pregunta -> result() as $row)
+                    foreach($examen -> result() as $row)
                     {
                 ?>
-            <div class="col-lg-6 col-md-10 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item bg-light">
                         <div class="container bg-white border"> <br>
-                        <p class="text-primary text-end"><?php echo $row->nombreMateria;  ?></p> 
-                        <p class="text-primary text-end"><?php echo $row->nombreLeccion;  ?></p> 
-                        <h5><?php echo $row->pregunta; ?></h5>
-                        <h6>A) <?php echo $row->A; ?></h6>
-                        <h6>B) <?php echo $row->B; ?></h6>
-                        <h6>C) <?php echo $row->C; ?></h6>
-                        <h6>D) <?php echo $row->D; ?></h6>
-                        <h5 class="text-danger">Inciso Correcto: <?php echo $row->correcta; ?></h5> 
-        
-                           
+                        <h6 class="text-primary text-center">EXAMEN POR LECCIÓN "<?php echo $row->nombreLeccion;?>"</h6>
+                        <p class="text-black">Titulo: <?php echo $row->nombreExamen;  ?></p> 
+                        <p class="text-black"> Dificultad: <?php echo $row->dificultad;  ?></p> 
+                        <p class="text-black"> Materia: <?php echo $row->nombreMateria;  ?></p> 
+                    
                         <div class="input-group text-center justify-content-center ">
                             <!---------------------modificar preguntas :D------------------------->
-                        <?php echo form_open_multipart('Pregunta/modificar'); ?>
-                           <input type="hidden" name="idPregunta" id="idPregunta" value="<?php echo $row->idPregunta; ?>"> <!--Nombre de la tabla-->
+                        <?php echo form_open_multipart('Pregunta/modificarEx'); ?>
+                           <input type="hidden" name="idExamen" id="idExamen" value="<?php echo $row->idExamen; ?>"> <!--Nombre de la tabla-->
                            <input type="submit" name="buttony" value="MODIFICAR" class="btn btn-success btn-xs" >
                         <?php echo form_close(); ?>
                             <!---------------------modificar preguntas fin D:------------------------->
 
-                           <?php echo form_open_multipart('Pregunta/deshabilitarbd'); ?>
-                           <input type="hidden" name="idPregunta" id="idPregunta" value="<?php echo $row->idPregunta; ?>"> <!--Nombre de la tabla-->
+                           <?php echo form_open_multipart('Pregunta/deshabilitarExbd'); ?>
+                           <input type="hidden" name="idExamen" id="idExamen" value="<?php echo $row->idExamen; ?>"> <!--Nombre de la tabla-->
                            <input type="submit" name="buttonz" value="ELIMINAR" class="btn btn-warning btn-xs">
                            <?php echo form_close(); ?> <br><br>
 

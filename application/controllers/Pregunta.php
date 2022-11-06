@@ -107,6 +107,50 @@ class Pregunta extends CI_Controller {
 	$this->load->view('Preguntas/CreacionExamen',$data);	
 	}
 
+	
+	//para poder visualizar los examenes
+	public function indexExamen()
+	{
+	//se va a mostrar la cantidad de preguntas que existen por lecciones//
+	$lista=$this->pregunta_model->listaexamen();//se almacena la consulta 
+	$data['examen']=$lista;//desarrollando un array relacional 
+
+	$data['infocarreras']=$this->carrera_model->listacarreras();
+			//en aqui se acumula informacion 
+		$this->load->view('Preguntas/ExamenesSelect',$data);	
+	}
+
+
+
+	//#################-----buscaremos los examenes en dicha leccion-----############################
+	public function indexExamen2()
+	{
+	$idLeccion= $this->input->post('idLeccion');
+
+	//se va a mostrar la cantidad de preguntas que existen por lecciones//
+	$lista=$this->pregunta_model->listaexamen2($idLeccion);//se almacena la consulta 
+	$data['examen']=$lista;//desarrollando un array relacional 
+
+	$data['infocarreras']=$this->carrera_model->listacarreras();
+			//en aqui se acumula informacion 
+		$this->load->view('Preguntas/ExamenesSelect',$data);	
+	}
+
+
+
+
+	//ELIMINACION LOGICA
+	public function deshabilitarExbd()
+	{
+		$idExamen=$_POST['idExamen'];
+		$data['estado']='0';
+	
+		$this -> pregunta_model ->modificarExamen($idExamen,$data);//reutilizamos el modelo 
+		redirect('pregunta/indexExamen','refresh');
+	}
+
+	
+
 
 	public function Atras()
 	{
@@ -213,4 +257,90 @@ public function buscar()
 		redirect('pregunta/index','refresh');
 	}
 	
+
+
+
+
+
+	//######################### modificacion de examen ###########################################
+public function modificarEx() 
+{
+	//recuperar id
+	$idExamen= $this->input->post('idExamen');
+	
+	//array relacional de examenes 
+	$lista=$this->pregunta_model->listaExamen3($idExamen); 
+	$data['examen']=$lista;
+	
+	//array relacional de preguntas 
+	$lista=$this->pregunta_model->listaPreguntasExamenes($idExamen);
+	$data['preguntaEx']=$lista;
+
+	$data['pregunta'] = $this->pregunta_model->listapreguntas();
+	$data['infocarreras']=$this->carrera_model->listacarreras();
+
+	$lista=$this->pregunta_model->listaCML($idExamen);//se almacena la consulta 
+	$data['preguntaE']=$lista;//desarrollando un array relacional 
+
+	$this->load->view('Preguntas/ExamenesModificar',$data);		 
+}
+
+
+public function modificarEx2() 
+{
+	//recuperar id
+	$idExamen= $this->input->post('idExamen');
+	$idLeccion= $this->input->post('idLeccion');
+
+	//array relacional de examenes 
+	$lista=$this->pregunta_model->listaExamen3($idExamen); 
+	$data['examen']=$lista;
+	
+	//array relacional de preguntas 
+	$lista=$this->pregunta_model->listaPreguntasExamenes($idExamen);
+	$data['preguntaEx']=$lista;
+
+	$lista=$this->pregunta_model->listapreguntas2($idLeccion);//se almacena la consulta 
+	$data['pregunta']=$lista;//desarrollando un array relacional
+
+	$lista=$this->pregunta_model->listaCML($idExamen);//se almacena la consulta 
+	$data['preguntaE']=$lista;//desarrollando un array relacional 
+
+	$data['infocarreras']=$this->carrera_model->listacarreras();
+
+	$this->load->view('Preguntas/ExamenesModificar',$data);		 
+}
+
+
+
+
+public function modificarbdEx() 
+{
+// $pregunta=json_decode($_POST["p"]);
+      //$pregunta=json_decode($tempstore->get('simulation_ids'));
+      //echo($pregunta) ;
+	  $idExamen=$_POST['idExamen'];
+
+	  $data['idUsuario']=$_POST['idUsuario'];
+	  $data['nombreExamen']=$_POST['tituloEx'];
+	  $data['descripcion']=$_POST['DescripEx'];
+	  $data['idLeccion']=$_POST['idLeccion1'];;
+	  $data['idMateria']=$_POST['idMateria1'];;
+	
+	  $data['dificultad']=$_POST['dificultad'];
+
+	  $idP=array_values(array_unique($_POST['idP']));//arrays de preguntas
+
+
+	 $this->examen_model->creacionEx2($data,$idP,$idExamen);
+	 
+	//se va a mostrar la cantidad de preguntas que existen por lecciones//
+	$lista=$this->pregunta_model->listaexamen();//se almacena la consulta 
+	$data2['examen']=$lista;//desarrollando un array relacional 
+
+	$data2['infocarreras']=$this->carrera_model->listacarreras();
+			//en aqui se acumula informacion 
+		$this->load->view('Preguntas/ExamenesSelect',$data2);	
+}
+//######################### modificacion de examen ###########################################	
 }

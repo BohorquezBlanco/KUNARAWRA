@@ -26,6 +26,35 @@ public function creacionEx($data,$nombre)
 
 }
 
+
+//#################################### MODIFICACION DE EXAMENES ##############################################
+public function creacionEx2($data,$idP,$idExamen)
+{
+  $this->db->trans_start();
+
+
+  $this->db->where('idExamen',$idExamen);
+  $this->db-> update('examen',$data);//nombre de la tabla
+
+  $this->db->where('idExamen',$idExamen);
+	$this->db->delete('preguntasexamen');//nombre de la tabla
+
+  for($i=0;$i<count($idP);$i++)
+  {
+
+    $data3['idExamen']=$idExamen;
+    $data3['idPregunta']=$idP[$i];
+
+    $this->db->insert('preguntasexamen',$data3);
+  }
+  $this->db-> trans_complete();
+  if($this->db->trans_complete()==FALSE)
+  {
+    return false;
+  }
+}
+//#################################### MODIFICACION DE EXAMENES ##############################################
+
 public function creacionExa($data)
 {
 

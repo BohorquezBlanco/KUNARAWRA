@@ -115,6 +115,7 @@
                 <input type="hidden" name="contador" value=" <?php echo $indice; ?>"><!--CON ESTO SABREMOS CUANTAS VECES SE RECORRERA EL CICLO FOR ---->
 
                 <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                <input type="hidden" name="nombreMateria" value="<?php echo $this->session->userdata('nombreMateria'); ?>">
 
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             ENVIAR EXAMEN
