@@ -10,14 +10,33 @@ class Pregunta extends CI_Controller {
 	//se va a mostrar la cantidad de preguntas que existen por lecciones//
 	$lista=$this->pregunta_model->listapreguntas1();//se almacena la consulta 
 		$data['pregunta']=$lista;//desarrollando un array relacional 
+
+		$data['infocarreras']=$this->carrera_model->listacarreras();
 		$this->load->view('Preguntas/PreguntasSelect',$data);	
 	}
+
+	//############################--buscador de preguntas--##########################
+	public function index2()
+	{
+		$idLeccion= $this->input->post('idLeccion');
+	//se va a mostrar la cantidad de preguntas que existen por lecciones//
+	$lista=$this->pregunta_model->listapreguntas2($idLeccion);//se almacena la consulta 
+		$data['pregunta']=$lista;//desarrollando un array relacional 
+		
+		$data['infocarreras']=$this->carrera_model->listacarreras();
+		$this->load->view('Preguntas/PreguntasSelect',$data);	
+	}
+
+
+
 	public function NuevaPregunta()
 	{
-		$data['infomaterias']=$this->materia_model->listamaterias2(); //almaceno todas las carreras de base de datos
+		$data['infocarreras']=$this->carrera_model->listacarreras();
 	//se va a mostrar la cantidad de preguntas que existen por lecciones//
 		$this->load->view('Preguntas/NuevaPregunta',$data);	
 	}
+
+
 	public function ListadoPregunta()
 	{
 
@@ -35,12 +54,12 @@ class Pregunta extends CI_Controller {
         if($idCarrera){
             $this->load->model('pregunta_model');
             $materias = $this->pregunta_model->selectMateriaM($idCarrera);
-            echo '<option value="0">Materias</option>';
+            echo '<option selected >Materias</option>';
             foreach($materias as $fila){
                 echo '<option value="'. $fila->idMateria.'">'. $fila->nombreMateria .'</option>';
             }
         }  else {
-            echo '<option value="0">Materias</option>';
+            echo '<option selected disabled value="">Materias</option>';
         }		
 	}
 	public function selectLec()
@@ -55,7 +74,23 @@ class Pregunta extends CI_Controller {
                 echo '<option value="'. $fila->idLeccion.'">'. $fila->nombreLeccion .'</option>';
             }
         }  else {
-            echo '<option value="0">Leccion</option>';
+            echo '<option selected>Leccion</option>';
+        }		
+	}
+
+	public function selectLec2()
+	{
+		$idMateria= $this->input->post('idMateria');
+        
+        if($idMateria){
+            $this->load->model('pregunta_model');
+            $lecciones = $this->pregunta_model->leccionM($idMateria);
+            echo '<option selected disabled value="">Lecciones</option>';
+            foreach($lecciones as $fila){
+                echo '<option value="'. $fila->idLeccion.'">'. $fila->nombreLeccion .'</option>';
+            }
+        }  else {
+            echo '<option selected disabled value="" >Lecciones</option>';
         }		
 	}
 
@@ -94,7 +129,7 @@ class Pregunta extends CI_Controller {
 			$data['D']=$_POST['D'];
 			$data['correcta']=$_POST['correcta'];
 
-			$data['idLeccion']=$_POST['idLec'];
+			$data['idLeccion']=$_POST['idLeccion'];
 			$lista=$this->pregunta_model->agregarpreguntas($data);//se almacena la consulta 
 			redirect('pregunta/NuevaPregunta','refresh');
 		}
@@ -134,9 +169,48 @@ public function buscar()
 	/********************EDITAR PREGUNTAS**************************/
 	public function modificar() 
 	{
-		$data['infocarreras']=$this->carrera_model->listacarreras(); //almaceno todas las carreras de base de datos
-		//se va a mostrar la cantidad de preguntas que existen por lecciones//
-		$this->load->view('Preguntas/ListadoPreguntas',$data);		 
+		$idPregunta= $this->input->post('idPregunta');
+		
+		$lista=$this->pregunta_model->listapreguntasM($idPregunta);//se almacena la consulta 
+		$data['pregunta']=$lista;//desarrollando un array relacional 
+
+
+		$data['infocarreras']=$this->carrera_model->listacarreras();
+
+		$this->load->view('Preguntas/PreguntasModificar',$data);		 
+	}
+
+	public function modificarbd() 
+	{
+		$idPregunta=$_POST['idPregunta'];
+
+		$data['idLeccion']=$_POST['idLeccion'];
+		$data['A']=mb_strtoupper($_POST['A']);
+		$data['B']=mb_strtoupper($_POST['B']);
+		$data['C']=mb_strtoupper($_POST['C']);
+		$data['D']=mb_strtoupper($_POST['D']);
+		$data['correcta']=mb_strtoupper($_POST['correcta']);
+		$data['pregunta']=mb_strtoupper($_POST['pregunta']);
+
+		$this -> pregunta_model ->modificarPregunta($idPregunta,$data);
+
+
+		//se va a mostrar la cantidad de preguntas que existen por leccioneW//
+		$lista=$this->pregunta_model->listapreguntas1();//se almacena la consulta 
+		$data2['pregunta']=$lista;//desarrollando un array relacional 
+
+		$data2['infocarreras']=$this->carrera_model->listacarreras();
+		$this->load->view('Preguntas/PreguntasSelect',$data2);	
+	}
+
+	//ELIMINACION LOGICA
+	public function deshabilitarbd()
+	{
+		$idPregunta=$_POST['idPregunta'];
+		$data['estado']='0';
+	
+		$this -> pregunta_model ->modificarPregunta($idPregunta,$data);//reutilizamos el modelo 
+		redirect('pregunta/index','refresh');
 	}
 	
 }

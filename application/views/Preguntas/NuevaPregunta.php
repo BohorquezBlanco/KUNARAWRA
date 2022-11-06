@@ -57,9 +57,8 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>PreguntasS</a>
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Preguntas</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="nav-item nav-link active" ><i class="fa fa-th me-2"></i>Nueva Pregunta</a>
-                    <a href="<?php echo base_url(); ?>index.php/Pregunta/ListadoPregunta" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Lista Preguntas</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
                                <!--TE LLEVARA ATRAS DONDE ESTA ADMI CONTROL-->
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Atras" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Atras</a>
@@ -107,33 +106,44 @@
 
               <div class="row">    
               <div class="col-4 mb-3">
-                <label for="">Materia</label>
+                <label for="">CURSO:</label>
                   <div class="input-group">
-                  <select id="idMateria" name="idMateria" class="form-control form-select form-select-lg" required>
-                    <option value="" disabled selected>Materia:  </option> 
-                    <?php
-                      foreach($infomaterias->result() as $row)
-                      {
-                    ?>
-                    <option value="<?php echo $row->idMateria;?>"><?php echo $row->nombreMateria;?></option>
-                    <?php
-                      }
-                    ?>
+                  <select id="idCarrera" name="idCarrera" class="form-control form-select form-select-lg" required>
+                        <option selected disabled value="">Cursos</option> 
+                        <?php
+                        foreach($infocarreras->result() as $row)
+                        {
+                        ?>
+                        <option value="<?php echo $row->idCarrera;?>"><?php echo $row->nombreCarrera;?></option>
+                        <?php
+                        }
+                        ?>
                   </select>
-                    <input type="submit" value="+" class="btn btn-primary">
+            
                   </div>
                 </div>
              <!-- MATERIA EN BASE AL ANTERIOR SELECT -->  
   
                 <div class="col-4 mb-3">
-                  <label for="">Leccion:</label>
-                    <div class="input-group">
-                      <select id="idLec" name="idLec" class="form-control form-select form-select-lg">
-                      <option value="0">Leccion</option>
-                      </select>  
-                     <input type="submit" value="+" class="btn btn-primary">
+                <label for="">MATERIA:</label>
+                  <div class="input-group">
+                    <select id="idMateria" name="idMateria" class="form-control form-select form-select-lg" required>
+                    <option selected disabled value="">Materias</option>
+                    </select>  
                   </div>
                 </div>
+
+                <div class="col-4 mb-3">
+                <label for="">LECCION:</label>
+                  <div class="input-group">
+                    <select id="idLeccion" name="idLeccion" class="form-control form-select form-select-lg" required>
+                    <option selected disabled value="">Lecciones</option>
+                    </select>  
+                  </div>
+                </div>
+             <!-- MATERIA EN BASE AL ANTERIOR SELECT -->  
+  
+                
                  <!-------------2da Fila----------------->
                  <div class="col-12 mb-3"> 
                   <label for="exampleFormControlTextarea1" class="form-label">Pregunta:</label>
@@ -197,7 +207,7 @@
                 </div>    
               </div>
               
-              <?php form_close() ;?>
+              <?php echo form_close() ;?>
 
           </div>
         </div>
@@ -244,13 +254,28 @@
 </html>
 <script type="text/javascript">   
             $(document).ready(function() {                       
+                $("#idCarrera").change(function() {
+                    $("#idCarrera option:selected").each(function() {
+                        idCarrera = $('#idCarrera').val();
+                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectMateria", {
+                            idCarrera : idCarrera 
+                        }, function(data) {
+                            $("#idMateria").html(data);
+                        });
+                    });
+                });
+            });
+            
+</script>
+<script type="text/javascript">   
+            $(document).ready(function() {                       
                 $("#idMateria").change(function() {
                     $("#idMateria option:selected").each(function() {
                         idMateria = $('#idMateria').val();
-                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectLec", {
-                            idMateria : idMateria
+                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectLec2", {
+                            idMateria : idMateria 
                         }, function(data) {
-                            $("#idLec").html(data);
+                            $("#idLeccion").html(data);
                         });
                     });
                 });

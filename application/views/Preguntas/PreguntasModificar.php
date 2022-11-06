@@ -64,7 +64,13 @@
                     <?php echo form_close();?>
 
 
-           
+                    <?php 
+                    echo form_open_multipart('Pregunta/ListadoPregunta');
+                    ?>
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/ListadoPregunta" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Lista Preguntas</a>
+                    <?php 
+                    echo form_close();
+                    ?>
 
                     <?php echo form_open_multipart('Pregunta/Examen');?>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
@@ -105,17 +111,58 @@
 
             <!-- Blank Start -->
             <div class="container pt-4 px-4">
-        <!---###################-BUSQUEDA DE PREGUNTAS :D -######################---->                   
-        <div class="row">
+    
+
+                <div class="row  bg-light rounded align-items-center justify-content-center mx-0">
+                    <div class="col-md-12 ">  <br>
+                      
+                        <?php echo form_open_multipart('pregunta/index');?>
+                <div class="row col-12 p-4 ">
+                <button type="submit" value="Send Message" class="btn btn-primary col-3">
+                        ATRAS
+                    </button>
+              
+                </div> 
+            <?php echo form_close() ;?> 
+             <h3 class="text-center col-12">MODIFICAR PREGUNTA</h3>
+             
+    <?php echo form_open_multipart('pregunta/modificarbd'); //apertura de formulario llegando al metodo agregarbase de datos?>
+    <form class="row g-3 ">
+    <div class="container-xxl py-5">
+
+
+       <!---###################-BUSQUEDA DE PREGUNTAS :D -######################---->   
+       
+       <!-------Valores para los foreach :v----------->
+       <?php  foreach($pregunta -> result() as $row){
+        $idCarrera = $row->idCarrera;
+        $nombreCarrera = $row->nombreCarrera;
+
+        $idMateria=$row->idMateria;
+        $nombreMateria=$row->nombreMateria;
+
+        $idLeccion=$row->idLeccion;
+        $nombreLeccion=$row->nombreLeccion;
+
+        ?>
+         
+        <?php  }?>
+       <!-------Fin de los valores de los foreach :V-->
+
+
+       <div class="row">
             <div class="col-12">
-            <?php echo form_open_multipart('pregunta/index2');?>
-            <form class="row g-3 ">
+          
+       
                 <div class="row">
                     <div class="col-4 mb-3">
                     <label for="">CURSO:</label>
                         <div class="input-group">
                             <select id="idCarrera" name="idCarrera" class="form-control form-select form-select-lg" required>
-                                <option selected disabled value="">Cursos</option> 
+                              
+                                <option selected value="<?php echo $idCarrera;?>"><?php echo $nombreCarrera;?></option> 
+                    
+                                
                                 <?php
                                 foreach($infocarreras->result() as $row)
                                 {
@@ -132,7 +179,7 @@
                         <label for="">MATERIA:</label>
                         <div class="input-group">
                             <select id="idMateria" name="idMateria" class="form-control form-select form-select-lg" required>
-                            <option selected disabled value="">Materias</option>
+                            <option selected value="<?php echo $idMateria;?>"><?php echo $nombreMateria;?></option>
                             </select>  
                         </div>
                     </div>
@@ -141,33 +188,21 @@
                         <label for="">LECCION:</label>
                         <div class="input-group">
                             <select id="idLeccion" name="idLeccion" class="form-control form-select form-select-lg" required>
-                            <option selected disabled value="">Lecciones</option>
+                            <option selected  value="<?php echo $idLeccion;?>"><?php echo $nombreLeccion;?></option>
                             </select>  
                         </div>
                     </div>
-
-                    <div class="row col-12 ">
-                        <button type="submit" value="Send Message" class="btn btn-primary">
-                            BUSCAR PREGUNTAS
-                        </button>
-                    </div> 
               </div>
-            </form>  
-            <?php echo form_close() ;?>
-      
+
             </div>
         </div>
-     <!---###################-FIN DE BUSQUEDA DE PREGUNTAS D:-######################---->     
+     <!---###################-FIN DE BUSQUEDA DE PREGUNTAS D:-######################---->  
 
-                <div class="row  bg-light rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-12 ">  <br>
-                        <h3 class="text-center">PREGUNTAS</h3>
-                        <div class="container-xxl py-5">
+
+
     <div class="container">
         <div class="row g-4 justify-content-center">
-            <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="btn btn-primary py-4 px-lg-5 fs-5 col-5 m-2">AGREGAR PREGUNTAS</a> 
-            <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="btn btn-primary py-4 px-lg-5 fs-5 col-5 m-2">TODAS LAS PREGUNTAS</a> 
-
+       
                 <?php 
            
                     foreach($pregunta -> result() as $row)
@@ -178,44 +213,42 @@
                         <div class="container bg-white border"> <br>
                         <p class="text-primary text-end"><?php echo $row->nombreMateria;  ?></p> 
                         <p class="text-primary text-end"><?php echo $row->nombreLeccion;  ?></p> 
-                        <h5><?php echo $row->pregunta; ?></h5>
-                        <h6>A) <?php echo $row->A; ?></h6>
-                        <h6>B) <?php echo $row->B; ?></h6>
-                        <h6>C) <?php echo $row->C; ?></h6>
-                        <h6>D) <?php echo $row->D; ?></h6>
-                        <h5 class="text-danger">Inciso Correcto: <?php echo $row->correcta; ?></h5> 
-        
-                           
-                        <div class="input-group text-center justify-content-center ">
-                            <!---------------------modificar preguntas :D------------------------->
-                        <?php echo form_open_multipart('Pregunta/modificar'); ?>
-                           <input type="hidden" name="idPregunta" id="idPregunta" value="<?php echo $row->idPregunta; ?>"> <!--Nombre de la tabla-->
-                           <input type="submit" name="buttony" value="MODIFICAR" class="btn btn-success btn-xs" >
-                        <?php echo form_close(); ?>
-                            <!---------------------modificar preguntas fin D:------------------------->
-
-                           <?php echo form_open_multipart('Pregunta/deshabilitarbd'); ?>
-                           <input type="hidden" name="idPregunta" id="idPregunta" value="<?php echo $row->idPregunta; ?>"> <!--Nombre de la tabla-->
-                           <input type="submit" name="buttonz" value="ELIMINAR" class="btn btn-warning btn-xs">
-                           <?php echo form_close(); ?> <br><br>
-
-                        </div>
-
-
                        
+                      
+                        <textarea name="pregunta" class="form-control" id="validationTextarea" placeholder="Se requiere una pregunta" required>
+                        <?php echo $row->pregunta; ?>
+                        </textarea>  <br>                      
+                        <h6>A) <input type="text" name="A" value="<?php echo $row->A; ?>" class="h6" required> </h6>
+                        <h6>B) <input type="text" name="B" value="<?php echo $row->B; ?>" class="h6" required> </h6>
+                        <h6>C) <input type="text" name="C" value="<?php echo $row->C; ?>" class="h6" required></h6>
+                        <h6>D) <input type="text" name="D" value="<?php echo $row->D; ?>" class="h6" required></h6>
+                        <input type="hidden" name="idPregunta" value="<?php echo $row->idPregunta; ?>" class="h6" >
+
+                        <label for="">LA CORRECTA ES :</label>
+                            <select name="correcta" id="correcta" class="form-select form-select-md" required>
+                                <option selected value="<?php echo $row->correcta; ?>"><?php echo $row->correcta; ?></option>
+                                <option name="correcta" value="A">Inciso A</option>
+                                <option name="correcta" value="B">Inciso B</option>
+                                <option name="correcta" value="C">Inciso C</option>
+                                <option name="correcta" value="D">Inciso D</option>
+                            </select>
+                            <br>
                         </div>
 
     
                     </div>
+                    <br>
+                    <button class="btn btn-primary col-12 text-center">
+    MODIFICAR
+</button>
+   
                 </div>
-<?php
-
-      }
-  ?>
+<?php  }?>
    </div>
    </div>
 </div>
-   
+</form>  
+<?php echo form_close() ;?> 
 
                     </div>
                 </div>

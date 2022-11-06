@@ -37,7 +37,7 @@
 
     .caja2
     {
-        height: 280px;
+        height: 380px;
     }
 </style>
 </head>

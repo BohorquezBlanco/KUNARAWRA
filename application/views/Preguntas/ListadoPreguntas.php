@@ -107,44 +107,48 @@
         <div class="row">
         
           <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200"><br>
-            <form action="#">
+            <form class="row g-3 ">
               <div class="row">
 
                 
                 <div class="col-4 mb-3">
-                <label for="">Carrera</label>
+                <label for="">CURSO:</label>
                   <div class="input-group">
                   <select id="idCarrera" name="idCarrera" class="form-control form-select form-select-lg" required>
-                    <option value="" disabled selected>Seleccione una...  </option> 
-                    <?php
-                      foreach($infocarreras->result() as $row)
-                      {
-                    ?>
-                    <option value="<?php echo $row->idCarrera;?>"><?php echo $row->nombreCarrera;?></option>
-                    <?php
-                      }
-                    ?>
+                        <option selected disabled value="">Cursos</option> 
+                        <?php
+                        foreach($infocarreras->result() as $row)
+                        {
+                        ?>
+                        <option value="<?php echo $row->idCarrera;?>"><?php echo $row->nombreCarrera;?></option>
+                        <?php
+                        }
+                        ?>
                   </select>
-                    <input type="submit" value="+" class="btn btn-primary">
+            
                   </div>
                 </div>
              <!-- MATERIA EN BASE AL ANTERIOR SELECT -->  
   
                 <div class="col-4 mb-3">
-                <label for="">Materia</label>
+                <label for="">MATERIA:</label>
                   <div class="input-group">
-                    <select id="idMateria" name="idMateria" class="form-control form-select form-select-lg">
-                    <option value="0">Materias</option>
+                    <select id="idMateria" name="idMateria" class="form-control form-select form-select-lg" required>
+                    <option selected disabled value="">Materias</option>
                     </select>  
-                     <input type="submit" value="+" class="btn btn-primary">
+                  </div>
+                </div>
+
+                <div class="col-4 mb-3">
+                <label for="">LECCION:</label>
+                  <div class="input-group">
+                    <select id="idLeccion" name="idLeccion" class="form-control form-select form-select-lg" required>
+                    <option selected disabled value="">Lecciones</option>
+                    </select>  
                   </div>
                 </div>
 
 
-
-
-                <div class="col-3">
-                </div>
                 <div class="row col-6 ">
                   <button type="submit" value="Send Message" class="btn btn-primary">
                   Buscar Preguntas
@@ -153,7 +157,7 @@
                  <!-------------Aqui se mostrara el Select de preguntas creadas----------------->
                  <div class="container m-3">
                     <div class="col-12">
-                        preguntas creadas
+                        BUSCAR PREGUNTAS
                     </div>
                  </div>
                
@@ -223,6 +227,21 @@
                             idCarrera : idCarrera 
                         }, function(data) {
                             $("#idMateria").html(data);
+                        });
+                    });
+                });
+            });
+            
+</script>
+<script type="text/javascript">   
+            $(document).ready(function() {                       
+                $("#idMateria").change(function() {
+                    $("#idMateria option:selected").each(function() {
+                        idMateria = $('#idMateria').val();
+                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectLec2", {
+                            idMateria : idMateria 
+                        }, function(data) {
+                            $("#idLeccion").html(data);
                         });
                     });
                 });
