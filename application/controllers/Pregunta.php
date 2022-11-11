@@ -101,8 +101,18 @@ class Pregunta extends CI_Controller {
 	public function Examen()
 	{
 	$this->load->model('pregunta_model');
-	$data['infomaterias']=$this->materia_model->listamaterias2(); 
-	$data['pregunta' ] = $this->pregunta_model->listapreguntas();
+	$data['pregunta'] = $this->pregunta_model->listapreguntas();
+	$data['infocarreras']=$this->carrera_model->listacarreras();
+		//en aqui se acumula informacion 
+	$this->load->view('Preguntas/CreacionExamen',$data);	
+	}
+	public function Examen2()
+	{
+	$idLeccion= $this->input->post('idLeccion');
+	$this->load->model('pregunta_model');
+	$lista=$this->pregunta_model->listapreguntas2($idLeccion);//se almacena la consulta 
+	$data['pregunta']=$lista;//desarrollando un array relacional
+	$data['infocarreras']=$this->carrera_model->listacarreras();
 		//en aqui se acumula informacion 
 	$this->load->view('Preguntas/CreacionExamen',$data);	
 	}
@@ -345,7 +355,29 @@ public function modificarEx2()
 	$this->load->view('Preguntas/ExamenesModificar',$data);		 
 }
 
+public function modificarExG2() 
+{
+	//recuperar id
+	$idExamen= $this->input->post('idExamen');
+	$idLeccion= $this->input->post('idLeccion');
+	//array relacional de examenes 
+	$lista=$this->pregunta_model->examenG($idExamen); 
+	$data['examen']=$lista;
+	
+	//array relacional de preguntas 
+	$lista=$this->pregunta_model->listaPreguntasExamenes($idExamen);
+	$data['preguntaEx']=$lista;
 
+	$lista=$this->pregunta_model->listapreguntas2($idLeccion);//se almacena la consulta 
+	$data['pregunta']=$lista;//desarrollando un array relacional
+
+	$data['infocarreras']=$this->carrera_model->listacarreras();
+
+	$lista=$this->pregunta_model->listaCMLG($idExamen);//se almacena la consulta 
+	$data['preguntaE']=$lista;//desarrollando un array relacional 
+
+	$this->load->view('Preguntas/ExamenesModificarG',$data);		 
+}
 
 
 public function modificarbdEx() 

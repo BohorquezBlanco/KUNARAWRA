@@ -59,6 +59,7 @@
                 <div class="navbar-nav w-100">
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Preguntas</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="nav-item nav-link active" ><i class="fa fa-th me-2"></i>Nueva Pregunta</a>
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Examenes</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
                                <!--TE LLEVARA ATRAS DONDE ESTA ADMI CONTROL-->
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Atras" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Atras</a>

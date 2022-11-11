@@ -71,7 +71,8 @@
                     <?php 
                     echo form_close();
                     ?>
-
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Examenes</a>
+                    
                     <?php echo form_open_multipart('Pregunta/Examen');?>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
                     <?php echo form_close();?>

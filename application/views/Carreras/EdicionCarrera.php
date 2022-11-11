@@ -8,8 +8,8 @@
                 <h1 class="mb-2">Puedes editar la carrera</h1>
             </div>
    
-                
-                <h5 class="mb-2">Total Carreras</h5> <h5>8</h5> <br> <br>
+            <br><br>
+          
                 
                 <?php
             foreach ($infocarrera->result() as $row)

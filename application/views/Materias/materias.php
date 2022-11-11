@@ -30,7 +30,23 @@
 <div class="container">
 <div class="row g-4 justify-content-center">
 
-<a href="<?php echo base_url(); ?>index.php/Materia/formmateria" class="btn btn-primary py-4 px-lg-5 fs-5 ">AGREGAR MATERIAS</a>
+<div class="container">
+    <div class="row ">
+        <div class="col-6">
+        <a href="<?php echo base_url(); ?>index.php/Materia/formmateria" class="btn btn-primary py-4 px-lg-5 fs-5 col-12">AGREGAR MATERIAS</a>
+        </div>
+
+        <div class="col-6">
+            <?php echo form_open_multipart('materia/deshab'); ?>
+            <input type="hidden" name="idCarrera" value="<?php echo $row->idCarrera; ?>"> <!--Nombre de la tabla-->
+            <input type="hidden" name="idmateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
+            <input type="submit" name="buttonz" value="BIBLIOGRAFÍA DE LA MATERIA" class="btn btn-primary py-4 px-lg-5 fs-5 col-12">
+            <?php echo form_close(); ?>
+        </div>
+    </div>
+</div>
+
+
 
 
     <?php 
@@ -72,10 +88,10 @@
                             <h4 class="mb-2"> <?php echo $row->nombreMateria; ?></h4>
                             <p><?php echo $row->descripcion; ?></p>
                         </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
+                        <div class="d-flex border-top">  
+                         <!--    <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small> -->
+                         <!--    <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small> -->
+                         <!--    <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small> -->
                         </div>
                     </div>
                 </div>

@@ -80,8 +80,8 @@
     
  <!-- EL USUARIO APRETARA PARA INSCRIBIRSE -->   
     <?php echo form_open_multipart('inscripcion/registrarse'); ?>
-    <input type="text" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-    <input type="text" name="idMateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
+    <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+    <input type="hidden" name="idMateria" value="<?php echo $row->idMateria; ?>"> <!--Nombre de la tabla-->
     <input type="submit" name="buttonz" value="INSCRIBIRME" class="btn btn-primary btn-xs">
     <?php echo form_close(); ?>
  <!-- EL USUARIO APRETARA PARA INSCRIBIRSE FIN -->  

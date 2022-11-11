@@ -65,7 +65,7 @@
 
 
            
-
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Examenes</a>
                     <?php echo form_open_multipart('Pregunta/Examen');?>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
                     <?php echo form_close();?>
@@ -178,7 +178,7 @@
                         <div class="container bg-white border"> <br>
                         <p class="text-primary text-end"><?php echo $row->nombreMateria;  ?></p> 
                         <p class="text-primary text-end"><?php echo $row->nombreLeccion;  ?></p> 
-                        <h5><?php echo $row->pregunta; ?></h5>
+                        <p><?php echo $row->pregunta; ?></p>
                         <h6>A) <?php echo $row->A; ?></h6>
                         <h6>B) <?php echo $row->B; ?></h6>
                         <h6>C) <?php echo $row->C; ?></h6>

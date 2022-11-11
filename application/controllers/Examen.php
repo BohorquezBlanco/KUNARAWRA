@@ -12,13 +12,13 @@ class Examen extends CI_Controller {
         $data['idUsuario']=$_POST['idUsuario'];
         $data['nombreExamen']=$_POST['tituloEx'];
         $data['descripcion']=$_POST['DescripEx'];
-        $data['idLeccion']=$_POST['idLec'];
-        $data['idMateria']=$_POST['idMateria'];
+        $data['idLeccion']=$_POST['idLeccion1'];
+        $data['idMateria']=$_POST['idMateria1'];
       
         $data['dificultad']=$_POST['dificultad'];
 
-        $idP=$_POST['idP'];
 
+        $idP=array_values(array_unique($_POST['idP']));//arrays de preguntas
 
        $this->examen_model->creacionEx($data,$idP);
        // $this->examen_model->creacionEx($data,$pregunta);

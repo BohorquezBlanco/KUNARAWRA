@@ -269,7 +269,7 @@
  <!---###################-BUSQUEDA DE PREGUNTAS :D -######################---->                   
  <div class="row">
             <div class="col-12">
-            <?php echo form_open_multipart('pregunta/modificarEx2');?>
+            <?php echo form_open_multipart('pregunta/modificarExG2');?>
             <form class="row g-3 ">
                 <div class="row">
                     <div class="col-4 mb-3">

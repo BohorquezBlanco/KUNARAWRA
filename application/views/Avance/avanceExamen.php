@@ -60,7 +60,7 @@
                 ?>
 
                     <h4 class="mb-4 text-center"> <?php echo $row->nombreExamen; ?></h4>
-                    <input type="text" name="idExamen" value=" <?php echo $row->idExamen; ?>"><!--CON ESTO SABREMOS CUANTAS VECES SE RECORRERA EL CICLO FOR ---->
+                    <input type="hidden" name="idExamen" value=" <?php echo $row->idExamen; ?>"><!--CON ESTO SABREMOS CUANTAS VECES SE RECORRERA EL CICLO FOR ---->
 
                 <?php 
                 }

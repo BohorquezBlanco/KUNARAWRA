@@ -115,7 +115,7 @@ public function examenes_leccion()
 	$this->load->view('inc/cabeza/cabeza1');
 	$this->load->view('inc/navbar/navbar2');	
 	$this->load->view('Avance/avanceExamen',$data);
-	$this->load->view('inc/pie/pie1');	
+
 }
 
 

@@ -39,6 +39,10 @@
     {
         height: 380px;
     }
+    .caja3
+    {
+        height: 540px;
+    }
 </style>
 </head>
 
@@ -67,9 +71,8 @@
                 <div class="navbar-nav w-100">
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/index" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Preguntas</a>
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/NuevaPregunta" class="nav-item nav-link" ><i class="fa fa-th me-2"></i>Nueva Pregunta</a>
-
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/indexExamen" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Examenes</a>
-                    <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
+                    <a href="<?php echo base_url(); ?>index.php/Pregunta/Examen" class="nav-item nav-link active "><i class="fa fa-keyboard me-2"></i>Crear Examen</a>
                                <!--TE LLEVARA ATRAS DONDE ESTA ADMI CONTROL-->
                     <a href="<?php echo base_url(); ?>index.php/Pregunta/Atras" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Atras</a>
                   
@@ -109,37 +112,82 @@
         <div class="container pt-3 px-4">
         <?php echo form_open_multipart('Examen/preguntas'); ?>
           <div class="row bg-light">
-            <h1 class="text-center p-4">CREACIÓN DE EXAMENES</h1>
+            <h1 class="text-center p-4">CREACION DE EXAMENES</h1>
+<!--######################## PARA EL EXAMEN ######################################-->
+<input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
 
-
-
- <!--******************* este es la variable global del id del usuario*************************** -->
- <input type="hidden" name="idUsuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
-
- <!--**************** este es la variable global del id del usuario ******************************-->
-
-
-
-
+          
+                              
             <div class="col-6 p-3">
 
               <label for="">Titulo del Examen</label>
-              <input type="text"  id="tituloEx" name="tituloEx" class="form-control" placeholder="Escribe un titulo"/>
-   
+              <input type="text"  id="tituloEx" name="tituloEx" class="form-control" placeholder="Escribe un titulo" required/>
+
+
             </div>
             <div class="col-6 p-3">
             <label for="">Descripcion</label>
-              <input type="text"  id="DescripEx" name="DescripEx" class="form-control" placeholder="Escribe una descripcion breve"/>
+              <input type="text"  id="DescripEx" name="DescripEx" class="form-control" placeholder="Escribe una descripcion breve" required/>
             </div>
 
-<div class="col-4">
-<select id="dificultad" name="dificultad" class="form-control form-select form-select-lg" required>
-                    <option value="FASIL"  selected>FASIL</option> 
-                    <option value="REGULAR" selected>REGULAR</option> 
-                    <option value="DIFICIL" selected>DIFICIL</option> 
-                  </select>
-</div>
+            <div class="col-4">
+              <select id="dificultad" name="dificultad" class="form-control form-select form-select-lg" required>
+                    <option value="FASIL"  >FASIL</option> 
+                    <option value="REGULAR" >REGULAR</option> 
+                    <option value="DIFICIL" >DIFICIL</option> 
+              </select>
+            </div>
+       <!---###################-BUSQUEDA DE PREGUNTAS :D -######################---->   
+       
+       <div class="row">
+            <div class="col-12">
+          
+       
+                <div class="row">
+                    <div class="col-4 mb-3">
+                    <label for="">CURSO:</label>
+                        <div class="input-group">
+                            <select id="idCarrera1" name="idCarrera1" class="form-control form-select form-select-lg" required>
+                              
+                            <option selected disabled value="">Cursos</option> 
+                    
+                                
+                                <?php
+                                foreach($infocarreras->result() as $row)
+                                {
+                                ?>
+                                <option value="<?php echo $row->idCarrera;?>"><?php echo $row->nombreCarrera;?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+             <!-- MATERIA EN BASE AL ANTERIOR SELECT -->  
+                    <div class="col-4 mb-3">
+                        <label for="">MATERIA:</label>
+                        <div class="input-group">
+                            <select id="idMateria1" name="idMateria1" class="form-control form-select form-select-lg" required>
+                            <option selected disabled value="">Materias</option>
+                            </select>  
+                        </div>
+                    </div>
+             <!-- LECCION EN BASE AL ANTERIOR SELECT -->  
+                    <div class="col-4 mb-3">
+                        <label for="">LECCION:</label>
+                        <div class="input-group">
+                            <select id="idLeccion1" name="idLeccion1" class="form-control form-select form-select-lg" required>
+                            <option selected  value="0">EXAMEN GLOBAL</option>
+                            </select>  
+                        </div>
+                    </div>
+              </div>
 
+            </div>
+        </div>
+     <!---###################-FIN DE BUSQUEDA DE PREGUNTAS D:-######################---->  
+  
+<!--######################## FIN PARA EL EXAMEN ######################################-->
 
             <div class="col-12 p-4">
               <div class="input-group">
@@ -153,37 +201,96 @@
             
 
 
-            <div class="row">    
-              <div class="col-4 mb-3">
-                <label for="">Materia</label>
-                  <div class="input-group">
-                  <select id="idMateria" name="idMateria" class="form-control form-select form-select-lg" required>
-                    <option value="" disable selected>MATERIA</option> 
-                    <?php
-                      foreach($infomaterias->result() as $row)
-                      {
-                    ?>
-                    <option value="<?php echo $row->idMateria;?>"><?php echo $row->nombreMateria;?></option>
-                    <?php
-                      }
-                    ?>
-                  </select>
-                    <input type="submit" value="+" class="btn btn-primary">
-                  </div>
-                </div>
-             <!-- MATERIA EN BASE AL ANTERIOR SELECT -->  
-  
-                <div class="col-4 mb-3">
-                  <label for="">Leccion:</label>
-                    <div class="input-group">
-                      <select id="idLec" name="idLec" class="form-control form-select form-select-lg">
-                      <option value="0" selected>EXAMEN GLOBAL</option>
-                      </select>  
-                     <input type="submit" value="+" class="btn btn-primary">
-                  </div>
-                </div>
+            <div class="row"> 
+            <div class="col-6 p-2">  <!-- DIV DE PREGUNTAS PARA EL EXAMEN--> 
+          <h5 class="text-center">Preguntas que tiene el examen</h5>
+          <div class="table-responsive bg-white border caja3" id="carrito">
+                <table class="table" id="lista-carrito">
+                <thead>
+                  <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pregunta</th>
+                <th scope="col">Leccio</th>
+                <th scope="col">idPregunta</th>
+                <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                  <!-- AQUI ENTRA EL CLON-->
 
-          <div class="col-6 p-2"> <!-- DIV DE PREGUNTAS SELECT--> 
+                </tbody>
+              </table>
+              <a href="#" id="vaciar-carrito" class="btn btn-primary">Vaciar Preguntas</a>
+           
+              </div>
+                 <button type="submit" class="btn btn-primary py-2 col-12 " name="CrearExamen" id="CrearExamen">
+                   CREAR EXAMEN
+                </button>
+         
+          </div>
+          <?php echo form_close(); ?>     
+
+  <div class="col-6">
+ <!---###################-BUSQUEDA DE PREGUNTAS :D -######################---->                   
+ <div class="row">
+            <div class="col-12">
+            <?php echo form_open_multipart('pregunta/Examen2');?>
+            <form class="row g-3 ">
+                <div class="row">
+                    <div class="col-4 mb-3">
+                    <label for="">CURSO:</label>
+                        <div class="input-group">
+                            <select id="idCarrera" name="idCarrera" class="form-control form-select form-select-lg" required>
+                                <option selected disabled value="">Cursos</option> 
+                                <?php
+                                foreach($infocarreras->result() as $row)
+                                {
+                                ?>
+                                <option value="<?php echo $row->idCarrera;?>"><?php echo $row->nombreCarrera;?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+             <!-- MATERIA EN BASE AL ANTERIOR SELECT -->  
+                    <div class="col-4 mb-3">
+                        <label for="">MATERIA:</label>
+                        <div class="input-group">
+                            <select id="idMateria" name="idMateria" class="form-control form-select form-select-lg" required>
+                            <option selected disabled value="">Materias</option>
+                            </select>  
+                        </div>
+                    </div>
+             <!-- LECCION EN BASE AL ANTERIOR SELECT -->  
+                    <div class="col-4 mb-3">
+                        <label for="">LECCION:</label>
+                        <div class="input-group">
+                            <select id="idLeccion" name="idLeccion" class="form-control form-select form-select-lg" required>
+                            <option selected disabled value="">Lecciones</option>
+                            </select>  
+                        </div>
+                    </div>
+              </div>
+          
+            <div class="col-12 ">
+                  <button type="submit" value="Send Message" class="btn btn-primary m-2 col-12">
+                    FILTRAR PREGUNTAS
+                  </button>
+              </div> 
+            <?php echo form_close() ;?>
+            </form>  
+              <?php echo form_open_multipart('pregunta/modificarEx');?>
+              <div class="col-12 ">
+                    <button type="submit" value="Send Message" class="btn btn-primary m-2 col-12">
+                      TODAS LAS PREGUNTAS
+                    </button>
+              </div> 
+              <?php echo form_close() ;?>
+            </div>
+
+            <div class="col-12 p-2"> <!-- DIV DE PREGUNTAS SELECT--> 
           <h5 class="text-center">Total Preguntas</h5>
                             <!--SELECT DE TODAS LAS PREGUNTAS QUE EXISTEN EN LA BASE DE DATOS--> 
                             <div class="col-12 border " id="lista-cursos">
@@ -229,38 +336,19 @@
                         </div>
                       </div>
                     <!--"FIN" SELECT DE TODAS LAS PREGUNTAS QUE EXISTEN EN LA BASE DE DATOS--> 
-          </div>
-          <div class="col-6 p-2">  <!-- DIV DE PREGUNTAS PARA EL EXAMEN--> 
-          <h5 class="text-center">Preguntas que tendra el examen</h5>
-          <div class="table-responsive bg-white border caja2" id="carrito">
-                <table class="table" id="lista-carrito">
-                <thead>
-                  <tr>
-                <th scope="col">#</th>
-                <th scope="col">Pregunta</th>
-                <th scope="col">Leccio</th>
-                <th scope="col">idPregunta</th>
-                <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- AQUI ENTRA EL CLON-->
-
-                </tbody>
-              </table>
-              <a href="#" id="vaciar-carrito" class="btn btn-primary">Vaciar Preguntas</a>
-              </div>
+                    <br><br><br><br><br><br>
           </div>
 
-          <div class="col-12 text-center p-4">
-          <button type="submit" class="btn btn-primary col-11" name="CrearExamen" id="CrearExamen">
-              Crear Examen
-            </button>
-    
-          </div>
+
+        </div>
+     <!---###################-FIN DE BUSQUEDA DE PREGUNTAS D:-######################---->  
+  </div>
+             
+          
+      
 
           </div>
-          <?php echo form_close(); ?>     
+ 
         </div>
 
 
@@ -311,15 +399,63 @@
 
 </html>
 
+<!---SCRIPT PARA SELECCIONAR MATERIAS---->
+<script type="text/javascript">   
+            $(document).ready(function() {                       
+                $("#idCarrera").change(function() {
+                    $("#idCarrera option:selected").each(function() {
+                        idCarrera = $('#idCarrera').val();
+                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectMateria", {
+                            idCarrera : idCarrera 
+                        }, function(data) {
+                            $("#idMateria").html(data);
+                        });
+                    });
+                });
+            });
+            
+</script>
 <script type="text/javascript">   
             $(document).ready(function() {                       
                 $("#idMateria").change(function() {
                     $("#idMateria option:selected").each(function() {
                         idMateria = $('#idMateria').val();
-                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectLec", {
-                            idMateria : idMateria
+                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectLec2", {
+                            idMateria : idMateria 
                         }, function(data) {
-                            $("#idLec").html(data);
+                            $("#idLeccion").html(data);
+                        });
+                    });
+                });
+            });
+            
+</script>
+
+
+<script type="text/javascript">   
+            $(document).ready(function() {                       
+                $("#idCarrera1").change(function() {
+                    $("#idCarrera1 option:selected").each(function() {
+                        idCarrera = $('#idCarrera1').val();
+                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectMateria", {
+                            idCarrera : idCarrera 
+                        }, function(data) {
+                            $("#idMateria1").html(data);
+                        });
+                    });
+                });
+            });
+            
+</script>
+<script type="text/javascript">   
+            $(document).ready(function() {                       
+                $("#idMateria1").change(function() {
+                    $("#idMateria1 option:selected").each(function() {
+                        idMateria = $('#idMateria1').val();
+                        $.post("<?php echo base_url(); ?>index.php/Pregunta/selectLec", {
+                            idMateria : idMateria 
+                        }, function(data) {
+                            $("#idLeccion1").html(data);
                         });
                     });
                 });

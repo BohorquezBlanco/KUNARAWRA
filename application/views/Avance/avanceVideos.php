@@ -295,7 +295,7 @@
                                 </div>
 
                                 <!-- Video Duration -->
-                                <span class="video-duration">05.03</span>
+                               <!-- <span class="video-duration">05.03</span> -->
                             </div>
                         </div>
                         <?php 
@@ -349,11 +349,11 @@
                                         <img src="img/bg-img/4.jpg" alt="">
                                     </div>
                                     <div class="post-content">
-                                        <h6 class="post-title">Meet the 12 boys rescued from cave</h6>
+                                    <h6 class="post-title"><?php echo $row->descripcion;?></h6>
                                         <div class="post-meta d-flex justify-content-between">
-                                            <span><i class="fa fa-comments-o" aria-hidden="true"></i> 14</span>
-                                            <span><i class="fa fa-eye" aria-hidden="true"></i> 34</span>
-                                            <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</span>
+                                            <!-- <span><i class="fa fa-comments-o" aria-hidden="true"></i> 14</span>-->
+                                             <!-- <span><i class="fa fa-eye" aria-hidden="true"></i> 34</span>-->
+                                             <!-- <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</span>-->
                                         </div>
                                     </div>
                                 </div>
